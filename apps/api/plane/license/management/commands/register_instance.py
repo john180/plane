@@ -15,7 +15,6 @@ from django.utils import timezone
 
 # Module imports
 from plane.license.models import Instance, InstanceEdition
-from plane.license.bgtasks.telemetry_metrics import push_instance_metrics
 
 
 class Command(BaseCommand):
@@ -38,6 +37,9 @@ class Command(BaseCommand):
             return "v0.1.0"
 
     def check_for_latest_version(self, fallback_version):
+        if os.environ.get("ENABLE_UPDATE_CHECK", "0") != "1":
+            return fallback_version
+
         try:
             response = requests.get(
                 "https://api.github.com/repos/makeplane/plane/releases/latest",
@@ -85,8 +87,5 @@ class Command(BaseCommand):
             instance.is_test = os.environ.get("IS_TEST", "0") == "1"
             instance.edition = InstanceEdition.PLANE_COMMUNITY.value
             instance.save()
-
-        # Push instance metrics on registration
-        push_instance_metrics.delay()
 
         return

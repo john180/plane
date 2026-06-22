@@ -26,6 +26,7 @@ export type PlanUpgradeCardProps = {
   extraFeatures?: string | React.ReactNode;
   renderTrialButton?: (props: { productId: string | undefined; priceId: string | undefined }) => React.ReactNode;
   handleCheckout: (params: TCheckoutParams) => void;
+  isCheckoutEnabled?: boolean;
   isSelfHosted: boolean;
   isTrialAllowed: boolean;
 };
@@ -42,6 +43,7 @@ export const PlanUpgradeCard = observer(function PlanUpgradeCard(props: PlanUpgr
     upgradeLoaderType,
     renderTrialButton,
     handleCheckout,
+    isCheckoutEnabled = true,
     isSelfHosted,
     isTrialAllowed,
   } = props;
@@ -106,6 +108,7 @@ export const PlanUpgradeCard = observer(function PlanUpgradeCard(props: PlanUpgr
           upgradeLoaderType={upgradeLoaderType}
           renderTrialButton={renderTrialButton}
           handleCheckout={handleCheckout}
+          isCheckoutEnabled={isCheckoutEnabled}
           isSelfHosted={isSelfHosted}
           isTrialAllowed={isTrialAllowed}
         />

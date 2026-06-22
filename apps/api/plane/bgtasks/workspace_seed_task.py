@@ -527,7 +527,7 @@ def workspace_seed(workspace_id: uuid.UUID) -> None:
             last_name="",
             is_bot=True,
             bot_type=BotTypeEnum.WORKSPACE_SEED,
-            email=f"bot_user_{workspace.id}@{urlparse(settings.WEB_URL or 'https://plane.so').hostname or 'plane.so'}",
+            email=f"bot_user_{workspace.id}@{urlparse(settings.WEB_URL or 'http://localhost').hostname or 'localhost'}",
             password=make_password(uuid.uuid4().hex),
             is_password_autoset=True,
         )

@@ -51,7 +51,7 @@ export function InstanceAIForm(props: IInstanceAIForm) {
             className="text-accent-primary hover:underline"
             rel="noreferrer"
           >
-            Learn more
+            Learn more about OpenAI models
           </a>
         </>
       ),
@@ -72,7 +72,7 @@ export function InstanceAIForm(props: IInstanceAIForm) {
             className="text-accent-primary hover:underline"
             rel="noreferrer"
           >
-            here.
+            OpenAI API keys.
           </a>
         </>
       ),
@@ -127,12 +127,7 @@ export function InstanceAIForm(props: IInstanceAIForm) {
 
         <div className="relative inline-flex items-center gap-1.5 rounded-sm border border-accent-subtle bg-accent-subtle px-4 py-2 text-caption-sm-regular text-accent-secondary">
           <Lightbulb className="size-4" />
-          <div>
-            If you have a preferred AI models vendor, please get in{" "}
-            <a className="font-medium underline" href="https://plane.so/contact">
-              touch with us.
-            </a>
-          </div>
+          <div>If you have a preferred AI models vendor, configure it here or contact your administrator.</div>
         </div>
       </div>
     </div>

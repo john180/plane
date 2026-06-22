@@ -43,11 +43,12 @@ export const PlanDetail = observer(function PlanDetail(props: TPlanDetailProps) 
     billingFrequency === "month"
       ? planDetail.monthlyPriceSecondaryDescription
       : planDetail.yearlyPriceSecondaryDescription;
+  const frequency = billingFrequency ?? "year";
+  const redirectUrl = SUBSCRIPTION_REDIRECTION_URLS[subscriptionType][frequency] ?? TALK_TO_SALES_URL;
 
   const handleRedirection = () => {
-    const frequency = billingFrequency ?? "year";
-    // Get the redirection URL based on the subscription type and billing frequency
-    const redirectUrl = SUBSCRIPTION_REDIRECTION_URLS[subscriptionType][frequency] ?? TALK_TO_SALES_URL;
+    if (!redirectUrl) return;
+
     // Open the URL in a new tab
     window.open(redirectUrl, "_blank");
   };
@@ -100,9 +101,15 @@ export const PlanDetail = observer(function PlanDetail(props: TPlanDetailProps) 
 
       {/* Subscription button */}
       <div className="flex flex-col items-start gap-1 py-3">
-        <Button variant="primary" size="lg" onClick={handleRedirection} className="w-full">
-          {isSubscriptionActive ? `Upgrade to ${subscriptionName}` : t("common.upgrade_cta.talk_to_sales")}
-        </Button>
+        {redirectUrl ? (
+          <Button variant="primary" size="lg" onClick={handleRedirection} className="w-full">
+            {isSubscriptionActive ? `Upgrade to ${subscriptionName}` : t("common.upgrade_cta.talk_to_sales")}
+          </Button>
+        ) : (
+          <div className="flex h-10 w-full items-center justify-center text-caption-md-medium text-tertiary">
+            No external upgrade path configured
+          </div>
+        )}
       </div>
     </div>
   );

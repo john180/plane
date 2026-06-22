@@ -28,6 +28,7 @@ type Props = {
   upgradeLoaderType: Omit<EProductSubscriptionEnum, "FREE"> | undefined;
   renderTrialButton?: (props: { productId: string | undefined; priceId: string | undefined }) => React.ReactNode;
   handleCheckout: (params: TCheckoutParams) => void;
+  isCheckoutEnabled?: boolean;
   isSelfHosted: boolean;
   isTrialAllowed: boolean;
 };
@@ -43,6 +44,7 @@ export const PlanCheckoutButton = observer(function PlanCheckoutButton(props: Pr
     upgradeLoaderType,
     renderTrialButton,
     handleCheckout,
+    isCheckoutEnabled = true,
     isSelfHosted,
     isTrialAllowed,
   } = props;
@@ -73,23 +75,29 @@ export const PlanCheckoutButton = observer(function PlanCheckoutButton(props: Pr
         </Loader>
       ) : (
         <div className="flex w-full flex-col items-center justify-center space-y-4">
-          <Button
-            variant="primary"
-            size="lg"
-            className="w-56"
-            onClick={() => {
-              if (product && price.id) {
-                handleCheckout({
-                  planVariant,
-                  productId: product.id,
-                  priceId: price.id,
-                });
-              }
-            }}
-            disabled={!!upgradeLoaderType}
-          >
-            {upgradeLoaderType === planVariant ? "Redirecting to Stripe" : (upgradeCTA ?? `Upgrade to ${planeName}`)}
-          </Button>
+          {isCheckoutEnabled ? (
+            <Button
+              variant="primary"
+              size="lg"
+              className="w-56"
+              onClick={() => {
+                if (product && price.id) {
+                  handleCheckout({
+                    planVariant,
+                    productId: product.id,
+                    priceId: price.id,
+                  });
+                }
+              }}
+              disabled={!!upgradeLoaderType}
+            >
+              {upgradeLoaderType === planVariant ? "Redirecting to Stripe" : (upgradeCTA ?? `Upgrade to ${planeName}`)}
+            </Button>
+          ) : (
+            <div className="flex h-[38px] items-center justify-center text-caption-md-medium text-tertiary">
+              No external upgrade path configured
+            </div>
+          )}
           {isTrialAllowed && !isSelfHosted && (
             <div className="mt-1 h-3">
               {renderTrialButton &&

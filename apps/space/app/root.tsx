@@ -19,13 +19,16 @@ import type { Route } from "./+types/root";
 import ErrorPage from "./error";
 import { AppProviders } from "./providers";
 // fonts
+// eslint-disable-next-line import/no-unassigned-import
 import "@fontsource-variable/inter";
 import interVariableWoff2 from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
+// eslint-disable-next-line import/no-unassigned-import
 import "@fontsource/material-symbols-rounded";
+// eslint-disable-next-line import/no-unassigned-import
 import "@fontsource/ibm-plex-mono";
 
 const APP_TITLE = "Plane Publish | Make your Plane boards public with one-click";
-const APP_DESCRIPTION = "Plane Publish is a customer feedback management tool built on top of plane.so";
+const APP_DESCRIPTION = "Plane Publish shares public boards and work items.";
 
 export const links: Route.LinksFunction = () => [
   { rel: "apple-touch-icon", sizes: "180x180", href: appleTouchIcon },
@@ -44,9 +47,9 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export const headers: Route.HeadersFunction = () => ({
-  "Referrer-Policy": "origin-when-cross-origin",
+  "Referrer-Policy": "no-referrer",
   "X-Content-Type-Options": "nosniff",
-  "X-DNS-Prefetch-Control": "on",
+  "X-DNS-Prefetch-Control": "off",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
 });
 
@@ -74,7 +77,6 @@ export const meta: Route.MetaFunction = () => [
   { name: "description", content: APP_DESCRIPTION },
   { property: "og:title", content: APP_TITLE },
   { property: "og:description", content: APP_DESCRIPTION },
-  { property: "og:url", content: "https://sites.plane.so/" },
   {
     name: "keywords",
     content:

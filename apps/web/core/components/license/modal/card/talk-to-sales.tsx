@@ -29,6 +29,13 @@ export type TalkToSalesCardProps = {
   renderTrialButton?: (props: { productId: string | undefined; priceId: string | undefined }) => React.ReactNode;
 };
 
+const renderPriceContent = (price: TSubscriptionPrice) => (
+  <>
+    {price.recurring === "month" && "Monthly"}
+    {price.recurring === "year" && "Yearly"}
+  </>
+);
+
 export const TalkToSalesCard = observer(function TalkToSalesCard(props: TalkToSalesCardProps) {
   const {
     planVariant,
@@ -44,13 +51,6 @@ export const TalkToSalesCard = observer(function TalkToSalesCard(props: TalkToSa
     isTrialAllowed,
     renderTrialButton,
   } = props;
-
-  const renderPriceContent = (price: TSubscriptionPrice) => (
-    <>
-      {price.recurring === "month" && "Monthly"}
-      {price.recurring === "year" && "Yearly"}
-    </>
-  );
 
   const renderActionButton = (price: TSubscriptionPrice) => (
     <>
@@ -72,9 +72,15 @@ export const TalkToSalesCard = observer(function TalkToSalesCard(props: TalkToSa
         </Loader>
       ) : (
         <div className="flex w-full flex-col items-center justify-center">
-          <a href={href} target="_blank" className={cn(getButtonStyling("primary", "lg"), "w-56")} rel="noreferrer">
-            Talk to Sales
-          </a>
+          {href ? (
+            <a href={href} target="_blank" className={cn(getButtonStyling("primary", "lg"), "w-56")} rel="noreferrer">
+              Talk to Sales
+            </a>
+          ) : (
+            <div className="flex h-[38px] items-center justify-center text-caption-md-medium text-tertiary">
+              No external sales contact configured
+            </div>
+          )}
           {isTrialAllowed && !isSelfHosted && (
             <div className="mt-4 h-4">
               {renderTrialButton &&

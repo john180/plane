@@ -15,6 +15,8 @@ type Props = {
 export function BulkOperationsUpgradeBanner(props: Props) {
   const { className } = props;
 
+  if (!MARKETING_PLANE_ONE_PAGE_LINK) return null;
+
   return (
     <div className={cn("sticky bottom-0 left-0 z-[2] grid h-20 place-items-center px-3.5", className)}>
       <div className="flex h-14 w-full items-center justify-between gap-2 rounded-md border-[0.5px] border-accent-strong/50 bg-accent-primary/10 px-3.5 py-4">

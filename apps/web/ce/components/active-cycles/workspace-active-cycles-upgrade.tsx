@@ -90,17 +90,19 @@ export const WorkspaceActiveCyclesUpgrade = observer(function WorkspaceActiveCyc
             <h2 className="text-20 font-semibold">{t("on_demand_snapshots_of_all_your_cycles")}</h2>
             <p className="text-14 font-medium text-tertiary">{t("active_cycles_description")}</p>
           </div>
-          <div className="flex items-center gap-3">
-            <a
-              className={`${getButtonStyling("primary", "base")} cursor-pointer`}
-              href={MARKETING_PRICING_PAGE_LINK}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <ProIcon className="h-3.5 w-3.5 text-on-color" />
-              {t("upgrade")}
-            </a>
-          </div>
+          {MARKETING_PRICING_PAGE_LINK && (
+            <div className="flex items-center gap-3">
+              <a
+                className={`${getButtonStyling("primary", "base")} cursor-pointer`}
+                href={MARKETING_PRICING_PAGE_LINK}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <ProIcon className="h-3.5 w-3.5 text-on-color" />
+                {t("upgrade")}
+              </a>
+            </div>
+          )}
           <span className="absolute top-0 left-0">
             <img
               src={isDarkMode ? ctaL1Dark : ctaL1Light}

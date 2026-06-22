@@ -115,9 +115,10 @@ export const PLANE_COMMUNITY_PRODUCTS: Record<string, IPaymentProduct> = {
 };
 
 /**
- * URL for the "Talk to Sales" page where users can contact sales team
+ * URL for the "Talk to Sales" page where users can contact sales team.
+ * Empty by default so self-hosted deployments do not link to Plane Cloud unless configured.
  */
-export const TALK_TO_SALES_URL = "https://plane.so/talk-to-sales";
+export const TALK_TO_SALES_URL = process.env.VITE_TALK_TO_SALES_URL || "";
 
 /**
  * Mapping of subscription types to their respective upgrade/redirection URLs based on billing frequency
@@ -133,12 +134,12 @@ export const SUBSCRIPTION_REDIRECTION_URLS: Record<EProductSubscriptionEnum, Rec
     year: TALK_TO_SALES_URL,
   },
   [EProductSubscriptionEnum.PRO]: {
-    month: "https://app.plane.so/upgrade/pro/self-hosted?plan=month",
-    year: "https://app.plane.so/upgrade/pro/self-hosted?plan=year",
+    month: process.env.VITE_PRO_MONTHLY_UPGRADE_URL || "",
+    year: process.env.VITE_PRO_YEARLY_UPGRADE_URL || "",
   },
   [EProductSubscriptionEnum.BUSINESS]: {
-    month: "https://app.plane.so/upgrade/business/self-hosted?plan=month",
-    year: "https://app.plane.so/upgrade/business/self-hosted?plan=year",
+    month: process.env.VITE_BUSINESS_MONTHLY_UPGRADE_URL || "",
+    year: process.env.VITE_BUSINESS_YEARLY_UPGRADE_URL || "",
   },
   [EProductSubscriptionEnum.ENTERPRISE]: {
     month: TALK_TO_SALES_URL,
@@ -153,7 +154,7 @@ export const SUBSCRIPTION_REDIRECTION_URLS: Record<EProductSubscriptionEnum, Rec
 export const SUBSCRIPTION_WEBPAGE_URLS: Record<EProductSubscriptionEnum, string> = {
   [EProductSubscriptionEnum.FREE]: TALK_TO_SALES_URL,
   [EProductSubscriptionEnum.ONE]: TALK_TO_SALES_URL,
-  [EProductSubscriptionEnum.PRO]: "https://plane.so/pro",
-  [EProductSubscriptionEnum.BUSINESS]: "https://plane.so/business",
-  [EProductSubscriptionEnum.ENTERPRISE]: "https://plane.so/business",
+  [EProductSubscriptionEnum.PRO]: process.env.VITE_PRO_FEATURES_URL || "",
+  [EProductSubscriptionEnum.BUSINESS]: process.env.VITE_BUSINESS_FEATURES_URL || "",
+  [EProductSubscriptionEnum.ENTERPRISE]: process.env.VITE_ENTERPRISE_FEATURES_URL || "",
 };

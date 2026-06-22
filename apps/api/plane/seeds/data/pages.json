@@ -10,7 +10,7 @@
     "access": 0,
     "logo_props": {
       "emoji": {
-        "url": "https://cdn.jsdelivr.net/npm/emoji-datasource-apple/img/apple/64/1f680.png",
+        "url": "",
         "value": "128640"
       },
       "in_use": "emoji"
@@ -25,6 +25,6 @@
     "description_stripped": "This is your Project Draft area — a private space inside the project where you can experiment, outline ideas, or prepare content before sharing it on the public Project Page.It’s visible only to you (and collaborators you explicitly share with).✍ Current Work in Progress💬 Use this section to jot down raw ideas, rough notes, or specs that aren’t ready yet. Outline project summary and goals Draft new feature spec Review dependency list Collect team feedback for next iteration✅ Tip: Turn these items into actionable issues when finalized.🧱 Prototype Commands (if technical)You can also use code blocks to store snippets, scripts, or notes:# Rebuild Docker containers\ndocker compose build backend frontend",
     "type": "PROJECT",
     "access": 1,
-    "logo_props": "{\"emoji\": {\"url\": \"https://cdn.jsdelivr.net/npm/emoji-datasource-apple/img/apple/64/1f9f1.png\", \"value\": \"129521\"}, \"in_use\": \"emoji\"}"
+    "logo_props": "{\"emoji\": {\"url\": \"\", \"value\": \"129521\"}, \"in_use\": \"emoji\"}"
   }
 ]

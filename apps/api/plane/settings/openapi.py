@@ -15,18 +15,14 @@ SPECTACULAR_SETTINGS = {
     "TITLE": "The Plane REST API",
     "DESCRIPTION": (
         "The Plane REST API\n\n"
-        "Visit our quick start guide and full API documentation at "
-        "[developers.plane.so](https://developers.plane.so/api-reference/introduction)."
+        "Use the locally served schema for API documentation in self-hosted deployments."
     ),
     "CONTACT": {
         "name": "Plane",
-        "url": "https://plane.so",
-        "email": "support@plane.so",
     },
     "VERSION": "0.0.1",
     "LICENSE": {
         "name": "GNU AGPLv3",
-        "url": "https://github.com/makeplane/plane/blob/preview/LICENSE.txt",
     },
     # ========================================================================
     # Schema Generation Settings
@@ -45,7 +41,6 @@ SPECTACULAR_SETTINGS = {
     # ========================================================================
     "SERVERS": [
         {"url": "http://localhost:8000", "description": "Local"},
-        {"url": "https://api.plane.so", "description": "Production"},
     ],
     # ========================================================================
     # API Tag Definitions

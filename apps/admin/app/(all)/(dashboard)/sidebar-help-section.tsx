@@ -6,12 +6,11 @@
 
 import { useState, useRef } from "react";
 import { observer } from "mobx-react";
-import Link from "next/link";
-import { HelpCircle, MessageSquare, MoveLeft } from "lucide-react";
+import { HelpCircle, MoveLeft } from "lucide-react";
 import { Transition } from "@headlessui/react";
 import { WEB_BASE_URL } from "@plane/constants";
 // plane internal packages
-import { GithubIcon, NewTabIcon, PageIcon } from "@plane/propel/icons";
+import { NewTabIcon, PageIcon } from "@plane/propel/icons";
 import { Tooltip } from "@plane/propel/tooltip";
 import { cn } from "@plane/utils";
 // hooks
@@ -23,16 +22,6 @@ const helpOptions = [
     name: "Documentation",
     href: "https://docs.plane.so/",
     Icon: PageIcon,
-  },
-  {
-    name: "Join our Forum",
-    href: "https://forum.plane.so",
-    Icon: MessageSquare,
-  },
-  {
-    name: "Report a bug",
-    href: "https://github.com/makeplane/plane/issues/new/choose",
-    Icon: GithubIcon,
   },
 ];
 
@@ -110,14 +99,14 @@ export const AdminSidebarHelpSection = observer(function AdminSidebarHelpSection
               {helpOptions.map(({ name, Icon, href }) => {
                 if (href)
                   return (
-                    <Link href={href} key={name} target="_blank">
+                    <a href={href} key={name} target="_blank" rel="noopener noreferrer">
                       <div className="flex items-center gap-x-2 rounded-sm px-2 py-1 text-11 hover:bg-layer-1-hover">
                         <div className="grid flex-shrink-0 place-items-center">
                           <Icon className="h-3.5 w-3.5 text-secondary" />
                         </div>
                         <span className="text-11">{name}</span>
                       </div>
-                    </Link>
+                    </a>
                   );
                 else
                   return (

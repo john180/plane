@@ -28,6 +28,9 @@ interface IssueMetadata {
   cover_image?: string;
 }
 
+const getLocalCoverImage = (coverImage?: string) =>
+  coverImage && coverImage.startsWith("/") && !coverImage.startsWith("//") ? coverImage : undefined;
+
 // Loader function runs on the server and fetches metadata
 export async function loader({ params }: Route.LoaderArgs) {
   const { anchor } = params;
@@ -39,7 +42,9 @@ export async function loader({ params }: Route.LoaderArgs) {
   }
 
   try {
-    const response = await fetch(`${process.env.VITE_API_BASE_URL}/api/public/anchor/${anchor}/meta/`);
+    const response = await fetch(`${process.env.VITE_API_BASE_URL}/api/public/anchor/${anchor}/meta/`, {
+      cache: "no-store",
+    });
 
     if (!response.ok) {
       return { metadata: null };
@@ -59,7 +64,7 @@ export function meta({ loaderData }: Route.MetaArgs) {
 
   const title = metadata?.name || DEFAULT_TITLE;
   const description = metadata?.description || DEFAULT_DESCRIPTION;
-  const coverImage = metadata?.cover_image;
+  const coverImage = getLocalCoverImage(metadata?.cover_image);
 
   const metaTags = [
     { title },

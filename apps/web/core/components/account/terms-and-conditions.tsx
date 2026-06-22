@@ -5,7 +5,6 @@
  */
 
 import React from "react";
-import Link from "next/link";
 import { EAuthModes } from "@plane/constants";
 
 interface TermsAndConditionsProps {
@@ -26,9 +25,9 @@ const MESSAGES = {
 // Reusable link component to reduce duplication
 function LegalLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <Link href={href} className="text-secondary" target="_blank" rel="noopener noreferrer">
+    <a href={href} className="text-secondary" target="_blank" rel="noopener noreferrer">
       <span className="text-13 font-medium underline hover:cursor-pointer">{children}</span>
-    </Link>
+    </a>
   );
 }
 
