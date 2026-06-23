@@ -9,7 +9,7 @@ import type { TEmbedConfig } from "@plane/editor";
 // plane types
 import type { TSearchEntityRequestPayload, TSearchResponse } from "@plane/types";
 // plane web components
-import { IssueEmbedUpgradeCard } from "@/plane-web/components/pages";
+import { IssueEmbedUnavailableCard } from "@/plane-web/components/pages";
 
 export type TIssueEmbedHookProps = {
   fetchEmbedSuggestions?: (payload: TSearchEntityRequestPayload) => Promise<TSearchResponse>;
@@ -17,14 +17,14 @@ export type TIssueEmbedHookProps = {
   workspaceSlug?: string;
 };
 
+const widgetCallback = () => <IssueEmbedUnavailableCard />;
+
+const issueEmbedProps: TEmbedConfig["issue"] = {
+  widgetCallback,
+};
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const useIssueEmbed = (props: TIssueEmbedHookProps) => {
-  const widgetCallback = () => <IssueEmbedUpgradeCard />;
-
-  const issueEmbedProps: TEmbedConfig["issue"] = {
-    widgetCallback,
-  };
-
   return {
     issueEmbedProps,
   };

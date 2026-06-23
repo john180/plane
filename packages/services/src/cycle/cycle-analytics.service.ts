@@ -63,7 +63,7 @@ export class CycleAnalyticsService extends APIService {
   }
 
   /**
-   * Retrieves advanced progress data for active cycles (Pro feature).
+   * Retrieves advanced progress data for active cycles.
    * @param {string} workspaceSlug - The workspace identifier
    * @param {string} projectId - The project identifier
    * @param {string} cycleId - The cycle identifier

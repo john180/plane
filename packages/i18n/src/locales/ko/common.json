@@ -654,8 +654,6 @@
     "from": "{name}에서",
     "authenticated": "인증됨",
     "select": "선택",
-    "upgrade": "업그레이드",
-    "add_seats": "좌석 추가",
     "projects": "프로젝트",
     "workspace": "작업 공간",
     "workspaces": "작업 공간",
@@ -681,10 +679,6 @@
     "member": "멤버",
     "members": "멤버",
     "you": "나",
-    "upgrade_cta": {
-      "higher_subscription": "더 높은 구독으로 업그레이드",
-      "talk_to_sales": "영업팀과 상담"
-    },
     "category": "카테고리",
     "categories": "카테고리",
     "saving": "저장 중",

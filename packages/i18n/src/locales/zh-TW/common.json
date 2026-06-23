@@ -654,8 +654,6 @@
     "from": "來自 {name}",
     "authenticated": "已認證",
     "select": "選擇",
-    "upgrade": "升級",
-    "add_seats": "新增席位",
     "projects": "專案",
     "workspace": "工作區",
     "workspaces": "工作區",
@@ -681,10 +679,6 @@
     "member": "成員",
     "members": "成員",
     "you": "您",
-    "upgrade_cta": {
-      "higher_subscription": "升級至更高等級的訂閱方案",
-      "talk_to_sales": "聯絡業務"
-    },
     "category": "類別",
     "categories": "類別",
     "saving": "儲存中",

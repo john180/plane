@@ -654,8 +654,6 @@
     "from": "od {name}",
     "authenticated": "Ověřeno",
     "select": "Vybrat",
-    "upgrade": "Upgradovat",
-    "add_seats": "Přidat místa",
     "projects": "Projekty",
     "workspace": "Pracovní prostor",
     "workspaces": "Pracovní prostory",
@@ -681,10 +679,6 @@
     "member": "Člen",
     "members": "Členové",
     "you": "Vy",
-    "upgrade_cta": {
-      "higher_subscription": "Upgradovat na vyšší předplatné",
-      "talk_to_sales": "Promluvte si s prodejem"
-    },
     "category": "Kategorie",
     "categories": "Kategorie",
     "saving": "Ukládání",

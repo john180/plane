@@ -654,8 +654,6 @@
     "from": "Từ {name}",
     "authenticated": "Đã xác thực",
     "select": "Chọn",
-    "upgrade": "Nâng cấp",
-    "add_seats": "Thêm vị trí",
     "projects": "Dự án",
     "workspace": "Không gian làm việc",
     "workspaces": "Không gian làm việc",
@@ -681,10 +679,6 @@
     "member": "Thành viên",
     "members": "Thành viên",
     "you": "Bạn",
-    "upgrade_cta": {
-      "higher_subscription": "Nâng cấp lên gói cao hơn",
-      "talk_to_sales": "Liên hệ bộ phận bán hàng"
-    },
     "category": "Danh mục",
     "categories": "Danh mục",
     "saving": "Đang lưu",

@@ -20,9 +20,6 @@
         "delete_btn": "Elimina questo spazio di lavoro",
         "delete_modal": {
           "title": "Sei sicuro di voler eliminare questo spazio di lavoro?",
-          "description": "Hai un periodo di prova attivo per uno dei nostri piani a pagamento. Per procedere, annulla prima il periodo di prova.",
-          "dismiss": "Annulla",
-          "cancel": "Annulla periodo di prova",
           "success_title": "Spazio di lavoro eliminato.",
           "success_message": "Presto verrai reindirizzato alla tua pagina del profilo.",
           "error_title": "Qualcosa non ha funzionato.",
@@ -64,14 +61,6 @@
             "invalid": "L'email non è valida"
           }
         }
-      },
-      "billing_and_plans": {
-        "heading": "Fatturazione e piani",
-        "description": "Scegli il tuo piano, gestisci gli abbonamenti e aggiorna facilmente man mano che le tue esigenze crescono.",
-        "title": "Fatturazione e Piani",
-        "current_plan": "Piano attuale",
-        "free_plan": "Stai attualmente utilizzando il piano gratuito",
-        "view_plans": "Visualizza piani"
       },
       "exports": {
         "heading": "Esportazioni",
@@ -278,16 +267,6 @@
         "title": "Relazioni",
         "heading": "Relazioni",
         "description": "Crea e gestisci tipi di relazione che collegano elementi di lavoro nel tuo spazio di lavoro."
-      },
-      "cancel_trial": {
-        "title": "Cancella la tua prova prima.",
-        "description": "Hai una prova attiva per uno dei nostri piani pagati. Per procedere, per favore cancella prima.",
-        "dismiss": "Ignora",
-        "cancel": "Cancella prova",
-        "cancel_success_title": "Prova cancellata.",
-        "cancel_success_message": "Ora puoi eliminare lo spazio di lavoro.",
-        "cancel_error_title": "Non è andato",
-        "cancel_error_message": "Prova di nuovo, per favore."
       },
       "applications": {
         "internal": "Interno",

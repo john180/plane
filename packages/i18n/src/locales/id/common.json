@@ -654,8 +654,6 @@
     "from": "dari {name}",
     "authenticated": "Terautentikasi",
     "select": "Pilih",
-    "upgrade": "Tingkatkan",
-    "add_seats": "Tambahkan Kursi",
     "projects": "Proyek",
     "workspace": "Ruang kerja",
     "workspaces": "Ruang kerja",
@@ -681,10 +679,6 @@
     "member": "Anggota",
     "members": "Anggota",
     "you": "Anda",
-    "upgrade_cta": {
-      "higher_subscription": "Tingkatkan ke langganan yang lebih tinggi",
-      "talk_to_sales": "Bicaralah dengan Penjualan"
-    },
     "category": "Kategori",
     "categories": "Kategori",
     "saving": "Menyimpan",

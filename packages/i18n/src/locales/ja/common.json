@@ -654,8 +654,6 @@
     "from": "{name}から",
     "authenticated": "認証済み",
     "select": "選択",
-    "upgrade": "アップグレード",
-    "add_seats": "シートを追加",
     "projects": "プロジェクト",
     "workspace": "ワークスペース",
     "workspaces": "ワークスペース",
@@ -681,10 +679,6 @@
     "member": "メンバー",
     "members": "メンバー",
     "you": "あなた",
-    "upgrade_cta": {
-      "higher_subscription": "高いサブスクリプションにアップグレード",
-      "talk_to_sales": "トーク トゥ セールス"
-    },
     "category": "カテゴリー",
     "categories": "カテゴリーズ",
     "saving": "セービング",

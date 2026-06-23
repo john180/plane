@@ -5,10 +5,8 @@
  */
 
 import { cn } from "@plane/utils";
-// components
-import { ProIcon } from "@/components/common/pro-icon";
 
-export function IssueEmbedUpgradeCard(props: any) {
+export function IssueEmbedUnavailableCard(props: any) {
   return (
     <div
       className={cn(
@@ -19,10 +17,7 @@ export function IssueEmbedUpgradeCard(props: any) {
       )}
     >
       <div className="flex items-center gap-4">
-        <ProIcon className="size-4 flex-shrink-0" />
-        <p className="!text-14 text-secondary">
-          Embedding and accessing work items in pages is unavailable in the current edition.
-        </p>
+        <p className="!text-14 text-secondary">Embedding work items in pages is not enabled in this build.</p>
       </div>
     </div>
   );

@@ -654,8 +654,6 @@
     "from": "от {name}",
     "authenticated": "Авторизован",
     "select": "Выбрать",
-    "upgrade": "Обновить",
-    "add_seats": "Добавить места",
     "projects": "Проекты",
     "workspace": "Рабочее пространство",
     "workspaces": "Рабочие пространства",
@@ -681,10 +679,6 @@
     "member": "Участник",
     "members": "Участники",
     "you": "Вы",
-    "upgrade_cta": {
-      "higher_subscription": "Перейти на подписку выше",
-      "talk_to_sales": "Связаться с отделом продаж"
-    },
     "category": "Категория",
     "categories": "Категории",
     "saving": "Сохранение",

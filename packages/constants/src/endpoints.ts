@@ -27,7 +27,4 @@ export const WEB_URL = encodeURI(`${WEB_BASE_URL}${WEB_BASE_PATH}`);
 export const WEBSITE_URL = process.env.VITE_WEBSITE_URL || "";
 // Support email. Empty by default so deployments can provide their own administrator contact.
 export const SUPPORT_EMAIL = process.env.VITE_SUPPORT_EMAIL || "";
-// Marketing links. Empty by default; operators can opt in by configuring build-time env values.
-export const MARKETING_PRICING_PAGE_LINK = process.env.VITE_MARKETING_PRICING_PAGE_LINK || "";
 export const MARKETING_CONTACT_US_PAGE_LINK = process.env.VITE_MARKETING_CONTACT_US_PAGE_LINK || "";
-export const MARKETING_PLANE_ONE_PAGE_LINK = process.env.VITE_MARKETING_PLANE_ONE_PAGE_LINK || "";

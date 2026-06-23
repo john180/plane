@@ -654,8 +654,6 @@
     "from": "від {name}",
     "authenticated": "Автентифіковано",
     "select": "Вибрати",
-    "upgrade": "Підвищити",
-    "add_seats": "Додати місця",
     "projects": "Проєкти",
     "workspace": "Робочий простір",
     "workspaces": "Робочі простори",
@@ -681,10 +679,6 @@
     "member": "Учасник",
     "members": "Учасники",
     "you": "Ви",
-    "upgrade_cta": {
-      "higher_subscription": "Підвищити до вищого плану",
-      "talk_to_sales": "Зв'язатися з відділом продажів"
-    },
     "category": "Категорія",
     "categories": "Категорії",
     "saving": "Збереження",

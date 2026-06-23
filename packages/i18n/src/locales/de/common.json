@@ -654,8 +654,6 @@
     "from": "von {name}",
     "authenticated": "Authentifiziert",
     "select": "Auswählen",
-    "upgrade": "Upgrade",
-    "add_seats": "Sitze hinzufügen",
     "projects": "Projekte",
     "workspace": "Arbeitsbereich",
     "workspaces": "Arbeitsbereiche",
@@ -681,10 +679,6 @@
     "member": "Mitglied",
     "members": "Mitglieder",
     "you": "Sie",
-    "upgrade_cta": {
-      "higher_subscription": "Auf ein höheres Abonnement upgraden",
-      "talk_to_sales": "Mit Vertrieb sprechen"
-    },
     "category": "Kategorie",
     "categories": "Kategorien",
     "saving": "Wird gespeichert",

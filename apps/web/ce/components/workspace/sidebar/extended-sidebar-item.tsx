@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useReducer, useRef } from "react";
 import { combine } from "@atlaskit/pragmatic-drag-and-drop/combine";
 import { draggable, dropTargetForElements } from "@atlaskit/pragmatic-drag-and-drop/element/adapter";
 import { attachInstruction, extractInstruction } from "@atlaskit/pragmatic-drag-and-drop-hitbox/tree-item";
@@ -25,8 +25,6 @@ import { SidebarNavItem } from "@/components/sidebar/sidebar-navigation";
 import { useAppTheme } from "@/hooks/store/use-app-theme";
 import { useUser, useUserPermissions } from "@/hooks/store/user";
 import { useWorkspaceNavigationPreferences } from "@/hooks/use-navigation-preferences";
-// local imports
-import { UpgradeBadge } from "../upgrade-badge";
 import { getSidebarNavigationItemIcon } from "./helper";
 
 type TExtendedSidebarItemProps = {
@@ -41,12 +39,36 @@ type TExtendedSidebarItemProps = {
   isLastChild: boolean;
 };
 
+type TDragInstruction = "DRAG_OVER" | "DRAG_BELOW";
+
+type TDragState = {
+  isDragging: boolean;
+  instruction: TDragInstruction | undefined;
+};
+
+type TDragAction =
+  | { type: "SET_DRAGGING"; isDragging: boolean }
+  | { type: "SET_INSTRUCTION"; instruction: TDragInstruction | undefined };
+
+const INITIAL_DRAG_STATE: TDragState = {
+  isDragging: false,
+  instruction: undefined,
+};
+
+const dragStateReducer = (state: TDragState, action: TDragAction): TDragState => {
+  switch (action.type) {
+    case "SET_DRAGGING":
+      return { ...state, isDragging: action.isDragging };
+    case "SET_INSTRUCTION":
+      return { ...state, instruction: action.instruction };
+  }
+};
+
 export const ExtendedSidebarItem = observer(function ExtendedSidebarItem(props: TExtendedSidebarItemProps) {
   const { item, handleOnNavigationItemDrop, disableDrag = false, disableDrop = false, isLastChild } = props;
   const { t } = useTranslation();
   // states
-  const [isDragging, setIsDragging] = useState(false);
-  const [instruction, setInstruction] = useState<"DRAG_OVER" | "DRAG_BELOW" | undefined>(undefined);
+  const [{ isDragging, instruction }, dispatchDragState] = useReducer(dragStateReducer, INITIAL_DRAG_STATE);
   // refs
   const navigationIemRef = useRef<HTMLDivElement | null>(null);
   const dragHandleRef = useRef<HTMLButtonElement | null>(null);
@@ -56,7 +78,7 @@ export const ExtendedSidebarItem = observer(function ExtendedSidebarItem(props: 
   const { workspaceSlug } = useParams();
   // store hooks
   const { toggleExtendedSidebar } = useAppTheme();
-  const { data } = useUser();
+  const { data: userData } = useUser();
   const { allowPermissions } = useUserPermissions();
   const { preferences: workspacePreferences, toggleWorkspaceItem } = useWorkspaceNavigationPreferences();
 
@@ -66,35 +88,35 @@ export const ExtendedSidebarItem = observer(function ExtendedSidebarItem(props: 
   const handleLinkClick = () => toggleExtendedSidebar(true);
 
   useEffect(() => {
-    const element = navigationIemRef.current;
+    const navigationItemElement = navigationIemRef.current;
     const dragHandleElement = dragHandleRef.current;
 
-    if (!element) return;
+    if (!navigationItemElement) return;
 
     return combine(
       draggable({
-        element,
+        element: navigationItemElement,
         canDrag: () => !disableDrag,
         dragHandle: dragHandleElement ?? undefined,
         getInitialData: () => ({ id: item.key, dragInstanceId: "NAVIGATION" }), // var1
         onDragStart: () => {
-          setIsDragging(true);
+          dispatchDragState({ type: "SET_DRAGGING", isDragging: true });
         },
         onDrop: () => {
-          setIsDragging(false);
+          dispatchDragState({ type: "SET_DRAGGING", isDragging: false });
         },
       }),
       dropTargetForElements({
-        element,
+        element: navigationItemElement,
         canDrop: ({ source }) =>
           !disableDrop && source?.data?.id !== item.key && source?.data?.dragInstanceId === "NAVIGATION",
-        getData: ({ input, element }) => {
-          const data = { id: item.key };
+        getData: ({ input, element: dropTargetElement }) => {
+          const dropTargetData = { id: item.key };
 
           // attach instruction for last in list
-          return attachInstruction(data, {
+          return attachInstruction(dropTargetData, {
             input,
-            element,
+            element: dropTargetElement,
             currentLevel: 0,
             indentPerLevel: 0,
             mode: isLastChild ? "last-in-group" : "standard",
@@ -103,19 +125,20 @@ export const ExtendedSidebarItem = observer(function ExtendedSidebarItem(props: 
         onDrag: ({ self }) => {
           const extractedInstruction = extractInstruction(self?.data)?.type;
           // check if the highlight is to be shown above or below
-          setInstruction(
-            extractedInstruction
+          dispatchDragState({
+            type: "SET_INSTRUCTION",
+            instruction: extractedInstruction
               ? extractedInstruction === "reorder-below" && isLastChild
                 ? "DRAG_BELOW"
                 : "DRAG_OVER"
-              : undefined
-          );
+              : undefined,
+          });
         },
         onDragLeave: () => {
-          setInstruction(undefined);
+          dispatchDragState({ type: "SET_INSTRUCTION", instruction: undefined });
         },
         onDrop: ({ self, source }) => {
-          setInstruction(undefined);
+          dispatchDragState({ type: "SET_INSTRUCTION", instruction: undefined });
           const extractedInstruction = extractInstruction(self?.data)?.type;
           const currentInstruction = extractedInstruction
             ? extractedInstruction === "reorder-below" && isLastChild
@@ -136,7 +159,7 @@ export const ExtendedSidebarItem = observer(function ExtendedSidebarItem(props: 
 
   const itemHref =
     item.key === "your_work"
-      ? `/${workspaceSlug.toString()}${item.href}${data?.id}`
+      ? `/${workspaceSlug.toString()}${item.href}${userData?.id}`
       : `/${workspaceSlug.toString()}${item.href}`;
   const isActive = itemHref === pathname;
 
@@ -199,11 +222,6 @@ export const ExtendedSidebarItem = observer(function ExtendedSidebarItem(props: 
             </div>
           </Link>
           <div className="flex items-center gap-2">
-            {item.key === "active_cycles" && (
-              <div className="flex-shrink-0">
-                <UpgradeBadge />
-              </div>
-            )}
             {isPinned ? (
               <Tooltip tooltipContent="Unpin">
                 <PinOff

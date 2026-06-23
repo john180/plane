@@ -654,8 +654,6 @@
     "from": "{name} kaynaklı",
     "authenticated": "Kimliği doğrulandı",
     "select": "Seç",
-    "upgrade": "Yükselt",
-    "add_seats": "Koltuk Ekle",
     "projects": "Projeler",
     "workspace": "Çalışma Alanı",
     "workspaces": "Çalışma Alanları",
@@ -681,10 +679,6 @@
     "member": "Üye",
     "members": "Üyeler",
     "you": "Siz",
-    "upgrade_cta": {
-      "higher_subscription": "Daha yüksek aboneliğe yükselt",
-      "talk_to_sales": "Satış Ekibiyle Görüş"
-    },
     "category": "Kategori",
     "categories": "Kategoriler",
     "saving": "Kaydediliyor",

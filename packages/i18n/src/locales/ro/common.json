@@ -654,8 +654,6 @@
     "from": "de la {name}",
     "authenticated": "Autentificat",
     "select": "Selectează",
-    "upgrade": "Treci la o versiune superioră",
-    "add_seats": "Adaugă locuri",
     "projects": "Proiecte",
     "workspace": "Spațiu de lucru",
     "workspaces": "Spații de lucru",
@@ -681,10 +679,6 @@
     "member": "Membru",
     "members": "Membri",
     "you": "Tu",
-    "upgrade_cta": {
-      "higher_subscription": "Treci la un abonament superior",
-      "talk_to_sales": "Discută cu vânzările"
-    },
     "category": "Categorie",
     "categories": "Categorii",
     "saving": "Se salvează",
