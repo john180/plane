@@ -22,6 +22,16 @@
     "label": "{count, plural, one {周期} other {周期}}",
     "no_cycle": "无周期"
   },
+  "cycle_detail": {
+    "empty_state": {
+      "not_found": {
+        "title": "周期不存在",
+        "description": "您要查找的周期不存在或已被删除。",
+        "primary_button": "查看其他周期"
+      }
+    },
+    "work_items_count_tooltip": "{count, plural, one {此周期中有 # 个工作项} other {此周期中有 # 个工作项}}"
+  },
   "active_cycle_analytics": {
     "empty_state": {
       "progress": {
@@ -36,6 +46,57 @@
       "label": {
         "title": "为工作项添加标签以查看按标签\n划分的工作明细"
       }
+    }
+  },
+  "archived_cycles": {
+    "empty_state": {
+      "no_matching": {
+        "title": "没有匹配的周期",
+        "description_filters": "移除筛选条件以查看所有周期",
+        "description_search": "移除搜索条件以查看所有周期"
+      }
+    }
+  },
+  "cycle_delete_modal": {
+    "title": "删除周期",
+    "content": "确定要删除周期 \"{name}\" 吗？与该周期相关的所有数据都将被永久移除。此操作无法撤销。",
+    "toasts": {
+      "success": "周期删除成功。",
+      "unexpected_error": "出了点问题。请稍后重试。"
+    }
+  },
+  "cycle_transfer": {
+    "title": "转移工作项",
+    "search_placeholder": "搜索周期……",
+    "completed_not_editable": "已完成的周期不可编辑。",
+    "empty_state": {
+      "no_current_cycle": "您当前没有可用周期。请先创建周期再转移工作项。"
+    },
+    "toasts": {
+      "success": "工作项转移成功。",
+      "error": "无法转移工作项。请重试。",
+      "fetch_error": "无法获取周期详情。"
+    }
+  },
+  "cycle_archive_modal": {
+    "title": "归档周期 {name}",
+    "content": "确定要归档此周期吗？所有归档内容都可以稍后恢复。",
+    "archiving": "正在归档",
+    "toasts": {
+      "success": {
+        "title": "归档成功",
+        "message": "您可以在项目归档中找到归档内容。"
+      },
+      "error": "无法归档周期。请重试。"
+    }
+  },
+  "cycle_create_update": {
+    "toasts": {
+      "created": "周期创建成功。",
+      "create_error": "创建周期时出错。请重试。",
+      "updated": "周期更新成功。",
+      "update_error": "更新周期时出错。请重试。",
+      "date_conflict": "给定日期内已有周期。如需创建草稿周期，请移除日期。"
     }
   }
 }

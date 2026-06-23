@@ -66,6 +66,7 @@
   "summary": "概要",
   "assigned": "割り当て済み",
   "created": "作成済み",
+  "created_date": "Created date",
   "subscribed": "購読中",
   "you_do_not_have_the_permission_to_access_this_page": "このページにアクセスする権限がありません。",
   "something_went_wrong_please_try_again": "問題が発生しました。もう一度お試しください。",
@@ -421,6 +422,7 @@
     "drop_here_to_move": "移動するにはここにドロップ",
     "states": "ステータス",
     "state": "ステータス",
+    "status": "Status",
     "state_groups": "ステータスグループ",
     "state_group": "ステート グループ",
     "priorities": "優先度",
@@ -439,6 +441,7 @@
     "assignees": "担当者",
     "assignee": "担当者",
     "created_by": "作成者",
+    "custom": "Custom",
     "none": "なし",
     "link": "リンク",
     "estimates": "見積もり",
@@ -595,6 +598,8 @@
       "placeholder": "検索するキーワードを入力",
       "no_matches_found": "一致する結果が見つかりません",
       "no_matching_results": "一致する結果がありません",
+      "view_all": "View all",
+      "view_less": "View less",
       "min_chars": "検索するには{count}文字以上入力してください",
       "error": "検索結果の取得中にエラーが発生しました",
       "no_results": {
@@ -861,5 +866,6 @@
       "description": "作業項目をJSONファイルにエクスポートします。",
       "short_description": "JSONとしてエクスポート"
     }
-  }
+  },
+  "clear_filters": "Clear filters"
 }

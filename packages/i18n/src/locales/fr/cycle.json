@@ -22,6 +22,16 @@
     "label": "{count, plural, one {Cycle} other {Cycles}}",
     "no_cycle": "Pas de cycle"
   },
+  "cycle_detail": {
+    "empty_state": {
+      "not_found": {
+        "title": "Cycle does not exist",
+        "description": "The cycle you are looking for does not exist or has been deleted.",
+        "primary_button": "View other cycles"
+      }
+    },
+    "work_items_count_tooltip": "There are {count} work items in this cycle"
+  },
   "active_cycle_analytics": {
     "empty_state": {
       "progress": {
@@ -36,6 +46,57 @@
       "label": {
         "title": "Ajoutez des étiquettes aux éléments de travail pour voir la\n répartition du travail par étiquettes."
       }
+    }
+  },
+  "archived_cycles": {
+    "empty_state": {
+      "no_matching": {
+        "title": "No matching cycles",
+        "description_filters": "Remove the filters to see all cycles",
+        "description_search": "Remove the search criteria to see all cycles"
+      }
+    }
+  },
+  "cycle_delete_modal": {
+    "title": "Delete cycle",
+    "content": "Are you sure you want to delete cycle \"{name}\"? All of the data related to the cycle will be permanently removed. This action cannot be undone.",
+    "toasts": {
+      "success": "Cycle deleted successfully.",
+      "unexpected_error": "Something went wrong. Please try again later."
+    }
+  },
+  "cycle_transfer": {
+    "title": "Transfer work items",
+    "search_placeholder": "Search for a cycle...",
+    "completed_not_editable": "Completed cycles are not editable.",
+    "empty_state": {
+      "no_current_cycle": "You do not have any current cycle. Please create one to transfer the work items."
+    },
+    "toasts": {
+      "success": "Work items have been transferred successfully.",
+      "error": "Unable to transfer work items. Please try again.",
+      "fetch_error": "Unable to fetch cycle details."
+    }
+  },
+  "cycle_archive_modal": {
+    "title": "Archive cycle {name}",
+    "content": "Are you sure you want to archive the cycle? All your archives can be restored later.",
+    "archiving": "Archiving",
+    "toasts": {
+      "success": {
+        "title": "Archive success",
+        "message": "Your archives can be found in project archives."
+      },
+      "error": "Cycle could not be archived. Please try again."
+    }
+  },
+  "cycle_create_update": {
+    "toasts": {
+      "created": "Cycle created successfully.",
+      "create_error": "Error in creating cycle. Please try again.",
+      "updated": "Cycle updated successfully.",
+      "update_error": "Error in updating cycle. Please try again.",
+      "date_conflict": "You already have a cycle on the given dates. To create a draft cycle, remove the dates."
     }
   }
 }

@@ -25,18 +25,22 @@
     "modals": {
       "decline": {
         "title": "作業項目を却下",
-        "content": "作業項目{value}を却下してもよろしいですか？"
+        "content": "作業項目{value}を却下してもよろしいですか？",
+        "content_full": "Are you sure you want to decline work item {value}? This action cannot be undone."
       },
       "delete": {
         "title": "作業項目を削除",
         "content": "作業項目{value}を削除してもよろしいですか？",
-        "success": "作業項目を削除しました"
+        "success": "作業項目を削除しました",
+        "content_full": "Are you sure you want to delete work item {value}? The work item will only be deleted from Intake and this action cannot be undone."
       }
     },
     "errors": {
       "snooze_permission": "プロジェクト管理者のみが作業項目をスヌーズ/スヌーズ解除できます",
       "accept_permission": "プロジェクト管理者のみが作業項目を承認できます",
-      "decline_permission": "プロジェクト管理者のみが作業項目を却下できます"
+      "decline_permission": "プロジェクト管理者のみが作業項目を却下できます",
+      "permission_denied": "Permission denied",
+      "duplicate_permission": "Only project admins can mark work items as duplicate"
     },
     "actions": {
       "accept": "承認",
@@ -50,17 +54,26 @@
       "move": "{value}をプロジェクトの作業項目に移動"
     },
     "source": {
-      "in-app": "アプリ内"
+      "in-app": "アプリ内",
+      "forms_user": "Intake Form user"
     },
     "order_by": {
       "created_at": "作成日",
       "updated_at": "更新日",
       "id": "ID"
     },
+    "filters": {
+      "created_date": "Created date",
+      "updated_date": "Updated date",
+      "last_updated_date": "Last updated date",
+      "status_title": "Work item status"
+    },
     "label": "インテーク",
     "page_label": "{workspace} - インテーク",
     "modal": {
-      "title": "インテーク作業項目を作成"
+      "title": "インテーク作業項目を作成",
+      "duplicates_found": "{count, plural, one {# duplicate work item found!} other {# duplicate work items found!}}",
+      "editor_processing": "Editor is still processing changes. Please wait before proceeding."
     },
     "tabs": {
       "open": "オープン",
@@ -82,6 +95,20 @@
       "detail": {
         "title": "詳細を表示する作業項目を選択してください。"
       }
+    },
+    "duplicate_modal": {
+      "select_work_item": "Select work item",
+      "search_placeholder": "Search..."
+    },
+    "navigation": {
+      "previous_work_item": "Previous work item",
+      "next_work_item": "Next work item"
+    },
+    "toasts": {
+      "created": "Work item created successfully.",
+      "delete_success": "Work item deleted successfully.",
+      "delete_failed": "Work item delete failed.",
+      "update_failed": "Work item update failed."
     }
   }
 }

@@ -12,6 +12,7 @@ import { MoreHorizontal } from "lucide-react";
 import { SPREADSHEET_SELECT_GROUP } from "@plane/constants";
 // plane helpers
 import { useOutsideClickDetector } from "@plane/hooks";
+import { useTranslation } from "@plane/i18n";
 import { ChevronRightIcon } from "@plane/propel/icons";
 // types
 import { Tooltip } from "@plane/propel/tooltip";
@@ -201,6 +202,7 @@ const IssueRowDetails = observer(function IssueRowDetails(props: IssueRowDetails
   const { getIsIssuePeeked, peekIssue } = useIssueDetail(isEpic ? EIssueServiceType.EPICS : EIssueServiceType.ISSUES);
   const { handleRedirection } = useIssuePeekOverviewRedirection(isEpic);
   const { isMobile } = usePlatformOS();
+  const { t } = useTranslation();
 
   // handlers
   const handleIssuePeekOverview = (issue: TIssue) =>
@@ -312,9 +314,7 @@ const IssueRowDetails = observer(function IssueRowDetails(props: IssueRowDetails
                 <Tooltip
                   tooltipContent={
                     <>
-                      Only work items within the current
-                      <br />
-                      project can be selected.
+                      {t("issue.select.current_project_only")}
                     </>
                   }
                   disabled={issueDetail.project_id === projectId}

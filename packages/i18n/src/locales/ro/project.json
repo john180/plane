@@ -166,6 +166,10 @@
           "text": "Șterge toate filtrele"
         }
       },
+      "project_view": {
+        "title": "View work items will appear here",
+        "description": "Work items help you track individual pieces of work. With work items, keep track of what's going on, who is working on it, and what's done."
+      },
       "public": {
         "title": "Nicio pagină publică încă",
         "description": "Vezi paginile distribuite cu toată lumea din proiectul tău chiar aici.",
@@ -185,6 +189,18 @@
     "delete_view": {
       "title": "Sunteți sigur că doriți să ștergeți această vizualizare?",
       "content": "Dacă confirmați, toate opțiunile de sortare, filtrare și afișare + aspectul pe care l-ați ales pentru această vizualizare vor fi șterse permanent fără nicio modalitate de a le restaura."
+    },
+    "detail": {
+      "empty_state": {
+        "not_found": {
+          "title": "View does not exist",
+          "description": "The view you are looking for does not exist or you don't have permission to view it.",
+          "primary_button": "View other views"
+        }
+      }
+    },
+    "actions": {
+      "add_view": "Add view"
     }
   },
   "project_issues": {
@@ -413,6 +429,13 @@
           "message": "Ceva nu a funcționat."
         }
       }
+    }
+  },
+  "project_archives": {
+    "work_items_count_tooltip": "There are {count} work items in project archives",
+    "archived_issue_banner": {
+      "title": "This work item has been archived. Visit the Archives section to restore it.",
+      "action": "Go to archives"
     }
   }
 }

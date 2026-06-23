@@ -25,18 +25,22 @@
     "modals": {
       "decline": {
         "title": "Từ chối mục công việc",
-        "content": "Bạn có chắc chắn muốn từ chối mục công việc {value} không?"
+        "content": "Bạn có chắc chắn muốn từ chối mục công việc {value} không?",
+        "content_full": "Are you sure you want to decline work item {value}? This action cannot be undone."
       },
       "delete": {
         "title": "Xóa mục công việc",
         "content": "Bạn có chắc chắn muốn xóa mục công việc {value} không?",
-        "success": "Đã xóa mục công việc thành công"
+        "success": "Đã xóa mục công việc thành công",
+        "content_full": "Are you sure you want to delete work item {value}? The work item will only be deleted from Intake and this action cannot be undone."
       }
     },
     "errors": {
       "snooze_permission": "Chỉ quản trị viên dự án mới có thể tạm hoãn/hủy tạm hoãn mục công việc",
       "accept_permission": "Chỉ quản trị viên dự án mới có thể chấp nhận mục công việc",
-      "decline_permission": "Chỉ quản trị viên dự án mới có thể từ chối mục công việc"
+      "decline_permission": "Chỉ quản trị viên dự án mới có thể từ chối mục công việc",
+      "permission_denied": "Permission denied",
+      "duplicate_permission": "Only project admins can mark work items as duplicate"
     },
     "actions": {
       "accept": "Chấp nhận",
@@ -50,17 +54,26 @@
       "move": "Di chuyển {value} đến mục công việc dự án"
     },
     "source": {
-      "in-app": "Trong ứng dụng"
+      "in-app": "Trong ứng dụng",
+      "forms_user": "Intake Form user"
     },
     "order_by": {
       "created_at": "Thời gian tạo",
       "updated_at": "Thời gian cập nhật",
       "id": "ID"
     },
+    "filters": {
+      "created_date": "Created date",
+      "updated_date": "Updated date",
+      "last_updated_date": "Last updated date",
+      "status_title": "Work item status"
+    },
     "label": "Thu thập",
     "page_label": "{workspace} - Thu thập",
     "modal": {
-      "title": "Tạo mục công việc thu thập"
+      "title": "Tạo mục công việc thu thập",
+      "duplicates_found": "{count, plural, one {# duplicate work item found!} other {# duplicate work items found!}}",
+      "editor_processing": "Editor is still processing changes. Please wait before proceeding."
     },
     "tabs": {
       "open": "Chưa xử lý",
@@ -82,6 +95,20 @@
       "detail": {
         "title": "Chọn một mục công việc để xem chi tiết."
       }
+    },
+    "duplicate_modal": {
+      "select_work_item": "Select work item",
+      "search_placeholder": "Search..."
+    },
+    "navigation": {
+      "previous_work_item": "Previous work item",
+      "next_work_item": "Next work item"
+    },
+    "toasts": {
+      "created": "Work item created successfully.",
+      "delete_success": "Work item deleted successfully.",
+      "delete_failed": "Work item delete failed.",
+      "update_failed": "Work item update failed."
     }
   }
 }

@@ -166,6 +166,10 @@
           "text": "Cancella tutti i filtri"
         }
       },
+      "project_view": {
+        "title": "View work items will appear here",
+        "description": "Work items help you track individual pieces of work. With work items, keep track of what's going on, who is working on it, and what's done."
+      },
       "public": {
         "title": "Nessuna pagina pubblica ancora",
         "description": "Visualizza qui le pagine condivise con tutti nel tuo progetto.",
@@ -185,6 +189,18 @@
     "delete_view": {
       "title": "Sei sicuro di voler eliminare questa visualizzazione?",
       "content": "Se confermi, tutte le opzioni di ordinamento, filtro e visualizzazione + il layout che hai scelto per questa visualizzazione saranno eliminate permanentemente senza possibilità di ripristinarle."
+    },
+    "detail": {
+      "empty_state": {
+        "not_found": {
+          "title": "View does not exist",
+          "description": "The view you are looking for does not exist or you don't have permission to view it.",
+          "primary_button": "View other views"
+        }
+      }
+    },
+    "actions": {
+      "add_view": "Add view"
     }
   },
   "project_issues": {
@@ -413,6 +429,13 @@
           "message": "Qualcosa è andato storto."
         }
       }
+    }
+  },
+  "project_archives": {
+    "work_items_count_tooltip": "There are {count} work items in project archives",
+    "archived_issue_banner": {
+      "title": "This work item has been archived. Visit the Archives section to restore it.",
+      "action": "Go to archives"
     }
   }
 }

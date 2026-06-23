@@ -62,6 +62,7 @@ export const SubIssuesListRoot = observer(function SubIssuesListRoot(props: Prop
   const isRootLevel = useMemo(() => rootIssueId === parentIssueId, [rootIssueId, parentIssueId]);
   const group_by = isRootLevel ? (filters?.displayFilters?.group_by ?? null) : null;
   const filteredSubWorkItemsCount = (getFilteredSubWorkItems(rootIssueId, filters.filters ?? {}) ?? []).length;
+  const entityName = issueServiceType === EIssueServiceType.EPICS ? t("common.epics") : t("common.work_items");
 
   const groups = getGroupByColumns({
     groupBy: group_by as GroupByColumnTypes,
@@ -69,6 +70,9 @@ export const SubIssuesListRoot = observer(function SubIssuesListRoot(props: Prop
     isWorkspaceLevel: isWorkspaceLevel(storeType),
     isEpic: issueServiceType === EIssueServiceType.EPICS,
     projectId,
+    allLabel: t("entity.all", { entity: entityName }),
+    noneLabel: t("common.none"),
+    completedCycleDropErrorMessage: t("issue.layouts.move.completed_cycle"),
   });
 
   const getWorkItemIds = useCallback(

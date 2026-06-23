@@ -2,6 +2,94 @@
   "module": {
     "label": "{count, plural, one {Moduł} few {Moduły} other {Modułów}}",
     "no_module": "Brak modułu",
-    "select": "Dodaj moduły"
+    "select": "Dodaj moduły",
+    "links": {
+      "modal": {
+        "add_title": "Add link",
+        "update_title": "Update link",
+        "adding": "Adding link",
+        "updating": "Updating link"
+      },
+      "toasts": {
+        "created": "Module link created successfully.",
+        "updated": "Module link updated successfully.",
+        "deleted": "Module link deleted successfully."
+      },
+      "added_time": "Added {time}",
+      "added_by": "by {name}"
+    },
+    "quick_actions": {
+      "toasts": {
+        "link_copied": "Module link copied to clipboard.",
+        "restore_success": {
+          "title": "Restore success",
+          "message": "Your module can be found in project modules."
+        },
+        "restore_error": "Module could not be restored. Please try again."
+      }
+    },
+    "no_lead": "No lead",
+    "work_items_count": "{count, plural, one {# work item} other {# work items}}",
+    "completed_work_items_count": "{completed}/{total} work items",
+    "favorite": {
+      "add": {
+        "loading": "Adding module to favorites...",
+        "success": "Module added to favorites.",
+        "error": "Couldn't add the module to favorites. Please try again."
+      },
+      "remove": {
+        "loading": "Removing module from favorites...",
+        "success": "Module removed from favorites.",
+        "error": "Couldn't remove the module from favorites. Please try again."
+      }
+    },
+    "estimate_points_count": "{count, plural, one {# point} other {# points}}",
+    "completed_estimate_points_count": "{completed}/{total} points"
+  },
+  "module_detail": {
+    "empty_state": {
+      "not_found": {
+        "title": "Module does not exist",
+        "description": "The module you are looking for does not exist or has been deleted.",
+        "primary_button": "View other modules"
+      }
+    },
+    "work_items_count_tooltip": "There are {count} work items in this module"
+  },
+  "archived_modules": {
+    "empty_state": {
+      "no_matching": {
+        "title": "No matching modules",
+        "description_filters": "Remove the filters to see all modules",
+        "description_search": "Remove the search criteria to see all modules"
+      }
+    }
+  },
+  "module_create_update": {
+    "toasts": {
+      "created": "Module created successfully.",
+      "create_error": "Module could not be created. Please try again.",
+      "updated": "Module updated successfully.",
+      "update_error": "Module could not be updated. Please try again."
+    }
+  },
+  "module_delete_modal": {
+    "title": "Delete module",
+    "content": "Are you sure you want to delete module \"{name}\"? All of the data related to the module will be permanently removed. This action cannot be undone.",
+    "toasts": {
+      "success": "Module deleted successfully."
+    }
+  },
+  "module_archive_modal": {
+    "title": "Archive module {name}",
+    "content": "Are you sure you want to archive the module? All your archives can be restored later.",
+    "archiving": "Archiving",
+    "toasts": {
+      "success": {
+        "title": "Archive success",
+        "message": "Your archives can be found in project archives."
+      },
+      "error": "Module could not be archived. Please try again."
+    }
   }
 }

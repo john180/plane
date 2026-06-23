@@ -1,4 +1,13 @@
 {
+  "page_detail": {
+    "empty_state": {
+      "not_found": {
+        "title": "未找到页面",
+        "description": "您尝试访问的页面不存在，或您没有权限查看。",
+        "primary_button": "查看其他页面"
+      }
+    }
+  },
   "page_navigation_pane": {
     "tabs": {
       "outline": {
@@ -110,6 +119,94 @@
       "label": "从集合中移除",
       "success_message": "页面已从集合中移除。",
       "error_message": "无法将页面从集合中移除。请重试。"
+    },
+    "menu": {
+      "lock": "锁定",
+      "unlock": "解锁",
+      "make_private": "设为私有",
+      "make_public": "设为公开",
+      "move": "移动"
+    }
+  },
+  "page_list": {
+    "search_placeholder": "搜索页面"
+  },
+  "page_editor": {
+    "offline": {
+      "tooltip_heading": "您已离线。",
+      "tooltip_content": "您可以继续修改。重新联网后，这些更改会自动同步。",
+      "label": "离线"
+    },
+    "title": {
+      "placeholder": "未命名"
+    },
+    "content_limit": {
+      "message": "已达到内容限制，实时同步已关闭。请创建新页面或使用嵌套页面继续同步。",
+      "dismiss_label": "关闭内容限制警告"
+    },
+    "toolbar": {
+      "color": "颜色",
+      "text_colors": "文本颜色",
+      "background_colors": "背景颜色",
+      "full_width": "全宽",
+      "sticky_toolbar": "固定工具栏",
+      "copy_markdown": "复制 Markdown",
+      "toasts": {
+        "markdown_copied": "Markdown 已复制到剪贴板。"
+      }
+    }
+  },
+  "page_export": {
+    "title": "导出页面",
+    "fields": {
+      "export_format": "导出格式",
+      "include_content": "包含内容",
+      "page_format": "页面格式"
+    },
+    "content": {
+      "everything": "全部内容",
+      "no_images": "不包含图片"
+    },
+    "page_formats": {
+      "letter": "信纸",
+      "legal": "法律纸",
+      "tabloid": "小报"
+    },
+    "exporting": "正在导出",
+    "toasts": {
+      "success": "页面导出成功。",
+      "error": "无法导出页面。请稍后重试。"
+    }
+  },
+  "page_version": {
+    "toasts": {
+      "restored": "页面版本已恢复。",
+      "restore_failed": "页面版本恢复失败。"
+    },
+    "errors": {
+      "load_failed": "无法加载该版本，请重试。"
+    },
+    "try_again": "重试",
+    "loading_details": "正在加载版本详情",
+    "view_only": "仅查看",
+    "restoring": "正在恢复"
+  },
+  "page_create_modal": {
+    "title": "创建页面",
+    "errors": {
+      "name_max_length": "名称长度必须少于 255 个字符"
+    },
+    "submit": "创建页面",
+    "toasts": {
+      "error": "无法创建页面。请重试。"
+    }
+  },
+  "page_delete_modal": {
+    "title": "删除页面",
+    "content": "确定要删除页面 \"{name}\" 吗？该页面将被永久删除。此操作无法撤销。",
+    "toasts": {
+      "success": "页面已删除。",
+      "error": "无法删除页面。请重试。"
     }
   }
 }

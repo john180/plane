@@ -66,6 +66,7 @@
   "summary": "Rezumat",
   "assigned": "Responsabil",
   "created": "Creat",
+  "created_date": "Created date",
   "subscribed": "Abonat",
   "you_do_not_have_the_permission_to_access_this_page": "Nu ai permisiunea de a accesa această pagină.",
   "something_went_wrong_please_try_again": "Ceva nu a funcționat. Te rugăm să încerci din nou.",
@@ -421,6 +422,7 @@
     "drop_here_to_move": "Eliberează aici pentru a muta",
     "states": "Stări",
     "state": "Stare",
+    "status": "Status",
     "state_groups": "Grupuri de stări",
     "state_group": "Grup de stare",
     "priorities": "Priorități",
@@ -439,6 +441,7 @@
     "assignees": "Responsabili",
     "assignee": "Responsabil",
     "created_by": "Creat de",
+    "custom": "Custom",
     "none": "Niciuna",
     "link": "Link",
     "estimates": "Estimări",
@@ -595,6 +598,8 @@
       "placeholder": "Tastează pentru a căuta",
       "no_matches_found": "Nu s-au găsit rezultate",
       "no_matching_results": "Nicio potrivire găsită",
+      "view_all": "View all",
+      "view_less": "View less",
       "min_chars": "Tastează cel puțin {count} caractere pentru a căuta",
       "error": "Eroare la preluarea rezultatelor căutării",
       "no_results": {
@@ -861,5 +866,6 @@
       "description": "Exportă activitățile într-un fișier JSON.",
       "short_description": "Exportă ca JSON"
     }
-  }
+  },
+  "clear_filters": "Clear filters"
 }

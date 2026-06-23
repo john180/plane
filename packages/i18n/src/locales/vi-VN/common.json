@@ -66,6 +66,7 @@
   "summary": "Tóm tắt",
   "assigned": "Đã phân công",
   "created": "Đã tạo",
+  "created_date": "Created date",
   "subscribed": "Đã đăng ký",
   "you_do_not_have_the_permission_to_access_this_page": "Bạn không có quyền truy cập trang này.",
   "something_went_wrong_please_try_again": "Đã xảy ra lỗi. Vui lòng thử lại.",
@@ -421,6 +422,7 @@
     "drop_here_to_move": "Thả vào đây để di chuyển",
     "states": "Trạng thái",
     "state": "Trạng thái",
+    "status": "Status",
     "state_groups": "Nhóm trạng thái",
     "state_group": "Nhóm trạng thái",
     "priorities": "Ưu tiên",
@@ -439,6 +441,7 @@
     "assignees": "Người phụ trách",
     "assignee": "Người phụ trách",
     "created_by": "Người tạo",
+    "custom": "Custom",
     "none": "Không có",
     "link": "Liên kết",
     "estimates": "Ước tính",
@@ -595,6 +598,8 @@
       "placeholder": "Nhập nội dung tìm kiếm",
       "no_matches_found": "Không tìm thấy kết quả phù hợp",
       "no_matching_results": "Không có kết quả phù hợp",
+      "view_all": "View all",
+      "view_less": "View less",
       "min_chars": "Nhập ít nhất {count} ký tự để tìm kiếm",
       "error": "Lỗi khi tải kết quả tìm kiếm",
       "no_results": {
@@ -861,5 +866,6 @@
       "description": "Xuất mục công việc thành tệp JSON.",
       "short_description": "Xuất sang JSON"
     }
-  }
+  },
+  "clear_filters": "Clear filters"
 }

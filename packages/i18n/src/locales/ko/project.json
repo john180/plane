@@ -166,6 +166,10 @@
           "text": "모든 필터 지우기"
         }
       },
+      "project_view": {
+        "title": "View work items will appear here",
+        "description": "Work items help you track individual pieces of work. With work items, keep track of what's going on, who is working on it, and what's done."
+      },
       "public": {
         "title": "아직 공개 페이지가 없습니다",
         "description": "프로젝트의 모든 사람과 공유된 페이지를 여기에서 확인하세요.",
@@ -185,6 +189,18 @@
     "delete_view": {
       "title": "이 뷰를 삭제하시겠습니까?",
       "content": "확인하면 이 뷰에 대해 선택한 모든 정렬, 필터 및 표시 옵션 + 레이아웃이 복원할 수 없는 방식으로 영구적으로 삭제됩니다."
+    },
+    "detail": {
+      "empty_state": {
+        "not_found": {
+          "title": "View does not exist",
+          "description": "The view you are looking for does not exist or you don't have permission to view it.",
+          "primary_button": "View other views"
+        }
+      }
+    },
+    "actions": {
+      "add_view": "Add view"
     }
   },
   "project_issues": {
@@ -413,6 +429,13 @@
           "message": "문제가 발생했습니다."
         }
       }
+    }
+  },
+  "project_archives": {
+    "work_items_count_tooltip": "There are {count} work items in project archives",
+    "archived_issue_banner": {
+      "title": "This work item has been archived. Visit the Archives section to restore it.",
+      "action": "Go to archives"
     }
   }
 }

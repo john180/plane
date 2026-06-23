@@ -66,6 +66,7 @@
   "summary": "摘要",
   "assigned": "已分配",
   "created": "已创建",
+  "created_date": "创建日期",
   "subscribed": "已订阅",
   "you_do_not_have_the_permission_to_access_this_page": "您没有访问此页面的权限。",
   "something_went_wrong_please_try_again": "出现错误。请重试。",
@@ -421,6 +422,7 @@
     "drop_here_to_move": "拖放到此处以移动",
     "states": "状态",
     "state": "状态",
+    "status": "状态",
     "state_groups": "状态组",
     "state_group": "状态组",
     "priorities": "优先级",
@@ -439,6 +441,7 @@
     "assignees": "负责人",
     "assignee": "负责人",
     "created_by": "创建者",
+    "custom": "自定义",
     "none": "无",
     "link": "链接",
     "estimates": "估算",
@@ -595,6 +598,8 @@
       "placeholder": "输入搜索内容",
       "no_matches_found": "未找到匹配项",
       "no_matching_results": "没有匹配的结果",
+      "view_all": "查看全部",
+      "view_less": "收起",
       "min_chars": "至少输入 {count} 个字符进行搜索",
       "error": "获取搜索结果时出错",
       "no_results": {
@@ -861,5 +866,6 @@
       "description": "将工作项导出为 JSON 文件。",
       "short_description": "导出为 JSON"
     }
-  }
+  },
+  "clear_filters": "清除筛选条件"
 }

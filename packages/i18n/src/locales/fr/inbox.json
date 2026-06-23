@@ -25,18 +25,22 @@
     "modals": {
       "decline": {
         "title": "Refuser l’élément de travail",
-        "content": "Êtes-vous sûr de vouloir refuser l’élément de travail {value} ?"
+        "content": "Êtes-vous sûr de vouloir refuser l’élément de travail {value} ?",
+        "content_full": "Are you sure you want to decline work item {value}? This action cannot be undone."
       },
       "delete": {
         "title": "Supprimer l’élément de travail",
         "content": "Êtes-vous sûr de vouloir supprimer l’élément de travail {value} ?",
-        "success": "Élément de travail supprimé avec succès"
+        "success": "Élément de travail supprimé avec succès",
+        "content_full": "Are you sure you want to delete work item {value}? The work item will only be deleted from Intake and this action cannot be undone."
       }
     },
     "errors": {
       "snooze_permission": "Seuls les administrateurs du projet peuvent reporter/annuler le report des éléments de travail",
       "accept_permission": "Seuls les administrateurs du projet peuvent accepter les éléments de travail",
-      "decline_permission": "Seuls les administrateurs du projet peuvent refuser les éléments de travail"
+      "decline_permission": "Seuls les administrateurs du projet peuvent refuser les éléments de travail",
+      "permission_denied": "Permission denied",
+      "duplicate_permission": "Only project admins can mark work items as duplicate"
     },
     "actions": {
       "accept": "Accepter",
@@ -50,17 +54,26 @@
       "move": "Déplacer {value} vers les éléments de travail du projet"
     },
     "source": {
-      "in-app": "in-app"
+      "in-app": "in-app",
+      "forms_user": "Intake Form user"
     },
     "order_by": {
       "created_at": "Créé le",
       "updated_at": "Mis à jour le",
       "id": "ID"
     },
+    "filters": {
+      "created_date": "Created date",
+      "updated_date": "Updated date",
+      "last_updated_date": "Last updated date",
+      "status_title": "Work item status"
+    },
     "label": "Intake",
     "page_label": "{workspace} - Intake",
     "modal": {
-      "title": "Créer un élément de travail Intake"
+      "title": "Créer un élément de travail Intake",
+      "duplicates_found": "{count, plural, one {# duplicate work item found!} other {# duplicate work items found!}}",
+      "editor_processing": "Editor is still processing changes. Please wait before proceeding."
     },
     "tabs": {
       "open": "Ouvert",
@@ -82,6 +95,20 @@
       "detail": {
         "title": "Sélectionnez un élément de travail pour voir ses détails."
       }
+    },
+    "duplicate_modal": {
+      "select_work_item": "Select work item",
+      "search_placeholder": "Search..."
+    },
+    "navigation": {
+      "previous_work_item": "Previous work item",
+      "next_work_item": "Next work item"
+    },
+    "toasts": {
+      "created": "Work item created successfully.",
+      "delete_success": "Work item deleted successfully.",
+      "delete_failed": "Work item delete failed.",
+      "update_failed": "Work item update failed."
     }
   }
 }

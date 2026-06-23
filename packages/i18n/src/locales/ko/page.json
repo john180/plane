@@ -1,4 +1,13 @@
 {
+  "page_detail": {
+    "empty_state": {
+      "not_found": {
+        "title": "Page not found",
+        "description": "The page you are trying to access doesn't exist or you don't have permission to view it.",
+        "primary_button": "View other pages"
+      }
+    }
+  },
   "page_navigation_pane": {
     "tabs": {
       "outline": {
@@ -110,6 +119,94 @@
       "label": "컬렉션에서 제거",
       "success_message": "페이지가 컬렉션에서 제거되었습니다.",
       "error_message": "페이지를 컬렉션에서 제거할 수 없습니다. 다시 시도해 주세요."
+    },
+    "menu": {
+      "lock": "Lock",
+      "unlock": "Unlock",
+      "make_private": "Make private",
+      "make_public": "Make public",
+      "move": "Move"
+    }
+  },
+  "page_list": {
+    "search_placeholder": "Search pages"
+  },
+  "page_editor": {
+    "offline": {
+      "tooltip_heading": "You are offline.",
+      "tooltip_content": "You can continue making changes. They will be synced when you are back online.",
+      "label": "Offline"
+    },
+    "title": {
+      "placeholder": "Untitled"
+    },
+    "content_limit": {
+      "message": "Content limit reached and live sync is off. Create a new page or use nested pages to continue syncing.",
+      "dismiss_label": "Dismiss content limit warning"
+    },
+    "toolbar": {
+      "color": "Color",
+      "text_colors": "Text colors",
+      "background_colors": "Background colors",
+      "full_width": "Full width",
+      "sticky_toolbar": "Sticky toolbar",
+      "copy_markdown": "Copy markdown",
+      "toasts": {
+        "markdown_copied": "Markdown copied to clipboard."
+      }
+    }
+  },
+  "page_export": {
+    "title": "Export page",
+    "fields": {
+      "export_format": "Export format",
+      "include_content": "Include content",
+      "page_format": "Page format"
+    },
+    "content": {
+      "everything": "Everything",
+      "no_images": "No images"
+    },
+    "page_formats": {
+      "letter": "Letter",
+      "legal": "Legal",
+      "tabloid": "Tabloid"
+    },
+    "exporting": "Exporting",
+    "toasts": {
+      "success": "Page exported successfully.",
+      "error": "Page could not be exported. Please try again later."
+    }
+  },
+  "page_version": {
+    "toasts": {
+      "restored": "Page version restored.",
+      "restore_failed": "Failed to restore page version."
+    },
+    "errors": {
+      "load_failed": "The version could not be loaded, please try again."
+    },
+    "try_again": "Try again",
+    "loading_details": "Loading version details",
+    "view_only": "View only",
+    "restoring": "Restoring"
+  },
+  "page_create_modal": {
+    "title": "Create page",
+    "errors": {
+      "name_max_length": "Max length of the name should be less than 255 characters"
+    },
+    "submit": "Create page",
+    "toasts": {
+      "error": "Page could not be created. Please try again."
+    }
+  },
+  "page_delete_modal": {
+    "title": "Delete page",
+    "content": "Are you sure you want to delete page \"{name}\"? The page will be deleted permanently. This action cannot be undone.",
+    "toasts": {
+      "success": "Page deleted successfully.",
+      "error": "Page could not be deleted. Please try again."
     }
   }
 }

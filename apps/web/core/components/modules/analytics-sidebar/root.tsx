@@ -100,14 +100,14 @@ export const ModuleAnalyticsSidebar = observer(function ModuleAnalyticsSidebar(p
       await deleteModuleLink(workspaceSlug.toString(), projectId.toString(), moduleId.toString(), linkId);
       setToast({
         type: TOAST_TYPE.SUCCESS,
-        title: "Success!",
-        message: "Module link deleted successfully.",
+        title: t("common.success"),
+        message: t("module.links.toasts.deleted"),
       });
     } catch (_error) {
       setToast({
         type: TOAST_TYPE.ERROR,
-        title: "Error!",
-        message: "Some error occurred",
+        title: t("common.error.label"),
+        message: t("common.error.message"),
       });
     }
   };
@@ -119,8 +119,8 @@ export const ModuleAnalyticsSidebar = observer(function ModuleAnalyticsSidebar(p
     });
     setToast({
       type: TOAST_TYPE.SUCCESS,
-      title: "Success!",
-      message: "Module updated successfully.",
+      title: t("common.success"),
+      message: t("module_create_update.toasts.updated"),
     });
   };
 
@@ -155,13 +155,19 @@ export const ModuleAnalyticsSidebar = observer(function ModuleAnalyticsSidebar(p
 
   const issueCount =
     moduleDetails.total_issues === 0
-      ? "0 work items"
-      : `${moduleDetails.completed_issues}/${moduleDetails.total_issues}`;
+      ? t("module.work_items_count", { count: 0 })
+      : t("module.completed_work_items_count", {
+          completed: moduleDetails.completed_issues,
+          total: moduleDetails.total_issues,
+        });
 
   const issueEstimatePointCount =
     moduleDetails.total_estimate_points === 0
-      ? "0 work items"
-      : `${moduleDetails.completed_estimate_points}/${moduleDetails.total_estimate_points}`;
+      ? t("module.estimate_points_count", { count: 0 })
+      : t("module.completed_estimate_points_count", {
+          completed: moduleDetails.completed_estimate_points,
+          total: moduleDetails.total_estimate_points,
+        });
 
   const isEditingAllowed = allowPermissions(
     [EUserPermissions.ADMIN, EUserPermissions.MEMBER],

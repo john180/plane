@@ -9,6 +9,7 @@ import { useEffect, useMemo, useRef } from "react";
 import { observer } from "mobx-react";
 // plane imports
 import type { EditorRefApi } from "@plane/editor";
+import { useTranslation } from "@plane/i18n";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
 import type { TIssue, TNameDescriptionLoader } from "@plane/types";
 import { EFileAssetType, EInboxIssueSource, EInboxIssueStatus } from "@plane/types";
@@ -60,6 +61,7 @@ export const InboxIssueMainContent = observer(function InboxIssueMainContent(pro
   const { loader } = useProjectInbox();
   const { getProjectById } = useProject();
   const { removeIssue, archiveIssue } = useIssueDetail();
+  const { t } = useTranslation();
   // reload confirmation
   const { setShowAlert } = useReloadConfirmations(isSubmitting === "submitting");
 
@@ -101,16 +103,16 @@ export const InboxIssueMainContent = observer(function InboxIssueMainContent(pro
         try {
           await removeIssue(workspaceSlug, projectId, _issueId);
           setToast({
-            title: "Success!",
+            title: t("common.success"),
             type: TOAST_TYPE.SUCCESS,
-            message: "Work item deleted successfully",
+            message: t("inbox_issue.toasts.delete_success"),
           });
         } catch (error) {
           console.log("Error in deleting work item:", error);
           setToast({
-            title: "Error!",
+            title: t("common.error.label"),
             type: TOAST_TYPE.ERROR,
-            message: "Work item delete failed",
+            message: t("inbox_issue.toasts.delete_failed"),
           });
         }
       },
@@ -119,9 +121,9 @@ export const InboxIssueMainContent = observer(function InboxIssueMainContent(pro
           await inboxIssue.updateIssue(data);
         } catch (_error) {
           setToast({
-            title: "Work item update failed",
+            title: t("common.error.label"),
             type: TOAST_TYPE.ERROR,
-            message: "Work item update failed",
+            message: t("inbox_issue.toasts.update_failed"),
           });
         }
       },
@@ -133,7 +135,7 @@ export const InboxIssueMainContent = observer(function InboxIssueMainContent(pro
         }
       },
     }),
-    [inboxIssue]
+    [inboxIssue, t]
   );
 
   if (!issue) return <></>;
@@ -206,7 +208,7 @@ export const InboxIssueMainContent = observer(function InboxIssueMainContent(pro
                 createdAt: issue.created_at ? new Date(issue.created_at) : new Date(),
                 createdByDisplayName:
                   inboxIssue.source === EInboxIssueSource.FORMS
-                    ? "Intake Form user"
+                    ? t("inbox_issue.source.forms_user")
                     : (getUserDetails(issue.created_by ?? "")?.display_name ?? ""),
                 id: issue.id,
                 isRestoreDisabled: !isEditable,

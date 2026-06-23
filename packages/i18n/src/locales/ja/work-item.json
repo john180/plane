@@ -23,7 +23,11 @@
       "dependency": "依存関係を追加",
       "relation": "関連を追加",
       "link": "リンクを追加",
-      "existing": "既存の作業項目を追加"
+      "existing": "既存の作業項目を追加",
+      "module": {
+        "success": "{count, plural, one {Work item} other {Work items}} added to the module successfully.",
+        "failed": "Selected work items could not be added to the module. Please try again."
+      }
     },
     "remove": {
       "label": "作業項目を削除",
@@ -44,6 +48,7 @@
     "new": "新規作業項目",
     "adding": "作業項目を追加中",
     "create": {
+      "label": "Create work item",
       "success": "作業項目を作成しました"
     },
     "priority": {
@@ -72,15 +77,26 @@
       "ordered_by_label": "このレイアウトは次の順序で並べ替えられています：",
       "list": "リスト",
       "kanban": "ボード",
-      "calendar": "カレンダー",
+      "calendar": {
+        "action_failed": "Failed to perform this action",
+        "due_before_start": "Due date cannot be before the start date of the work item."
+      },
       "spreadsheet": "テーブル",
-      "gantt": "タイムライン",
+      "gantt": {
+        "update_dates_error": "Error while updating work item dates. Please try again later."
+      },
       "title": {
         "list": "リストレイアウト",
         "kanban": "ボードレイアウト",
         "calendar": "カレンダーレイアウト",
         "spreadsheet": "テーブルレイアウト",
         "gantt": "タイムラインレイアウト"
+      },
+      "move": {
+        "cannot_move_title": "Cannot move work item",
+        "not_allowed": "You are not allowed to move this work item",
+        "grouping_disabled": "Drag and drop is disabled for the current grouping",
+        "completed_cycle": "Work item cannot be moved to completed cycles"
       }
     },
     "states": {
@@ -148,6 +164,9 @@
             }
           }
         }
+      },
+      "duplicate": {
+        "error": "Asset duplication failed. Please try again later."
       }
     },
     "empty_state": {
@@ -160,7 +179,8 @@
       }
     },
     "sibling": {
-      "label": "兄弟作業項目"
+      "label": "兄弟作業項目",
+      "empty": "No sibling work items"
     },
     "archive": {
       "description": "完了またはキャンセルされた\n作業項目のみアーカイブできます",
@@ -211,7 +231,8 @@
       "empty": "作業項目が選択されていません",
       "add_selected": "選択した作業項目を追加",
       "select_all": "すべて選択",
-      "deselect_all": "すべての選択を解除"
+      "deselect_all": "すべての選択を解除",
+      "current_project_only": "Only work items within the current project can be selected."
     },
     "open_in_full_screen": "作業項目をフルスクリーンで開く",
     "duplicate": {
@@ -266,6 +287,84 @@
       "click_to_downvote": "クリックして反対票を投じる",
       "click_to_view_upvotes": "クリックして賛成票を表示",
       "click_to_view_downvotes": "クリックして反対票を表示"
+    },
+    "layout": {
+      "link_copied_to_clipboard": "{entity} link copied to clipboard."
+    },
+    "attachment": {
+      "toasts": {
+        "upload": {
+          "loading": "Uploading attachment...",
+          "success_title": "Attachment uploaded",
+          "success_message": "The attachment has been successfully uploaded",
+          "error_title": "Attachment not uploaded",
+          "error_message": "The attachment could not be uploaded"
+        },
+        "remove": {
+          "success_title": "Attachment removed",
+          "success_message": "The attachment has been successfully removed",
+          "error_title": "Attachment not removed",
+          "error_message": "The attachment could not be removed"
+        },
+        "attach": {
+          "error_message": "File could not be attached. Try uploading again.",
+          "single_file_only": "Only one file can be uploaded at a time.",
+          "size_limit": "File must be {size}MB or less in size."
+        }
+      }
+    },
+    "identifier": {
+      "copy_tooltip": "Click to copy",
+      "copy_success": "Work item ID copied to clipboard"
+    },
+    "peek": {
+      "close_tooltip": "Close the peek view"
+    },
+    "links": {
+      "label": "Links",
+      "toasts": {
+        "create": {
+          "success_title": "Link created",
+          "success_message": "The link has been successfully created",
+          "error_title": "Link not created",
+          "error_message": "The link could not be created"
+        },
+        "update": {
+          "success_title": "Link updated",
+          "success_message": "The link has been successfully updated",
+          "error_title": "Link not updated",
+          "error_message": "The link could not be updated"
+        },
+        "remove": {
+          "success_title": "Link removed",
+          "success_message": "The link has been successfully removed",
+          "error_title": "Link not removed",
+          "error_message": "The link could not be removed"
+        }
+      }
+    },
+    "reactions": {
+      "create": {
+        "success": "Reaction created successfully",
+        "failed": "Reaction creation failed"
+      },
+      "remove": {
+        "success": "Reaction removed successfully",
+        "failed": "Reaction remove failed"
+      }
+    },
+    "modal": {
+      "editor_processing": "Editor is still processing changes. Please wait before proceeding.",
+      "move_to_project_failed": "Failed to move work item to project. Please try again."
+    },
+    "description": {
+      "generate": {
+        "empty_title": "Work item title isn't informative enough to generate the description. Please try with a different title.",
+        "rate_limit": "You have reached the maximum number of requests of 50 requests per month per user."
+      }
+    },
+    "activity": {
+      "deleted_work_item": "This work item has been deleted"
     }
   },
   "sub_work_item": {

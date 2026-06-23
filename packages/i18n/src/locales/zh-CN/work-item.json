@@ -23,7 +23,11 @@
       "dependency": "添加依赖",
       "relation": "添加关系",
       "link": "添加链接",
-      "existing": "添加现有工作项"
+      "existing": "添加现有工作项",
+      "module": {
+        "success": "{count, plural, one {工作项} other {工作项}}已成功添加到模块。",
+        "failed": "无法将所选工作项添加到模块。请重试。"
+      }
     },
     "remove": {
       "label": "移除工作项",
@@ -44,6 +48,7 @@
     "new": "新建工作项",
     "adding": "正在添加工作项",
     "create": {
+      "label": "创建工作项",
       "success": "工作项创建成功"
     },
     "priority": {
@@ -72,15 +77,26 @@
       "ordered_by_label": "此布局按以下方式排序",
       "list": "列表",
       "kanban": "看板",
-      "calendar": "日历",
+      "calendar": {
+        "action_failed": "无法执行此操作",
+        "due_before_start": "截止日期不能早于工作项的开始日期。"
+      },
       "spreadsheet": "表格",
-      "gantt": "时间线",
+      "gantt": {
+        "update_dates_error": "更新工作项日期时出错。请稍后重试。"
+      },
       "title": {
         "list": "列表布局",
         "kanban": "看板布局",
         "calendar": "日历布局",
         "spreadsheet": "表格布局",
         "gantt": "时间线布局"
+      },
+      "move": {
+        "cannot_move_title": "无法移动工作项",
+        "not_allowed": "您无权移动此工作项",
+        "grouping_disabled": "当前分组已禁用拖放",
+        "completed_cycle": "工作项无法移动到已完成的周期"
       }
     },
     "states": {
@@ -148,6 +164,9 @@
             }
           }
         }
+      },
+      "duplicate": {
+        "error": "资源复制失败。请稍后重试。"
       }
     },
     "empty_state": {
@@ -160,7 +179,8 @@
       }
     },
     "sibling": {
-      "label": "同级工作项"
+      "label": "同级工作项",
+      "empty": "没有同级工作项"
     },
     "archive": {
       "description": "只有已完成或已取消的\n工作项可以归档",
@@ -211,7 +231,8 @@
       "empty": "未选择工作项",
       "add_selected": "添加所选工作项",
       "select_all": "全选",
-      "deselect_all": "取消全选"
+      "deselect_all": "取消全选",
+      "current_project_only": "只能选择当前项目内的工作项。"
     },
     "open_in_full_screen": "在全屏中打开工作项",
     "duplicate": {
@@ -266,6 +287,84 @@
       "click_to_downvote": "点击反对",
       "click_to_view_upvotes": "点击查看赞成票",
       "click_to_view_downvotes": "点击查看反对票"
+    },
+    "layout": {
+      "link_copied_to_clipboard": "{entity}链接已复制到剪贴板。"
+    },
+    "attachment": {
+      "toasts": {
+        "upload": {
+          "loading": "正在上传附件……",
+          "success_title": "附件已上传",
+          "success_message": "附件已成功上传",
+          "error_title": "附件未上传",
+          "error_message": "无法上传附件"
+        },
+        "remove": {
+          "success_title": "附件已移除",
+          "success_message": "附件已成功移除",
+          "error_title": "附件未移除",
+          "error_message": "无法移除附件"
+        },
+        "attach": {
+          "error_message": "无法附加文件。请重新上传。",
+          "single_file_only": "一次只能上传一个文件。",
+          "size_limit": "文件大小必须为 {size} MB 或更小。"
+        }
+      }
+    },
+    "identifier": {
+      "copy_tooltip": "点击复制",
+      "copy_success": "工作项 ID 已复制到剪贴板"
+    },
+    "peek": {
+      "close_tooltip": "关闭预览视图"
+    },
+    "links": {
+      "label": "链接",
+      "toasts": {
+        "create": {
+          "success_title": "链接已创建",
+          "success_message": "链接已成功创建",
+          "error_title": "链接未创建",
+          "error_message": "无法创建链接"
+        },
+        "update": {
+          "success_title": "链接已更新",
+          "success_message": "链接已成功更新",
+          "error_title": "链接未更新",
+          "error_message": "无法更新链接"
+        },
+        "remove": {
+          "success_title": "链接已移除",
+          "success_message": "链接已成功移除",
+          "error_title": "链接未移除",
+          "error_message": "无法移除链接"
+        }
+      }
+    },
+    "reactions": {
+      "create": {
+        "success": "表情回应创建成功",
+        "failed": "表情回应创建失败"
+      },
+      "remove": {
+        "success": "表情回应移除成功",
+        "failed": "表情回应移除失败"
+      }
+    },
+    "modal": {
+      "editor_processing": "编辑器仍在处理更改。请稍候再继续。",
+      "move_to_project_failed": "无法将工作项移动到项目。请重试。"
+    },
+    "description": {
+      "generate": {
+        "empty_title": "工作项标题信息不足，无法生成描述。请换一个标题后重试。",
+        "rate_limit": "您已达到每位用户每月 50 次请求的上限。"
+      }
+    },
+    "activity": {
+      "deleted_work_item": "此工作项已删除"
     }
   },
   "sub_work_item": {

@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { observer } from "mobx-react";
 import { useForm } from "react-hook-form";
 // Plane imports
+import { useTranslation } from "@plane/i18n";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
 import type { IModule } from "@plane/types";
 import { EModalPosition, EModalWidth, ModalCore } from "@plane/ui";
@@ -37,6 +38,7 @@ const defaultValues: Partial<IModule> = {
 
 export const CreateUpdateModuleModal = observer(function CreateUpdateModuleModal(props: Props) {
   const { isOpen, onClose, data, workspaceSlug, projectId } = props;
+  const { t } = useTranslation();
   // states
   const [activeProject, setActiveProject] = useState<string | null>(null);
   // store hooks
@@ -62,15 +64,15 @@ export const CreateUpdateModuleModal = observer(function CreateUpdateModuleModal
         handleClose();
         setToast({
           type: TOAST_TYPE.SUCCESS,
-          title: "Success!",
-          message: "Module created successfully.",
+          title: t("common.success"),
+          message: t("module_create_update.toasts.created"),
         });
       })
       .catch((err) => {
         setToast({
           type: TOAST_TYPE.ERROR,
-          title: "Error!",
-          message: err?.detail ?? err?.error ?? "Module could not be created. Please try again.",
+          title: t("common.error.label"),
+          message: err?.detail ?? err?.error ?? t("module_create_update.toasts.create_error"),
         });
       });
   };
@@ -85,15 +87,15 @@ export const CreateUpdateModuleModal = observer(function CreateUpdateModuleModal
 
         setToast({
           type: TOAST_TYPE.SUCCESS,
-          title: "Success!",
-          message: "Module updated successfully.",
+          title: t("common.success"),
+          message: t("module_create_update.toasts.updated"),
         });
       })
       .catch((err) => {
         setToast({
           type: TOAST_TYPE.ERROR,
-          title: "Error!",
-          message: err?.detail ?? err?.error ?? "Module could not be updated. Please try again.",
+          title: t("common.error.label"),
+          message: err?.detail ?? err?.error ?? t("module_create_update.toasts.update_error"),
         });
       });
   };

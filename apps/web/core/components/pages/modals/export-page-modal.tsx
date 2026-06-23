@@ -11,6 +11,7 @@ import { Controller, useForm } from "react-hook-form";
 import { useParams } from "react-router";
 // plane editor
 import type { EditorRefApi } from "@plane/editor";
+import { useTranslation } from "@plane/i18n";
 // plane ui
 import { Button } from "@plane/propel/button";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
@@ -54,6 +55,7 @@ const EXPORT_FORMATS: {
 const PAGE_FORMATS: {
   key: TPageFormats;
   label: string;
+  i18nLabel?: string;
 }[] = [
   {
     key: "A4",
@@ -70,28 +72,34 @@ const PAGE_FORMATS: {
   {
     key: "LETTER",
     label: "Letter",
+    i18nLabel: "export.page_formats.letter",
   },
   {
     key: "LEGAL",
     label: "Legal",
+    i18nLabel: "export.page_formats.legal",
   },
   {
     key: "TABLOID",
     label: "Tabloid",
+    i18nLabel: "export.page_formats.tabloid",
   },
 ];
 
 const CONTENT_VARIETY: {
   key: TContentVariety;
   label: string;
+  i18nLabel: string;
 }[] = [
   {
     key: "everything",
     label: "Everything",
+    i18nLabel: "export.content.everything",
   },
   {
     key: "no-assets",
     label: "No images",
+    i18nLabel: "export.content.no_images",
   },
 ];
 
@@ -103,6 +111,7 @@ const defaultValues: TFormValues = {
 
 export function ExportPageModal(props: Props) {
   const { editorRef, isOpen, onClose, pageTitle } = props;
+  const { t } = useTranslation();
   // states
   const [isExporting, setIsExporting] = useState(false);
   // params
@@ -186,16 +195,16 @@ export function ExportPageModal(props: Props) {
       }
       setToast({
         type: TOAST_TYPE.SUCCESS,
-        title: "Success!",
-        message: "Page exported successfully.",
+        title: t("common.success"),
+        message: t("page_export.toasts.success"),
       });
       handleClose();
     } catch (error) {
       console.error("Error in exporting page:", error);
       setToast({
         type: TOAST_TYPE.ERROR,
-        title: "Error!",
-        message: "Page could not be exported. Please try again later.",
+        title: t("common.error.label"),
+        message: t("page_export.toasts.error"),
       });
     } finally {
       setIsExporting(false);
@@ -206,10 +215,10 @@ export function ExportPageModal(props: Props) {
     <ModalCore isOpen={isOpen} handleClose={handleClose} position={EModalPosition.CENTER} width={EModalWidth.SM}>
       <div>
         <div className="space-y-5 p-5">
-          <h3 className="text-18 font-medium text-secondary">Export page</h3>
+          <h3 className="text-18 font-medium text-secondary">{t("page_export.title")}</h3>
           <div className="space-y-3">
             <div className="flex items-center justify-between gap-2">
-              <h6 className="flex-shrink-0 text-13 text-secondary">Export format</h6>
+              <h6 className="flex-shrink-0 text-13 text-secondary">{t("page_export.fields.export_format")}</h6>
               <Controller
                 control={control}
                 name="export_format"
@@ -232,13 +241,13 @@ export function ExportPageModal(props: Props) {
               />
             </div>
             <div className="flex items-center justify-between gap-2">
-              <h6 className="flex-shrink-0 text-13 text-secondary">Include content</h6>
+              <h6 className="flex-shrink-0 text-13 text-secondary">{t("page_export.fields.include_content")}</h6>
               <Controller
                 control={control}
                 name="content_variety"
                 render={({ field: { onChange, value } }) => (
                   <CustomSelect
-                    label={CONTENT_VARIETY.find((variety) => variety.key === value)?.label}
+                    label={t(CONTENT_VARIETY.find((variety) => variety.key === value)?.i18nLabel ?? "")}
                     buttonClassName="border-none"
                     value={value}
                     onChange={(val: TContentVariety) => onChange(val)}
@@ -247,7 +256,7 @@ export function ExportPageModal(props: Props) {
                   >
                     {CONTENT_VARIETY.map((variety) => (
                       <CustomSelect.Option key={variety.key} value={variety.key}>
-                        {variety.label}
+                        {t(variety.i18nLabel)}
                       </CustomSelect.Option>
                     ))}
                   </CustomSelect>
@@ -256,13 +265,16 @@ export function ExportPageModal(props: Props) {
             </div>
             {isPDFSelected && (
               <div className="flex items-center justify-between gap-2">
-                <h6 className="flex-shrink-0 text-13 text-secondary">Page format</h6>
+                <h6 className="flex-shrink-0 text-13 text-secondary">{t("page_export.fields.page_format")}</h6>
                 <Controller
                   control={control}
                   name="page_format"
                   render={({ field: { onChange, value } }) => (
                     <CustomSelect
-                      label={PAGE_FORMATS.find((format) => format.key === value)?.label}
+                      label={(() => {
+                        const selectedFormat = PAGE_FORMATS.find((format) => format.key === value);
+                        return selectedFormat?.i18nLabel ? t(selectedFormat.i18nLabel) : selectedFormat?.label;
+                      })()}
                       buttonClassName="border-none"
                       value={value}
                       onChange={(val: TPageFormats) => onChange(val)}
@@ -271,7 +283,7 @@ export function ExportPageModal(props: Props) {
                     >
                       {PAGE_FORMATS.map((format) => (
                         <CustomSelect.Option key={format.key.toString()} value={format.key}>
-                          {format.label}
+                          {format.i18nLabel ? t(format.i18nLabel) : format.label}
                         </CustomSelect.Option>
                       ))}
                     </CustomSelect>
@@ -283,10 +295,10 @@ export function ExportPageModal(props: Props) {
         </div>
         <div className="flex items-center justify-end gap-2 border-t-[0.5px] border-subtle px-5 py-4">
           <Button variant="secondary" size="lg" onClick={handleClose}>
-            Cancel
+            {t("common.cancel")}
           </Button>
           <Button variant="primary" size="lg" loading={isExporting} onClick={handleExport}>
-            {isExporting ? "Exporting" : "Export"}
+            {isExporting ? t("page_export.exporting") : t("export")}
           </Button>
         </div>
       </div>

@@ -25,18 +25,22 @@
     "modals": {
       "decline": {
         "title": "Відхилити робочу одиницю",
-        "content": "Справді відхилити робочу одиницю {value}?"
+        "content": "Справді відхилити робочу одиницю {value}?",
+        "content_full": "Are you sure you want to decline work item {value}? This action cannot be undone."
       },
       "delete": {
         "title": "Видалити робочу одиницю",
         "content": "Справді видалити робочу одиницю {value}?",
-        "success": "Робочу одиницю успішно видалено"
+        "success": "Робочу одиницю успішно видалено",
+        "content_full": "Are you sure you want to delete work item {value}? The work item will only be deleted from Intake and this action cannot be undone."
       }
     },
     "errors": {
       "snooze_permission": "Лише адміністратори проєкту можуть відкладати/повертати відкладені робочі одиниці",
       "accept_permission": "Лише адміністратори проєкту можуть приймати робочі одиниці",
-      "decline_permission": "Лише адміністратори проєкту можуть відхилити робочі одиниці"
+      "decline_permission": "Лише адміністратори проєкту можуть відхилити робочі одиниці",
+      "permission_denied": "Permission denied",
+      "duplicate_permission": "Only project admins can mark work items as duplicate"
     },
     "actions": {
       "accept": "Прийняти",
@@ -50,17 +54,26 @@
       "move": "Перемістити {value} до робочих одиниць проєкту"
     },
     "source": {
-      "in-app": "в застосунку"
+      "in-app": "в застосунку",
+      "forms_user": "Intake Form user"
     },
     "order_by": {
       "created_at": "Створено",
       "updated_at": "Оновлено",
       "id": "ID"
     },
+    "filters": {
+      "created_date": "Created date",
+      "updated_date": "Updated date",
+      "last_updated_date": "Last updated date",
+      "status_title": "Work item status"
+    },
     "label": "Надходження",
     "page_label": "{workspace} - Надходження",
     "modal": {
-      "title": "Створити прийняту робочу одиницю"
+      "title": "Створити прийняту робочу одиницю",
+      "duplicates_found": "{count, plural, one {# duplicate work item found!} other {# duplicate work items found!}}",
+      "editor_processing": "Editor is still processing changes. Please wait before proceeding."
     },
     "tabs": {
       "open": "Відкриті",
@@ -82,6 +95,20 @@
       "detail": {
         "title": "Виберіть робочу одиницю для перегляду деталей."
       }
+    },
+    "duplicate_modal": {
+      "select_work_item": "Select work item",
+      "search_placeholder": "Search..."
+    },
+    "navigation": {
+      "previous_work_item": "Previous work item",
+      "next_work_item": "Next work item"
+    },
+    "toasts": {
+      "created": "Work item created successfully.",
+      "delete_success": "Work item deleted successfully.",
+      "delete_failed": "Work item delete failed.",
+      "update_failed": "Work item update failed."
     }
   }
 }

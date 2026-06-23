@@ -2,6 +2,94 @@
   "module": {
     "label": "{count, plural, one {模組} other {模組}}",
     "no_module": "無模組",
-    "select": "新增模組"
+    "select": "新增模組",
+    "links": {
+      "modal": {
+        "add_title": "新增連結",
+        "update_title": "更新連結",
+        "adding": "正在新增連結",
+        "updating": "正在更新連結"
+      },
+      "toasts": {
+        "created": "模組連結建立成功。",
+        "updated": "模組連結更新成功。",
+        "deleted": "模組連結刪除成功。"
+      },
+      "added_time": "新增於 {time}",
+      "added_by": "由 {name} 新增"
+    },
+    "quick_actions": {
+      "toasts": {
+        "link_copied": "模組連結已複製到剪貼簿。",
+        "restore_success": {
+          "title": "還原成功",
+          "message": "您可以在專案模組中找到此模組。"
+        },
+        "restore_error": "無法還原模組。請重試。"
+      }
+    },
+    "no_lead": "無負責人",
+    "work_items_count": "{count} 個工作事項",
+    "completed_work_items_count": "{completed}/{total} 個工作事項",
+    "favorite": {
+      "add": {
+        "loading": "正在將模組新增到收藏……",
+        "success": "模組已新增到收藏。",
+        "error": "無法將模組新增到收藏。請重試。"
+      },
+      "remove": {
+        "loading": "正在從收藏中移除模組……",
+        "success": "模組已從收藏中移除。",
+        "error": "無法從收藏中移除模組。請重試。"
+      }
+    },
+    "estimate_points_count": "{count} 個點數",
+    "completed_estimate_points_count": "{completed}/{total} 個點數"
+  },
+  "module_detail": {
+    "empty_state": {
+      "not_found": {
+        "title": "模組不存在",
+        "description": "您要尋找的模組不存在或已被刪除。",
+        "primary_button": "查看其他模組"
+      }
+    },
+    "work_items_count_tooltip": "此模組中有 {count} 個工作事項"
+  },
+  "archived_modules": {
+    "empty_state": {
+      "no_matching": {
+        "title": "沒有相符的模組",
+        "description_filters": "移除篩選條件以查看所有模組",
+        "description_search": "移除搜尋條件以查看所有模組"
+      }
+    }
+  },
+  "module_create_update": {
+    "toasts": {
+      "created": "模組建立成功。",
+      "create_error": "無法建立模組。請重試。",
+      "updated": "模組更新成功。",
+      "update_error": "無法更新模組。請重試。"
+    }
+  },
+  "module_delete_modal": {
+    "title": "刪除模組",
+    "content": "確定要刪除模組「{name}」嗎？與此模組相關的所有資料都將永久移除。此操作無法復原。",
+    "toasts": {
+      "success": "模組刪除成功。"
+    }
+  },
+  "module_archive_modal": {
+    "title": "封存模組 {name}",
+    "content": "確定要封存此模組嗎？所有封存內容都可以稍後還原。",
+    "archiving": "正在封存",
+    "toasts": {
+      "success": {
+        "title": "封存成功",
+        "message": "您可以在專案封存中找到封存內容。"
+      },
+      "error": "無法封存模組。請重試。"
+    }
   }
 }

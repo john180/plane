@@ -25,18 +25,22 @@
     "modals": {
       "decline": {
         "title": "拒絕工作事項",
-        "content": "您確定要拒絕工作事項 {value} 嗎？"
+        "content": "您確定要拒絕工作事項 {value} 嗎？",
+        "content_full": "確定要拒絕工作事項 {value} 嗎？此操作無法復原。"
       },
       "delete": {
         "title": "刪除工作事項",
         "content": "您確定要刪除工作事項 {value} 嗎？",
-        "success": "工作事項刪除成功"
+        "success": "工作事項刪除成功",
+        "content_full": "確定要刪除工作事項 {value} 嗎？此工作事項只會從 Intake 中刪除，且此操作無法復原。"
       }
     },
     "errors": {
       "snooze_permission": "只有專案管理員可以延後/取消延後工作事項",
       "accept_permission": "只有專案管理員可以接受工作事項",
-      "decline_permission": "只有專案管理員可以拒絕工作事項"
+      "decline_permission": "只有專案管理員可以拒絕工作事項",
+      "permission_denied": "權限不足",
+      "duplicate_permission": "只有專案管理員可以將工作事項標記為重複"
     },
     "actions": {
       "accept": "接受",
@@ -50,17 +54,26 @@
       "move": "將 {value} 移至專案工作事項"
     },
     "source": {
-      "in-app": "應用程式內"
+      "in-app": "應用程式內",
+      "forms_user": "Intake 表單使用者"
     },
     "order_by": {
       "created_at": "建立時間",
       "updated_at": "更新時間",
       "id": "ID"
     },
-    "label": "進件",
-    "page_label": "{workspace} - 進件",
+    "filters": {
+      "created_date": "建立日期",
+      "updated_date": "更新日期",
+      "last_updated_date": "最後更新日期",
+      "status_title": "工作事項狀態"
+    },
+    "label": "Intake",
+    "page_label": "{workspace} - Intake",
     "modal": {
-      "title": "建立進件工作事項"
+      "title": "建立 Intake 工作事項",
+      "duplicates_found": "發現 {count} 個重複工作事項！",
+      "editor_processing": "編輯器仍在處理變更。請稍候再繼續。"
     },
     "tabs": {
       "open": "開啟",
@@ -77,11 +90,25 @@
       },
       "sidebar_filter": {
         "title": "沒有符合的工作事項",
-        "description": "沒有工作事項符合進件中套用的篩選條件。建立新工作事項。"
+        "description": "沒有工作事項符合 Intake 中套用的篩選條件。建立新工作事項。"
       },
       "detail": {
         "title": "選擇工作事項以檢視其詳細資訊。"
       }
+    },
+    "duplicate_modal": {
+      "select_work_item": "選擇工作事項",
+      "search_placeholder": "搜尋……"
+    },
+    "navigation": {
+      "previous_work_item": "上一個工作事項",
+      "next_work_item": "下一個工作事項"
+    },
+    "toasts": {
+      "created": "工作事項建立成功。",
+      "delete_success": "工作事項刪除成功。",
+      "delete_failed": "工作事項刪除失敗。",
+      "update_failed": "工作事項更新失敗。"
     }
   }
 }

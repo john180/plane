@@ -66,6 +66,7 @@
   "summary": "Shrnutí",
   "assigned": "Přiřazeno",
   "created": "Vytvořeno",
+  "created_date": "Created date",
   "subscribed": "Odebíráno",
   "you_do_not_have_the_permission_to_access_this_page": "Nemáte oprávnění pro přístup k této stránce.",
   "something_went_wrong_please_try_again": "Něco se pokazilo. Zkuste to prosím znovu.",
@@ -421,6 +422,7 @@
     "drop_here_to_move": "Přetáhněte sem pro přesunutí",
     "states": "Stavy",
     "state": "Stav",
+    "status": "Status",
     "state_groups": "Skupiny stavů",
     "state_group": "Skupina stavů",
     "priorities": "Priority",
@@ -439,6 +441,7 @@
     "assignees": "Přiřazení",
     "assignee": "Přiřazeno",
     "created_by": "Vytvořil",
+    "custom": "Custom",
     "none": "Žádné",
     "link": "Odkaz",
     "estimates": "Odhady",
@@ -595,6 +598,8 @@
       "placeholder": "Zadejte hledaný výraz",
       "no_matches_found": "Nenalezeny žádné shody",
       "no_matching_results": "Žádné odpovídající výsledky",
+      "view_all": "View all",
+      "view_less": "View less",
       "min_chars": "Pro hledání zadejte alespoň {count} znaků",
       "error": "Chyba při načítání výsledků hledání",
       "no_results": {
@@ -861,5 +866,6 @@
       "description": "Exportujte položky do JSON.",
       "short_description": "Exportovat jako JSON"
     }
-  }
+  },
+  "clear_filters": "Clear filters"
 }

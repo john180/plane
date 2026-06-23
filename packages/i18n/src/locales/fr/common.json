@@ -66,6 +66,7 @@
   "summary": "Résumé",
   "assigned": "Assigné",
   "created": "Créé",
+  "created_date": "Created date",
   "subscribed": "Abonné",
   "you_do_not_have_the_permission_to_access_this_page": "Vous n’avez pas la permission d’accéder à cette page.",
   "something_went_wrong_please_try_again": "Une erreur s’est produite. Veuillez réessayer.",
@@ -421,6 +422,7 @@
     "drop_here_to_move": "Déposer ici pour déplacer",
     "states": "États",
     "state": "État",
+    "status": "Status",
     "state_groups": "Groupes d’états",
     "state_group": "Groupe d’état",
     "priorities": "Priorités",
@@ -439,6 +441,7 @@
     "assignees": "Acteurs",
     "assignee": "Acteur",
     "created_by": "Créé par",
+    "custom": "Custom",
     "none": "Aucun",
     "link": "Lien",
     "estimates": "Estimations",
@@ -595,6 +598,8 @@
       "placeholder": "Tapez pour rechercher",
       "no_matches_found": "Aucune correspondance trouvée",
       "no_matching_results": "Aucun résultat correspondant",
+      "view_all": "View all",
+      "view_less": "View less",
       "min_chars": "Saisissez au moins {count} caractères pour rechercher",
       "error": "Erreur lors de la récupération des résultats de recherche",
       "no_results": {
@@ -861,5 +866,6 @@
       "description": "Exportez les éléments de travail vers un fichier JSON.",
       "short_description": "Exporter en json"
     }
-  }
+  },
+  "clear_filters": "Clear filters"
 }

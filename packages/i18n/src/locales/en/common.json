@@ -66,6 +66,7 @@
   "summary": "Summary",
   "assigned": "Assigned",
   "created": "Created",
+  "created_date": "Created date",
   "subscribed": "Subscribed",
   "you_do_not_have_the_permission_to_access_this_page": "You do not have the permission to access this page.",
   "something_went_wrong_please_try_again": "Something went wrong. Please try again.",
@@ -421,6 +422,7 @@
     "drop_here_to_move": "Drop here to move",
     "states": "States",
     "state": "State",
+    "status": "Status",
     "state_groups": "State groups",
     "state_group": "State group",
     "priorities": "Priorities",
@@ -439,6 +441,7 @@
     "assignees": "Assignees",
     "assignee": "Assignee",
     "created_by": "Created by",
+    "custom": "Custom",
     "none": "None",
     "link": "Link",
     "estimates": "Estimates",
@@ -595,6 +598,8 @@
       "placeholder": "Type to search",
       "no_matches_found": "No matches found",
       "no_matching_results": "No matching results",
+      "view_all": "View all",
+      "view_less": "View less",
       "min_chars": "Type at least {count} characters to search",
       "error": "Error fetching search results",
       "no_results": {
@@ -861,5 +866,6 @@
       "description": "Export work items to a JSON file.",
       "short_description": "Export as json"
     }
-  }
+  },
+  "clear_filters": "Clear filters"
 }

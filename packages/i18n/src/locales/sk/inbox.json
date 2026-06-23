@@ -25,18 +25,22 @@
     "modals": {
       "decline": {
         "title": "Odmietnuť pracovnú položku",
-        "content": "Naozaj chcete odmietnuť pracovnú položku {value}?"
+        "content": "Naozaj chcete odmietnuť pracovnú položku {value}?",
+        "content_full": "Are you sure you want to decline work item {value}? This action cannot be undone."
       },
       "delete": {
         "title": "Zmazať pracovnú položku",
         "content": "Naozaj chcete zmazať pracovnú položku {value}?",
-        "success": "Pracovná položka bola úspešne zmazaná"
+        "success": "Pracovná položka bola úspešne zmazaná",
+        "content_full": "Are you sure you want to delete work item {value}? The work item will only be deleted from Intake and this action cannot be undone."
       }
     },
     "errors": {
       "snooze_permission": "Iba správcovia projektu môžu odkladať/zrušiť odloženie pracovných položiek",
       "accept_permission": "Iba správcovia projektu môžu prijímať pracovné položky",
-      "decline_permission": "Iba správcovia projektu môžu odmietnuť pracovné položky"
+      "decline_permission": "Iba správcovia projektu môžu odmietnuť pracovné položky",
+      "permission_denied": "Permission denied",
+      "duplicate_permission": "Only project admins can mark work items as duplicate"
     },
     "actions": {
       "accept": "Prijať",
@@ -50,17 +54,26 @@
       "move": "Presunúť {value} do pracovných položiek projektu"
     },
     "source": {
-      "in-app": "v aplikácii"
+      "in-app": "v aplikácii",
+      "forms_user": "Intake Form user"
     },
     "order_by": {
       "created_at": "Vytvorené dňa",
       "updated_at": "Aktualizované dňa",
       "id": "ID"
     },
+    "filters": {
+      "created_date": "Created date",
+      "updated_date": "Updated date",
+      "last_updated_date": "Last updated date",
+      "status_title": "Work item status"
+    },
     "label": "Príjem",
     "page_label": "{workspace} - Príjem",
     "modal": {
-      "title": "Vytvoriť prijatú pracovnú položku"
+      "title": "Vytvoriť prijatú pracovnú položku",
+      "duplicates_found": "{count, plural, one {# duplicate work item found!} other {# duplicate work items found!}}",
+      "editor_processing": "Editor is still processing changes. Please wait before proceeding."
     },
     "tabs": {
       "open": "Otvorené",
@@ -82,6 +95,20 @@
       "detail": {
         "title": "Vyberte pracovnú položku pre zobrazenie detailov."
       }
+    },
+    "duplicate_modal": {
+      "select_work_item": "Select work item",
+      "search_placeholder": "Search..."
+    },
+    "navigation": {
+      "previous_work_item": "Previous work item",
+      "next_work_item": "Next work item"
+    },
+    "toasts": {
+      "created": "Work item created successfully.",
+      "delete_success": "Work item deleted successfully.",
+      "delete_failed": "Work item delete failed.",
+      "update_failed": "Work item update failed."
     }
   }
 }

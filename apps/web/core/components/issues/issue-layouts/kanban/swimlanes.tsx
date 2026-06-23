@@ -6,6 +6,7 @@
 
 import type { MutableRefObject } from "react";
 import { observer } from "mobx-react";
+import { useTranslation } from "@plane/i18n";
 // plane imports
 import type {
   GroupByColumnTypes,
@@ -289,18 +290,26 @@ export const KanBanSwimLanes = observer(function KanBanSwimLanes(props: IKanBanS
   } = props;
   // store hooks
   const storeType = useIssueStoreType();
+  const { t } = useTranslation();
   // derived values
+  const entityName = isEpic ? t("common.epics") : t("common.work_items");
   const groupByList = getGroupByColumns({
     groupBy: group_by as GroupByColumnTypes,
     includeNone: true,
     isWorkspaceLevel: isWorkspaceLevel(storeType),
     isEpic: isEpic,
+    allLabel: t("entity.all", { entity: entityName }),
+    noneLabel: t("common.none"),
+    completedCycleDropErrorMessage: t("issue.layouts.move.completed_cycle"),
   });
   const subGroupByList = getGroupByColumns({
     groupBy: sub_group_by as GroupByColumnTypes,
     includeNone: true,
     isWorkspaceLevel: isWorkspaceLevel(storeType),
     isEpic: isEpic,
+    allLabel: t("entity.all", { entity: entityName }),
+    noneLabel: t("common.none"),
+    completedCycleDropErrorMessage: t("issue.layouts.move.completed_cycle"),
   });
 
   if (!groupByList || !subGroupByList) return null;

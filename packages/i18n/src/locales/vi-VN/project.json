@@ -166,6 +166,10 @@
           "text": "Xóa tất cả bộ lọc"
         }
       },
+      "project_view": {
+        "title": "View work items will appear here",
+        "description": "Work items help you track individual pieces of work. With work items, keep track of what's going on, who is working on it, and what's done."
+      },
       "public": {
         "title": "Chưa có trang công khai",
         "description": "Xem các trang được chia sẻ với mọi người trong dự án của bạn tại đây.",
@@ -185,6 +189,18 @@
     "delete_view": {
       "title": "Bạn có chắc chắn muốn xóa chế độ xem này không?",
       "content": "Nếu bạn xác nhận, tất cả các tùy chọn sắp xếp, lọc và hiển thị + bố cục mà bạn đã chọn cho chế độ xem này sẽ bị xóa vĩnh viễn mà không có cách nào khôi phục."
+    },
+    "detail": {
+      "empty_state": {
+        "not_found": {
+          "title": "View does not exist",
+          "description": "The view you are looking for does not exist or you don't have permission to view it.",
+          "primary_button": "View other views"
+        }
+      }
+    },
+    "actions": {
+      "add_view": "Add view"
     }
   },
   "project_issues": {
@@ -413,6 +429,13 @@
           "message": "Đã xảy ra lỗi."
         }
       }
+    }
+  },
+  "project_archives": {
+    "work_items_count_tooltip": "There are {count} work items in project archives",
+    "archived_issue_banner": {
+      "title": "This work item has been archived. Visit the Archives section to restore it.",
+      "action": "Go to archives"
     }
   }
 }

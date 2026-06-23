@@ -6,6 +6,7 @@
 
 import { observer } from "mobx-react";
 import useSWR from "swr";
+import { useTranslation } from "@plane/i18n";
 import type { TIssue } from "@plane/types";
 // components
 // hooks
@@ -26,6 +27,7 @@ export const IssueParentSiblings = observer(function IssueParentSiblings(props: 
     fetchSubIssues,
     subIssues: { subIssuesByIssueId },
   } = useIssueDetail();
+  const { t } = useTranslation();
 
   const { isLoading } = useSWR(
     parentIssue && parentIssue.project_id
@@ -42,7 +44,7 @@ export const IssueParentSiblings = observer(function IssueParentSiblings(props: 
     <div className="my-1">
       {isLoading ? (
         <div className="flex items-center gap-2 px-1 py-1 text-left text-11 whitespace-nowrap text-secondary">
-          Loading
+          {t("loading")}
         </div>
       ) : subIssueIds && subIssueIds.length > 0 ? (
         subIssueIds.map(
@@ -53,7 +55,7 @@ export const IssueParentSiblings = observer(function IssueParentSiblings(props: 
         )
       ) : (
         <div className="flex items-center gap-2 px-1 py-1 text-left text-11 whitespace-nowrap text-secondary">
-          No sibling work items
+          {t("issue.sibling.empty")}
         </div>
       )}
     </div>

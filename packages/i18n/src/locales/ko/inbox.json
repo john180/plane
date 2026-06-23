@@ -25,18 +25,22 @@
     "modals": {
       "decline": {
         "title": "작업 항목 거절",
-        "content": "작업 항목 {value}을(를) 거절하시겠습니까?"
+        "content": "작업 항목 {value}을(를) 거절하시겠습니까?",
+        "content_full": "Are you sure you want to decline work item {value}? This action cannot be undone."
       },
       "delete": {
         "title": "작업 항목 삭제",
         "content": "작업 항목 {value}을(를) 삭제하시겠습니까?",
-        "success": "작업 항목이 성공적으로 삭제되었습니다"
+        "success": "작업 항목이 성공적으로 삭제되었습니다",
+        "content_full": "Are you sure you want to delete work item {value}? The work item will only be deleted from Intake and this action cannot be undone."
       }
     },
     "errors": {
       "snooze_permission": "프로젝트 관리자만 작업 항목을 미루거나 미루기 해제할 수 있습니다",
       "accept_permission": "프로젝트 관리자만 작업 항목을 수락할 수 있습니다",
-      "decline_permission": "프로젝트 관리자만 작업 항목을 거절할 수 있습니다"
+      "decline_permission": "프로젝트 관리자만 작업 항목을 거절할 수 있습니다",
+      "permission_denied": "Permission denied",
+      "duplicate_permission": "Only project admins can mark work items as duplicate"
     },
     "actions": {
       "accept": "수락",
@@ -50,17 +54,26 @@
       "move": "{value}을(를) 프로젝트 작업 항목으로 이동"
     },
     "source": {
-      "in-app": "앱 내"
+      "in-app": "앱 내",
+      "forms_user": "Intake Form user"
     },
     "order_by": {
       "created_at": "생성일",
       "updated_at": "업데이트일",
       "id": "ID"
     },
+    "filters": {
+      "created_date": "Created date",
+      "updated_date": "Updated date",
+      "last_updated_date": "Last updated date",
+      "status_title": "Work item status"
+    },
     "label": "접수",
     "page_label": "{workspace} - 접수",
     "modal": {
-      "title": "접수 작업 항목 생성"
+      "title": "접수 작업 항목 생성",
+      "duplicates_found": "{count, plural, one {# duplicate work item found!} other {# duplicate work items found!}}",
+      "editor_processing": "Editor is still processing changes. Please wait before proceeding."
     },
     "tabs": {
       "open": "열기",
@@ -82,6 +95,20 @@
       "detail": {
         "title": "작업 항목의 세부 정보를 보려면 선택하세요."
       }
+    },
+    "duplicate_modal": {
+      "select_work_item": "Select work item",
+      "search_placeholder": "Search..."
+    },
+    "navigation": {
+      "previous_work_item": "Previous work item",
+      "next_work_item": "Next work item"
+    },
+    "toasts": {
+      "created": "Work item created successfully.",
+      "delete_success": "Work item deleted successfully.",
+      "delete_failed": "Work item delete failed.",
+      "update_failed": "Work item update failed."
     }
   }
 }

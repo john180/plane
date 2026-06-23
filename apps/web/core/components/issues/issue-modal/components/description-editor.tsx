@@ -98,8 +98,8 @@ export const IssueDescriptionEditor = observer(function IssueDescriptionEditor(p
     } else {
       setToast({
         type: TOAST_TYPE.ERROR,
-        title: "Error!",
-        message: "Editor is still processing changes. Please wait before proceeding.",
+        title: t("common.error.label"),
+        message: t("issue.modal.editor_processing"),
       });
       event.preventDefault(); // Prevent default action if editor is not ready to discard
     }
@@ -128,9 +128,8 @@ export const IssueDescriptionEditor = observer(function IssueDescriptionEditor(p
         if (res.response === "")
           setToast({
             type: TOAST_TYPE.ERROR,
-            title: "Error!",
-            message:
-              "Work item title isn't informative enough to generate the description. Please try with a different title.",
+            title: t("common.error.label"),
+            message: t("issue.description.generate.empty_title"),
           });
         else handleAiAssistance(res.response_html);
       })
@@ -140,14 +139,14 @@ export const IssueDescriptionEditor = observer(function IssueDescriptionEditor(p
         if (err.status === 429)
           setToast({
             type: TOAST_TYPE.ERROR,
-            title: "Error!",
-            message: error || "You have reached the maximum number of requests of 50 requests per month per user.",
+            title: t("common.error.label"),
+            message: error || t("issue.description.generate.rate_limit"),
           });
         else
           setToast({
             type: TOAST_TYPE.ERROR,
-            title: "Error!",
-            message: error || "Some error occurred. Please try again.",
+            title: t("common.error.label"),
+            message: error || t("common.error.message"),
           });
       })
       .finally(() => setIAmFeelingLucky(false));
@@ -222,7 +221,7 @@ export const IssueDescriptionEditor = observer(function IssueDescriptionEditor(p
                     return asset_id;
                   } catch (error) {
                     console.log("Error in uploading issue asset:", error);
-                    throw new Error("Asset upload failed. Please try again later.");
+                    throw new Error(t("issue.comments.upload.error"));
                   }
                 }}
                 duplicateFile={async (assetId: string) => {
@@ -237,7 +236,7 @@ export const IssueDescriptionEditor = observer(function IssueDescriptionEditor(p
                     onAssetUpload(asset_id);
                     return asset_id;
                   } catch {
-                    throw new Error("Asset duplication failed. Please try again later.");
+                    throw new Error(t("issue.comments.duplicate.error"));
                   }
                 }}
               />

@@ -66,6 +66,7 @@
   "summary": "요약",
   "assigned": "할당됨",
   "created": "생성됨",
+  "created_date": "Created date",
   "subscribed": "구독됨",
   "you_do_not_have_the_permission_to_access_this_page": "이 페이지에 접근할 권한이 없습니다.",
   "something_went_wrong_please_try_again": "문제가 발생했습니다. 다시 시도해주세요.",
@@ -421,6 +422,7 @@
     "drop_here_to_move": "이동하려면 여기에 드롭하세요",
     "states": "상태",
     "state": "상태",
+    "status": "Status",
     "state_groups": "상태 그룹",
     "state_group": "상태 그룹",
     "priorities": "우선순위",
@@ -439,6 +441,7 @@
     "assignees": "담당자",
     "assignee": "담당자",
     "created_by": "생성자",
+    "custom": "Custom",
     "none": "없음",
     "link": "링크",
     "estimates": "추정",
@@ -595,6 +598,8 @@
       "placeholder": "검색어 입력",
       "no_matches_found": "일치하는 항목 없음",
       "no_matching_results": "일치하는 결과 없음",
+      "view_all": "View all",
+      "view_less": "View less",
       "min_chars": "검색하려면 최소 {count}자를 입력하세요",
       "error": "검색 결과를 가져오는 중 오류 발생",
       "no_results": {
@@ -861,5 +866,6 @@
       "description": "작업 항목을 JSON 파일로 내보냅니다.",
       "short_description": "JSON으로 내보내기"
     }
-  }
+  },
+  "clear_filters": "Clear filters"
 }

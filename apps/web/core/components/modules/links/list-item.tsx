@@ -7,6 +7,7 @@
 import { observer } from "mobx-react";
 
 import { MODULE_TRACKER_ELEMENTS } from "@plane/constants";
+import { useTranslation } from "@plane/i18n";
 import { CopyIcon, EditIcon, TrashIcon } from "@plane/propel/icons";
 // plane types
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
@@ -29,6 +30,7 @@ type Props = {
 
 export const ModulesLinksListItem = observer(function ModulesLinksListItem(props: Props) {
   const { handleDeleteLink, handleEditLink, isEditingAllowed, link } = props;
+  const { t } = useTranslation();
   // store hooks
   const { getUserDetails } = useMember();
   // derived values
@@ -42,8 +44,8 @@ export const ModulesLinksListItem = observer(function ModulesLinksListItem(props
     copyTextToClipboard(text).then(() =>
       setToast({
         type: TOAST_TYPE.SUCCESS,
-        title: "Copied to clipboard",
-        message: "The URL has been successfully copied to your clipboard",
+        title: t("copied_to_clipboard"),
+        message: t("copied_to_clipboard_description"),
       })
     );
   };
@@ -102,9 +104,13 @@ export const ModulesLinksListItem = observer(function ModulesLinksListItem(props
       </div>
       <div className="px-5">
         <p className="mt-0.5 flex items-center gap-1.5 stroke-[1.5] text-11 text-tertiary">
-          Added {calculateTimeAgo(link.created_at)}{" "}
+          {t("module.links.added_time", { time: calculateTimeAgo(link.created_at) })}{" "}
           {createdByDetails && (
-            <>by {createdByDetails?.is_bot ? createdByDetails?.first_name + " Bot" : createdByDetails?.display_name}</>
+            <>
+              {t("module.links.added_by", {
+                name: createdByDetails?.is_bot ? `${createdByDetails?.first_name} Bot` : createdByDetails?.display_name,
+              })}
+            </>
           )}
         </p>
       </div>

@@ -6,6 +6,7 @@
 
 import { observer } from "mobx-react";
 // plane imports
+import { useTranslation } from "@plane/i18n";
 import { cn } from "@plane/utils";
 // assets
 import emptyCycle from "@/app/assets/empty-state/cycle.svg?url";
@@ -23,6 +24,8 @@ import useLocalStorage from "@/hooks/use-local-storage";
 import type { Route } from "./+types/page";
 
 function CycleDetailPage({ params }: Route.ComponentProps) {
+  // plane hooks
+  const { t } = useTranslation();
   // router
   const router = useAppRouter();
   const { workspaceSlug, projectId, cycleId } = params;
@@ -56,10 +59,10 @@ function CycleDetailPage({ params }: Route.ComponentProps) {
       {!cycle && !loader ? (
         <EmptyState
           image={emptyCycle}
-          title="Cycle does not exist"
-          description="The cycle you are looking for does not exist or has been deleted."
+          title={t("cycle_detail.empty_state.not_found.title")}
+          description={t("cycle_detail.empty_state.not_found.description")}
           primaryButton={{
-            text: "View other cycles",
+            text: t("cycle_detail.empty_state.not_found.primary_button"),
             onClick: () => router.push(`/${workspaceSlug}/projects/${projectId}/cycles`),
           }}
         />

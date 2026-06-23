@@ -66,6 +66,7 @@
   "summary": "Zusammenfassung",
   "assigned": "Zugewiesen",
   "created": "Erstellt",
+  "created_date": "Created date",
   "subscribed": "Abonniert",
   "you_do_not_have_the_permission_to_access_this_page": "Sie haben keine Berechtigung zum Zugriff auf diese Seite.",
   "something_went_wrong_please_try_again": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
@@ -421,6 +422,7 @@
     "drop_here_to_move": "Hier ablegen zum Verschieben",
     "states": "Status",
     "state": "Status",
+    "status": "Status",
     "state_groups": "Statusgruppen",
     "state_group": "Statusgruppe",
     "priorities": "Prioritäten",
@@ -439,6 +441,7 @@
     "assignees": "Zugewiesene",
     "assignee": "Zugewiesen",
     "created_by": "Erstellt von",
+    "custom": "Custom",
     "none": "Keine",
     "link": "Link",
     "estimates": "Schätzungen",
@@ -595,6 +598,8 @@
       "placeholder": "Zum Suchen tippen",
       "no_matches_found": "Keine Treffer gefunden",
       "no_matching_results": "Keine passenden Ergebnisse",
+      "view_all": "View all",
+      "view_less": "View less",
       "min_chars": "Geben Sie mindestens {count} Zeichen ein, um zu suchen",
       "error": "Fehler beim Abrufen der Suchergebnisse",
       "no_results": {
@@ -861,5 +866,6 @@
       "description": "Arbeitselemente in JSON exportieren.",
       "short_description": "Als JSON exportieren"
     }
-  }
+  },
+  "clear_filters": "Clear filters"
 }

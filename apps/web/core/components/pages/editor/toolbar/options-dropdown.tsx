@@ -8,6 +8,7 @@ import { useMemo, useState } from "react";
 import { observer } from "mobx-react";
 import { ArrowUpToLine, Clipboard, History } from "lucide-react";
 // plane imports
+import { useTranslation } from "@plane/i18n";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
 import { ToggleSwitch } from "@plane/ui";
 // hooks
@@ -31,6 +32,7 @@ type Props = {
 
 export const PageOptionsDropdown = observer(function PageOptionsDropdown(props: Props) {
   const { page, storeType } = props;
+  const { t } = useTranslation();
   // states
   const [isExportModalOpen, setIsExportModalOpen] = useState(false);
   // navigation
@@ -54,7 +56,7 @@ export const PageOptionsDropdown = observer(function PageOptionsDropdown(props: 
           action: () => handleFullWidth(!isFullWidth),
           customContent: (
             <>
-              Full width
+              {t("page_editor.toolbar.full_width")}
               <ToggleSwitch value={isFullWidth} onChange={() => {}} />
             </>
           ),
@@ -65,7 +67,7 @@ export const PageOptionsDropdown = observer(function PageOptionsDropdown(props: 
           action: () => handleStickyToolbar(!isStickyToolbarEnabled),
           customContent: (
             <>
-              Sticky toolbar
+              {t("page_editor.toolbar.sticky_toolbar")}
               <ToggleSwitch value={isStickyToolbarEnabled} onChange={() => {}} />
             </>
           ),
@@ -79,11 +81,11 @@ export const PageOptionsDropdown = observer(function PageOptionsDropdown(props: 
             editorRef.copyMarkdownToClipboard();
             setToast({
               type: TOAST_TYPE.SUCCESS,
-              title: "Success!",
-              message: "Markdown copied to clipboard.",
+              title: t("common.success"),
+              message: t("page_editor.toolbar.toasts.markdown_copied"),
             });
           },
-          title: "Copy markdown",
+          title: t("page_editor.toolbar.copy_markdown"),
           icon: Clipboard,
           shouldRender: true,
         },
@@ -98,14 +100,14 @@ export const PageOptionsDropdown = observer(function PageOptionsDropdown(props: 
             });
             router.push(updatedRoute);
           },
-          title: "Version history",
+          title: t("page_navigation_pane.tabs.info.version_history.label"),
           icon: History,
           shouldRender: true,
         },
         {
           key: "export",
           action: () => setIsExportModalOpen(true),
-          title: "Export",
+          title: t("export"),
           icon: ArrowUpToLine,
           shouldRender: true,
         },
@@ -121,6 +123,7 @@ export const PageOptionsDropdown = observer(function PageOptionsDropdown(props: 
       updateQueryParams,
       router,
       setIsExportModalOpen,
+      t,
     ]
   );
 

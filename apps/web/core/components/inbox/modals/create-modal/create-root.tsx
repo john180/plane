@@ -110,8 +110,8 @@ export const InboxIssueCreateRoot = observer(function InboxIssueCreateRoot(props
     } else {
       setToast({
         type: TOAST_TYPE.ERROR,
-        title: "Error!",
-        message: "Editor is still processing changes. Please wait before proceeding.",
+        title: t("common.error.label"),
+        message: t("inbox_issue.modal.editor_processing"),
       });
       event.preventDefault(); // Prevent default action if editor is not ready to discard
     }
@@ -142,8 +142,8 @@ export const InboxIssueCreateRoot = observer(function InboxIssueCreateRoot(props
     if (!descriptionEditorRef.current?.isEditorReadyToDiscard()) {
       setToast({
         type: TOAST_TYPE.ERROR,
-        title: "Error!",
-        message: "Editor is still processing changes. Please wait before proceeding.",
+        title: t("common.error.label"),
+        message: t("inbox_issue.modal.editor_processing"),
       });
       return;
     }
@@ -176,16 +176,16 @@ export const InboxIssueCreateRoot = observer(function InboxIssueCreateRoot(props
         }
         setToast({
           type: TOAST_TYPE.SUCCESS,
-          title: `Success!`,
-          message: "Work item created successfully.",
+          title: t("common.success"),
+          message: t("inbox_issue.toasts.created"),
         });
       })
       .catch((error) => {
         console.error(error);
         setToast({
           type: TOAST_TYPE.ERROR,
-          title: `Error!`,
-          message: "Some error occurred. Please try again.",
+          title: t("common.error.label"),
+          message: t("common.error.message"),
         });
       });
     setFormSubmitting(false);
@@ -207,7 +207,7 @@ export const InboxIssueCreateRoot = observer(function InboxIssueCreateRoot(props
                 <DeDupeButtonRoot
                   workspaceSlug={workspaceSlug}
                   isDuplicateModalOpen={isDuplicateModalOpen}
-                  label={`${duplicateIssues.length} duplicate issue${duplicateIssues.length > 1 ? "s" : ""} found!`}
+                  label={t("inbox_issue.modal.duplicates_found", { count: duplicateIssues.length })}
                   handleOnClick={() => handleDuplicateIssueModal(!isDuplicateModalOpen)}
                 />
               )}
@@ -253,8 +253,8 @@ export const InboxIssueCreateRoot = observer(function InboxIssueCreateRoot(props
                   } else {
                     setToast({
                       type: TOAST_TYPE.ERROR,
-                      title: "Error!",
-                      message: "Editor is still processing changes. Please wait before proceeding.",
+                      title: t("common.error.label"),
+                      message: t("inbox_issue.modal.editor_processing"),
                     });
                   }
                 }}

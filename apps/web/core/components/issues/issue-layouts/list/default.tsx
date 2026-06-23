@@ -10,6 +10,7 @@ import { autoScrollForElements } from "@atlaskit/pragmatic-drag-and-drop-auto-sc
 import { observer } from "mobx-react";
 // plane constants
 import { ALL_ISSUES } from "@plane/constants";
+import { useTranslation } from "@plane/i18n";
 // types
 import type {
   GroupByColumnTypes,
@@ -82,16 +83,21 @@ export const List = observer(function List(props: IList) {
   } = props;
 
   const storeType = useIssueStoreType();
+  const { t } = useTranslation();
   // plane web hooks
   const isBulkOperationsEnabled = useBulkOperationStatus();
 
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const entityName = isEpic ? t("common.epics") : t("common.work_items");
 
   const groups = getGroupByColumns({
     groupBy: group_by as GroupByColumnTypes,
     includeNone: true,
     isWorkspaceLevel: isWorkspaceLevel(storeType),
     isEpic: isEpic,
+    allLabel: t("entity.all", { entity: entityName }),
+    noneLabel: t("common.none"),
+    completedCycleDropErrorMessage: t("issue.layouts.move.completed_cycle"),
   });
 
   // Enable Auto Scroll for Main Kanban

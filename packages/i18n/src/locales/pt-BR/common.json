@@ -66,6 +66,7 @@
   "summary": "Resumo",
   "assigned": "Atribuído",
   "created": "Criado",
+  "created_date": "Created date",
   "subscribed": "Inscrito",
   "you_do_not_have_the_permission_to_access_this_page": "Você não tem permissão para acessar esta página.",
   "something_went_wrong_please_try_again": "Algo deu errado. Por favor, tente novamente.",
@@ -421,6 +422,7 @@
     "drop_here_to_move": "Solte aqui para mover",
     "states": "Estados",
     "state": "Estado",
+    "status": "Status",
     "state_groups": "Grupos de estado",
     "state_group": "Grupo de estado",
     "priorities": "Prioridades",
@@ -439,6 +441,7 @@
     "assignees": "Responsáveis",
     "assignee": "Responsável",
     "created_by": "Criado por",
+    "custom": "Custom",
     "none": "Nenhum",
     "link": "Link",
     "estimates": "Estimativas",
@@ -595,6 +598,8 @@
       "placeholder": "Digite para buscar",
       "no_matches_found": "Nenhum resultado encontrado",
       "no_matching_results": "Nenhum resultado correspondente",
+      "view_all": "View all",
+      "view_less": "View less",
       "min_chars": "Digite pelo menos {count} caracteres para buscar",
       "error": "Erro ao buscar resultados",
       "no_results": {
@@ -861,5 +866,6 @@
       "description": "Exporte itens de trabalho para um arquivo JSON.",
       "short_description": "Exportar como JSON"
     }
-  }
+  },
+  "clear_filters": "Clear filters"
 }

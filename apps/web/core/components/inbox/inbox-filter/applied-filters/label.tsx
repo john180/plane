@@ -5,6 +5,7 @@
  */
 
 import { observer } from "mobx-react";
+import { useTranslation } from "@plane/i18n";
 // hooks
 import { CloseIcon } from "@plane/propel/icons";
 import { Tag } from "@plane/ui";
@@ -19,6 +20,7 @@ export const InboxIssueAppliedFiltersLabel = observer(function InboxIssueApplied
   // hooks
   const { inboxFilters, handleInboxIssueFilters } = useProjectInbox();
   const { getLabelById } = useLabel();
+  const { t } = useTranslation();
   // derived values
   const filteredValues = inboxFilters?.labels || [];
   const currentOptionDetail = (labelId: string) => getLabelById(labelId) || undefined;
@@ -31,7 +33,7 @@ export const InboxIssueAppliedFiltersLabel = observer(function InboxIssueApplied
   if (filteredValues.length === 0) return <></>;
   return (
     <Tag>
-      <div className="text-11 text-secondary">Label</div>
+      <div className="text-11 text-secondary">{t("common.label")}</div>
       {filteredValues.map((value) => {
         const optionDetail = currentOptionDetail(value);
         if (!optionDetail) return <></>;

@@ -66,6 +66,7 @@
   "summary": "Зведення",
   "assigned": "Призначено",
   "created": "Створено",
+  "created_date": "Created date",
   "subscribed": "Підписано",
   "you_do_not_have_the_permission_to_access_this_page": "Ви не маєте прав доступу до цієї сторінки.",
   "something_went_wrong_please_try_again": "Щось пішло не так. Будь ласка, спробуйте ще раз.",
@@ -421,6 +422,7 @@
     "drop_here_to_move": "Перетягніть сюди для переміщення",
     "states": "Стани",
     "state": "Стан",
+    "status": "Status",
     "state_groups": "Групи станів",
     "state_group": "Група станів",
     "priorities": "Пріоритети",
@@ -439,6 +441,7 @@
     "assignees": "Призначені",
     "assignee": "Призначено",
     "created_by": "Створено",
+    "custom": "Custom",
     "none": "Немає",
     "link": "Посилання",
     "estimates": "Оцінки",
@@ -595,6 +598,8 @@
       "placeholder": "Введіть пошуковий запит",
       "no_matches_found": "Немає збігів",
       "no_matching_results": "Немає відповідних результатів",
+      "view_all": "View all",
+      "view_less": "View less",
       "min_chars": "Введіть щонайменше {count} символів для пошуку",
       "error": "Помилка завантаження результатів пошуку",
       "no_results": {
@@ -861,5 +866,6 @@
       "description": "Експортуйте одиниці у формат JSON.",
       "short_description": "Експортувати як JSON"
     }
-  }
+  },
+  "clear_filters": "Clear filters"
 }

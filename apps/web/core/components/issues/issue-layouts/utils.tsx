@@ -80,6 +80,9 @@ type TGetGroupByColumns = {
   isWorkspaceLevel: boolean;
   isEpic?: boolean;
   projectId?: string;
+  allLabel?: string;
+  noneLabel?: string;
+  completedCycleDropErrorMessage?: string;
 };
 
 // NOTE: Type of groupBy is different compared to what's being passed from the components.
@@ -91,13 +94,16 @@ export const getGroupByColumns = ({
   isWorkspaceLevel,
   isEpic = false,
   projectId,
+  allLabel,
+  noneLabel = "None",
+  completedCycleDropErrorMessage = "Work item cannot be moved to completed cycles",
 }: TGetGroupByColumns): IGroupByColumn[] | undefined => {
   // If no groupBy is specified and includeNone is true, return "All Issues" group
   if (!groupBy && includeNone) {
     return [
       {
         id: "All Issues",
-        name: `All ${isEpic ? "Epics" : "work items"}`,
+        name: allLabel ?? `All ${isEpic ? "Epics" : "work items"}`,
         payload: {},
         icon: undefined,
       },
@@ -113,7 +119,7 @@ export const getGroupByColumns = ({
     ({ isWorkspaceLevel, projectId }: TGetColumns) => IGroupByColumn[] | undefined
   > = {
     project: getProjectColumns,
-    cycle: getCycleColumns,
+    cycle: () => getCycleColumns({ completedCycleDropErrorMessage, noneLabel }),
     module: getModuleColumns,
     state: getStateColumns,
     "state_detail.group": getStateGroupColumns,
@@ -151,7 +157,13 @@ const getProjectColumns = (): IGroupByColumn[] | undefined => {
     .filter((column) => column !== undefined) as IGroupByColumn[];
 };
 
-const getCycleColumns = (): IGroupByColumn[] | undefined => {
+const getCycleColumns = ({
+  completedCycleDropErrorMessage,
+  noneLabel,
+}: {
+  completedCycleDropErrorMessage: string;
+  noneLabel: string;
+}): IGroupByColumn[] | undefined => {
   const { currentProjectDetails } = store.projectRoot.project;
   // Check for the current project details
   if (!currentProjectDetails || !currentProjectDetails?.id) return;
@@ -169,12 +181,12 @@ const getCycleColumns = (): IGroupByColumn[] | undefined => {
       icon: <CycleGroupIcon cycleGroup={cycleStatus} className="h-3.5 w-3.5" />,
       payload: { cycle_id: cycle.id },
       isDropDisabled,
-      dropErrorMessage: isDropDisabled ? "Work item cannot be moved to completed cycles" : undefined,
+      dropErrorMessage: isDropDisabled ? completedCycleDropErrorMessage : undefined,
     });
   });
   cycles.push({
     id: "None",
-    name: "None",
+    name: noneLabel,
     icon: <CycleIcon className="h-3.5 w-3.5" />,
     payload: {},
   });

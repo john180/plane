@@ -19,6 +19,7 @@ import {
   IS_FAVORITE_MENU_OPEN,
 } from "@plane/constants";
 import { useLocalStorage } from "@plane/hooks";
+import { useTranslation } from "@plane/i18n";
 import { WorkItemsIcon } from "@plane/propel/icons";
 import { TOAST_TYPE, setPromiseToast, setToast } from "@plane/propel/toast";
 import { Tooltip } from "@plane/propel/tooltip";
@@ -66,6 +67,7 @@ export const ModuleCardItem = observer(function ModuleCardItem(props: Props) {
   const renderIcon = Boolean(moduleDetails?.start_date) || Boolean(moduleDetails?.target_date);
 
   const { isMobile } = usePlatformOS();
+  const { t } = useTranslation();
   const handleAddToFavorites = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     e.preventDefault();
@@ -78,14 +80,14 @@ export const ModuleCardItem = observer(function ModuleCardItem(props: Props) {
     );
 
     setPromiseToast(addToFavoritePromise, {
-      loading: "Adding module to favorites...",
+      loading: t("module.favorite.add.loading"),
       success: {
-        title: "Success!",
-        message: () => "Module added to favorites.",
+        title: t("common.success"),
+        message: () => t("module.favorite.add.success"),
       },
       error: {
-        title: "Error!",
-        message: () => "Couldn't add the module to favorites. Please try again.",
+        title: t("common.error.label"),
+        message: () => t("module.favorite.add.error"),
       },
     });
   };
@@ -102,14 +104,14 @@ export const ModuleCardItem = observer(function ModuleCardItem(props: Props) {
     );
 
     setPromiseToast(removeFromFavoritePromise, {
-      loading: "Removing module from favorites...",
+      loading: t("module.favorite.remove.loading"),
       success: {
-        title: "Success!",
-        message: () => "Module removed from favorites.",
+        title: t("common.success"),
+        message: () => t("module.favorite.remove.success"),
       },
       error: {
-        title: "Error!",
-        message: () => "Couldn't remove the module from favorites. Please try again.",
+        title: t("common.error.label"),
+        message: () => t("module.favorite.remove.error"),
       },
     });
   };
@@ -126,15 +128,15 @@ export const ModuleCardItem = observer(function ModuleCardItem(props: Props) {
       .then(() => {
         setToast({
           type: TOAST_TYPE.SUCCESS,
-          title: "Success!",
-          message: "Module updated successfully.",
+          title: t("common.success"),
+          message: t("module_create_update.toasts.updated"),
         });
       })
       .catch((err) => {
         setToast({
           type: TOAST_TYPE.ERROR,
-          title: "Error!",
-          message: err?.detail ?? "Module could not be updated. Please try again.",
+          title: t("common.error.label"),
+          message: err?.detail ?? t("module_create_update.toasts.update_error"),
         });
       });
   };
@@ -168,11 +170,11 @@ export const ModuleCardItem = observer(function ModuleCardItem(props: Props) {
 
   const issueCount = moduleDetails
     ? !moduleTotalIssues || moduleTotalIssues === 0
-      ? `0 work items`
+      ? t("module.work_items_count", { count: 0 })
       : moduleTotalIssues === moduleCompletedIssues
-        ? `${moduleTotalIssues} Work item${moduleTotalIssues > 1 ? `s` : ``}`
-        : `${moduleCompletedIssues}/${moduleTotalIssues} Work items`
-    : `0 work items`;
+        ? t("module.work_items_count", { count: moduleTotalIssues })
+        : t("module.completed_work_items_count", { completed: moduleCompletedIssues, total: moduleTotalIssues })
+    : t("module.work_items_count", { count: 0 });
 
   const moduleLeadDetails = moduleDetails.lead_id ? getUserDetails(moduleDetails.lead_id) : undefined;
 
@@ -210,14 +212,14 @@ export const ModuleCardItem = observer(function ModuleCardItem(props: Props) {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-1.5 text-secondary">
                 <WorkItemsIcon className="h-4 w-4 text-tertiary" />
-                <span className="text-11 text-tertiary">{issueCount ?? "0 Work item"}</span>
+                <span className="text-11 text-tertiary">{issueCount}</span>
               </div>
               {moduleLeadDetails ? (
                 <span className="cursor-default">
                   <ButtonAvatars showTooltip={false} userIds={moduleLeadDetails?.id} />
                 </span>
               ) : (
-                <Tooltip tooltipContent="No lead">
+                <Tooltip tooltipContent={t("module.no_lead")}>
                   <SquareUser className="mx-1 h-4 w-4 text-tertiary" />
                 </Tooltip>
               )}
@@ -239,8 +241,8 @@ export const ModuleCardItem = observer(function ModuleCardItem(props: Props) {
                   });
                 }}
                 placeholder={{
-                  from: "Start date",
-                  to: "End date",
+                  from: t("start_date"),
+                  to: t("end_date"),
                 }}
                 disabled={isDisabled}
                 hideIcon={{ from: renderIcon ?? true, to: renderIcon }}

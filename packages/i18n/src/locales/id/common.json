@@ -66,6 +66,7 @@
   "summary": "Ringkasan",
   "assigned": "Ditetapkan",
   "created": "Dibuat",
+  "created_date": "Created date",
   "subscribed": "Berlangganan",
   "you_do_not_have_the_permission_to_access_this_page": "Anda tidak memiliki izin untuk mengakses halaman ini.",
   "something_went_wrong_please_try_again": "Terjadi kesalahan. Silakan coba lagi.",
@@ -421,6 +422,7 @@
     "drop_here_to_move": "Letakkan di sini untuk memindahkan",
     "states": "Negara-negara",
     "state": "Negara",
+    "status": "Status",
     "state_groups": "Kelompok negara",
     "state_group": "Kelompok negara",
     "priorities": "Prioritas",
@@ -439,6 +441,7 @@
     "assignees": "Penugas",
     "assignee": "Penugas",
     "created_by": "Dibuat oleh",
+    "custom": "Custom",
     "none": "Tidak ada",
     "link": "Tautan",
     "estimates": "Perkiraan",
@@ -595,6 +598,8 @@
       "placeholder": "Ketik untuk mencari",
       "no_matches_found": "Tidak ada kecocokan ditemukan",
       "no_matching_results": "Tidak ada hasil yang cocok",
+      "view_all": "View all",
+      "view_less": "View less",
       "min_chars": "Ketik setidaknya {count} karakter untuk mencari",
       "error": "Terjadi kesalahan saat mengambil hasil pencarian",
       "no_results": {
@@ -861,5 +866,6 @@
       "description": "Ekspor item kerja ke file JSON.",
       "short_description": "Ekspor sebagai json"
     }
-  }
+  },
+  "clear_filters": "Clear filters"
 }

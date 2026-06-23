@@ -23,7 +23,11 @@
       "dependency": "新增相依性",
       "relation": "新增關聯",
       "link": "新增連結",
-      "existing": "新增現有工作事項"
+      "existing": "新增現有工作事項",
+      "module": {
+        "success": "{count, plural, one {工作事項} other {工作事項}} 已成功新增到模組。",
+        "failed": "無法將所選工作事項新增到模組。請再試一次。"
+      }
     },
     "remove": {
       "label": "移除工作事項",
@@ -44,6 +48,7 @@
     "new": "新工作事項",
     "adding": "新增工作事項中",
     "create": {
+      "label": "建立工作事項",
       "success": "工作事項建立成功"
     },
     "priority": {
@@ -72,15 +77,26 @@
       "ordered_by_label": "此版面配置依據以下條件排序",
       "list": "清單",
       "kanban": "看板",
-      "calendar": "日曆",
+      "calendar": {
+        "action_failed": "無法執行此操作",
+        "due_before_start": "截止日期不能早於工作事項的開始日期。"
+      },
       "spreadsheet": "試算表",
-      "gantt": "甘特圖",
+      "gantt": {
+        "update_dates_error": "更新工作事項日期時發生錯誤。請稍後再試。"
+      },
       "title": {
         "list": "清單版面配置",
         "kanban": "看板版面配置",
         "calendar": "日曆版面配置",
         "spreadsheet": "試算表版面配置",
         "gantt": "甘特圖版面配置"
+      },
+      "move": {
+        "cannot_move_title": "無法移動工作事項",
+        "not_allowed": "您無權移動此工作事項",
+        "grouping_disabled": "目前分組已停用拖放",
+        "completed_cycle": "工作事項無法移動到已完成的週期"
       }
     },
     "states": {
@@ -148,6 +164,9 @@
             }
           }
         }
+      },
+      "duplicate": {
+        "error": "資產複製失敗。請稍後再試。"
       }
     },
     "empty_state": {
@@ -160,7 +179,8 @@
       }
     },
     "sibling": {
-      "label": "同層級工作事項"
+      "label": "同層級工作事項",
+      "empty": "沒有同層級工作事項"
     },
     "archive": {
       "description": "只有已完成或取消的\n工作事項可以封存",
@@ -211,7 +231,8 @@
       "empty": "未選擇工作事項",
       "add_selected": "新增已選取的工作事項",
       "select_all": "全選",
-      "deselect_all": "取消全選"
+      "deselect_all": "取消全選",
+      "current_project_only": "只能選取目前專案內的工作事項。"
     },
     "open_in_full_screen": "以全螢幕開啟工作事項",
     "duplicate": {
@@ -266,6 +287,84 @@
       "click_to_downvote": "點擊反對",
       "click_to_view_upvotes": "點擊查看贊成票",
       "click_to_view_downvotes": "點擊查看反對票"
+    },
+    "layout": {
+      "link_copied_to_clipboard": "{entity}連結已複製到剪貼簿。"
+    },
+    "attachment": {
+      "toasts": {
+        "upload": {
+          "loading": "正在上傳附件……",
+          "success_title": "附件已上傳",
+          "success_message": "附件已成功上傳",
+          "error_title": "附件未上傳",
+          "error_message": "無法上傳附件"
+        },
+        "remove": {
+          "success_title": "附件已移除",
+          "success_message": "附件已成功移除",
+          "error_title": "附件未移除",
+          "error_message": "無法移除附件"
+        },
+        "attach": {
+          "error_message": "無法附加檔案。請重新上傳。",
+          "single_file_only": "一次只能上傳一個檔案。",
+          "size_limit": "檔案大小必須為 {size}MB 或更小。"
+        }
+      }
+    },
+    "identifier": {
+      "copy_tooltip": "點擊以複製",
+      "copy_success": "工作事項 ID 已複製到剪貼簿"
+    },
+    "peek": {
+      "close_tooltip": "關閉預覽視圖"
+    },
+    "links": {
+      "label": "連結",
+      "toasts": {
+        "create": {
+          "success_title": "連結已建立",
+          "success_message": "連結已成功建立",
+          "error_title": "連結未建立",
+          "error_message": "無法建立連結"
+        },
+        "update": {
+          "success_title": "連結已更新",
+          "success_message": "連結已成功更新",
+          "error_title": "連結未更新",
+          "error_message": "無法更新連結"
+        },
+        "remove": {
+          "success_title": "連結已移除",
+          "success_message": "連結已成功移除",
+          "error_title": "連結未移除",
+          "error_message": "無法移除連結"
+        }
+      }
+    },
+    "reactions": {
+      "create": {
+        "success": "表情回應建立成功",
+        "failed": "表情回應建立失敗"
+      },
+      "remove": {
+        "success": "表情回應移除成功",
+        "failed": "表情回應移除失敗"
+      }
+    },
+    "modal": {
+      "editor_processing": "編輯器仍在處理變更。請稍候再繼續。",
+      "move_to_project_failed": "無法將工作事項移動到專案。請再試一次。"
+    },
+    "description": {
+      "generate": {
+        "empty_title": "工作事項標題資訊不足，無法產生描述。請換一個標題後再試。",
+        "rate_limit": "您已達到每位使用者每月 50 次請求的上限。"
+      }
+    },
+    "activity": {
+      "deleted_work_item": "此工作事項已刪除"
     }
   },
   "sub_work_item": {

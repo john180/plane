@@ -23,7 +23,11 @@
       "dependency": "Add dependency",
       "relation": "Add relation",
       "link": "Add link",
-      "existing": "Add existing work item"
+      "existing": "Add existing work item",
+      "module": {
+        "success": "{count, plural, one {Work item} other {Work items}} added to the module successfully.",
+        "failed": "Selected work items could not be added to the module. Please try again."
+      }
     },
     "remove": {
       "label": "Remove work item",
@@ -44,6 +48,7 @@
     "new": "New work item",
     "adding": "Adding work item",
     "create": {
+      "label": "Create work item",
       "success": "Work item created successfully"
     },
     "priority": {
@@ -72,15 +77,26 @@
       "ordered_by_label": "This layout is ordered by",
       "list": "List",
       "kanban": "Board",
-      "calendar": "Calendar",
+      "calendar": {
+        "action_failed": "Failed to perform this action",
+        "due_before_start": "Due date cannot be before the start date of the work item."
+      },
       "spreadsheet": "Table",
-      "gantt": "Timeline",
+      "gantt": {
+        "update_dates_error": "Error while updating work item dates. Please try again later."
+      },
       "title": {
         "list": "List Layout",
         "kanban": "Board Layout",
         "calendar": "Calendar Layout",
         "spreadsheet": "Table Layout",
         "gantt": "Timeline Layout"
+      },
+      "move": {
+        "cannot_move_title": "Cannot move work item",
+        "not_allowed": "You are not allowed to move this work item",
+        "grouping_disabled": "Drag and drop is disabled for the current grouping",
+        "completed_cycle": "Work item cannot be moved to completed cycles"
       }
     },
     "states": {
@@ -148,6 +164,9 @@
             }
           }
         }
+      },
+      "duplicate": {
+        "error": "Asset duplication failed. Please try again later."
       }
     },
     "empty_state": {
@@ -160,7 +179,8 @@
       }
     },
     "sibling": {
-      "label": "Sibling work items"
+      "label": "Sibling work items",
+      "empty": "No sibling work items"
     },
     "archive": {
       "description": "Only completed or canceled work items can be archived",
@@ -211,7 +231,8 @@
       "empty": "No work items selected",
       "add_selected": "Add selected work items",
       "select_all": "Select all",
-      "deselect_all": "Deselect all"
+      "deselect_all": "Deselect all",
+      "current_project_only": "Only work items within the current project can be selected."
     },
     "open_in_full_screen": "Open work item in full screen",
     "duplicate": {
@@ -266,6 +287,84 @@
       "click_to_downvote": "Click to downvote",
       "click_to_view_upvotes": "Click to view upvotes",
       "click_to_view_downvotes": "Click to view downvotes"
+    },
+    "layout": {
+      "link_copied_to_clipboard": "{entity} link copied to clipboard."
+    },
+    "attachment": {
+      "toasts": {
+        "upload": {
+          "loading": "Uploading attachment...",
+          "success_title": "Attachment uploaded",
+          "success_message": "The attachment has been successfully uploaded",
+          "error_title": "Attachment not uploaded",
+          "error_message": "The attachment could not be uploaded"
+        },
+        "remove": {
+          "success_title": "Attachment removed",
+          "success_message": "The attachment has been successfully removed",
+          "error_title": "Attachment not removed",
+          "error_message": "The attachment could not be removed"
+        },
+        "attach": {
+          "error_message": "File could not be attached. Try uploading again.",
+          "single_file_only": "Only one file can be uploaded at a time.",
+          "size_limit": "File must be {size}MB or less in size."
+        }
+      }
+    },
+    "identifier": {
+      "copy_tooltip": "Click to copy",
+      "copy_success": "Work item ID copied to clipboard"
+    },
+    "peek": {
+      "close_tooltip": "Close the peek view"
+    },
+    "links": {
+      "label": "Links",
+      "toasts": {
+        "create": {
+          "success_title": "Link created",
+          "success_message": "The link has been successfully created",
+          "error_title": "Link not created",
+          "error_message": "The link could not be created"
+        },
+        "update": {
+          "success_title": "Link updated",
+          "success_message": "The link has been successfully updated",
+          "error_title": "Link not updated",
+          "error_message": "The link could not be updated"
+        },
+        "remove": {
+          "success_title": "Link removed",
+          "success_message": "The link has been successfully removed",
+          "error_title": "Link not removed",
+          "error_message": "The link could not be removed"
+        }
+      }
+    },
+    "reactions": {
+      "create": {
+        "success": "Reaction created successfully",
+        "failed": "Reaction creation failed"
+      },
+      "remove": {
+        "success": "Reaction removed successfully",
+        "failed": "Reaction remove failed"
+      }
+    },
+    "modal": {
+      "editor_processing": "Editor is still processing changes. Please wait before proceeding.",
+      "move_to_project_failed": "Failed to move work item to project. Please try again."
+    },
+    "description": {
+      "generate": {
+        "empty_title": "Work item title isn't informative enough to generate the description. Please try with a different title.",
+        "rate_limit": "You have reached the maximum number of requests of 50 requests per month per user."
+      }
+    },
+    "activity": {
+      "deleted_work_item": "This work item has been deleted"
     }
   },
   "sub_work_item": {

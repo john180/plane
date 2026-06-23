@@ -6,6 +6,7 @@
 
 import { useMemo, useState } from "react";
 import { observer } from "mobx-react";
+import { useTranslation } from "@plane/i18n";
 import { stringToEmoji } from "@plane/propel/emoji-icon-picker";
 import { EmojiReactionGroup, EmojiReactionPicker } from "@plane/propel/emoji-reaction";
 import type { EmojiReactionType } from "@plane/propel/emoji-reaction";
@@ -39,6 +40,7 @@ export const IssueReaction = observer(function IssueReaction(props: TIssueReacti
     removeReaction,
   } = useIssueDetail();
   const { getUserDetails } = useMember();
+  const { t } = useTranslation();
 
   const reactionIds = getReactionsByIssueId(issueId);
   const userReactions = reactionsByUser(issueId, currentUser.id).map((r) => r.reaction);
@@ -50,15 +52,15 @@ export const IssueReaction = observer(function IssueReaction(props: TIssueReacti
           if (!workspaceSlug || !projectId || !issueId) throw new Error("Missing fields");
           await createReaction(workspaceSlug, projectId, issueId, reaction);
           setToast({
-            title: "Success!",
+            title: t("common.success"),
             type: TOAST_TYPE.SUCCESS,
-            message: "Reaction created successfully",
+            message: t("issue.reactions.create.success"),
           });
         } catch (_error) {
           setToast({
-            title: "Error!",
+            title: t("common.error.label"),
             type: TOAST_TYPE.ERROR,
-            message: "Reaction creation failed",
+            message: t("issue.reactions.create.failed"),
           });
         }
       },
@@ -67,15 +69,15 @@ export const IssueReaction = observer(function IssueReaction(props: TIssueReacti
           if (!workspaceSlug || !projectId || !issueId || !currentUser?.id) throw new Error("Missing fields");
           await removeReaction(workspaceSlug, projectId, issueId, reaction, currentUser.id);
           setToast({
-            title: "Success!",
+            title: t("common.success"),
             type: TOAST_TYPE.SUCCESS,
-            message: "Reaction removed successfully",
+            message: t("issue.reactions.remove.success"),
           });
         } catch (_error) {
           setToast({
-            title: "Error!",
+            title: t("common.error.label"),
             type: TOAST_TYPE.ERROR,
-            message: "Reaction remove failed",
+            message: t("issue.reactions.remove.failed"),
           });
         }
       },
@@ -84,7 +86,7 @@ export const IssueReaction = observer(function IssueReaction(props: TIssueReacti
         else await issueReactionOperations.create(reaction);
       },
     }),
-    [workspaceSlug, projectId, issueId, currentUser, createReaction, removeReaction, userReactions]
+    [workspaceSlug, projectId, issueId, currentUser, createReaction, removeReaction, userReactions, t]
   );
 
   const getReactionUsers = (reaction: string): string[] => {

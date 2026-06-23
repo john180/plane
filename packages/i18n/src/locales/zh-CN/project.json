@@ -166,6 +166,10 @@
           "text": "清除所有筛选条件"
         }
       },
+      "project_view": {
+        "title": "视图中的工作项将显示在这里",
+        "description": "工作项可帮助您跟踪具体工作内容。借助工作项，您可以了解当前进展、负责人以及完成情况。"
+      },
       "public": {
         "title": "尚无公共页面",
         "description": "在这里查看与项目中所有人共享的页面。",
@@ -185,6 +189,18 @@
     "delete_view": {
       "title": "您确定要删除此视图吗？",
       "content": "如果您确认，您为此视图选择的所有排序、筛选和显示选项 + 布局将被永久删除，无法恢复。"
+    },
+    "detail": {
+      "empty_state": {
+        "not_found": {
+          "title": "视图不存在",
+          "description": "您要查找的视图不存在，或您没有权限查看。",
+          "primary_button": "查看其他视图"
+        }
+      }
+    },
+    "actions": {
+      "add_view": "添加视图"
     }
   },
   "project_issues": {
@@ -413,6 +429,13 @@
           "message": "出了些问题。"
         }
       }
+    }
+  },
+  "project_archives": {
+    "work_items_count_tooltip": "{count, plural, one {项目归档中有 # 个工作项} other {项目归档中有 # 个工作项}}",
+    "archived_issue_banner": {
+      "title": "此工作项已归档。前往归档区即可恢复。",
+      "action": "前往归档"
     }
   }
 }

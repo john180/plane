@@ -22,6 +22,16 @@
     "label": "{count, plural, one {週期} other {週期}}",
     "no_cycle": "無週期"
   },
+  "cycle_detail": {
+    "empty_state": {
+      "not_found": {
+        "title": "週期不存在",
+        "description": "您要尋找的週期不存在或已被刪除。",
+        "primary_button": "查看其他週期"
+      }
+    },
+    "work_items_count_tooltip": "此週期中有 {count} 個工作事項"
+  },
   "active_cycle_analytics": {
     "empty_state": {
       "progress": {
@@ -36,6 +46,57 @@
       "label": {
         "title": "為工作項目添加標籤，以查看按標籤\n劃分的工作明細。"
       }
+    }
+  },
+  "archived_cycles": {
+    "empty_state": {
+      "no_matching": {
+        "title": "沒有相符的週期",
+        "description_filters": "移除篩選條件以查看所有週期",
+        "description_search": "移除搜尋條件以查看所有週期"
+      }
+    }
+  },
+  "cycle_delete_modal": {
+    "title": "刪除週期",
+    "content": "確定要刪除週期「{name}」嗎？與此週期相關的所有資料都將永久移除。此操作無法復原。",
+    "toasts": {
+      "success": "週期刪除成功。",
+      "unexpected_error": "發生錯誤。請稍後再試。"
+    }
+  },
+  "cycle_transfer": {
+    "title": "轉移工作事項",
+    "search_placeholder": "搜尋週期...",
+    "completed_not_editable": "已完成的週期不可編輯。",
+    "empty_state": {
+      "no_current_cycle": "您目前沒有可用週期。請先建立週期再轉移工作事項。"
+    },
+    "toasts": {
+      "success": "工作事項轉移成功。",
+      "error": "無法轉移工作事項。請重試。",
+      "fetch_error": "無法取得週期詳細資料。"
+    }
+  },
+  "cycle_archive_modal": {
+    "title": "封存週期 {name}",
+    "content": "確定要封存此週期嗎？所有封存內容都可以稍後還原。",
+    "archiving": "正在封存",
+    "toasts": {
+      "success": {
+        "title": "封存成功",
+        "message": "您可以在專案封存中找到封存內容。"
+      },
+      "error": "無法封存週期。請重試。"
+    }
+  },
+  "cycle_create_update": {
+    "toasts": {
+      "created": "週期建立成功。",
+      "create_error": "建立週期時發生錯誤。請重試。",
+      "updated": "週期更新成功。",
+      "update_error": "更新週期時發生錯誤。請重試。",
+      "date_conflict": "指定日期內已有週期。如需建立草稿週期，請移除日期。"
     }
   }
 }

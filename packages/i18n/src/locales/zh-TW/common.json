@@ -66,6 +66,7 @@
   "summary": "摘要",
   "assigned": "已指派",
   "created": "已建立",
+  "created_date": "建立日期",
   "subscribed": "已訂閱",
   "you_do_not_have_the_permission_to_access_this_page": "您沒有權限存取此頁面。",
   "something_went_wrong_please_try_again": "發生錯誤，請再試一次。",
@@ -421,6 +422,7 @@
     "drop_here_to_move": "拖放到此處以移動",
     "states": "狀態",
     "state": "狀態",
+    "status": "狀態",
     "state_groups": "狀態群組",
     "state_group": "狀態群組",
     "priorities": "優先順序",
@@ -439,6 +441,7 @@
     "assignees": "指派對象",
     "assignee": "指派對象",
     "created_by": "建立者",
+    "custom": "自訂",
     "none": "無",
     "link": "連結",
     "estimates": "評估",
@@ -595,6 +598,8 @@
       "placeholder": "輸入以搜尋",
       "no_matches_found": "找不到符合的項目",
       "no_matching_results": "沒有符合的結果",
+      "view_all": "查看全部",
+      "view_less": "收起",
       "min_chars": "請至少輸入 {count} 個字元以進行搜尋",
       "error": "取得搜尋結果時發生錯誤",
       "no_results": {
@@ -861,5 +866,6 @@
       "description": "將工作事項匯出為 JSON 檔案。",
       "short_description": "匯出為 JSON"
     }
-  }
+  },
+  "clear_filters": "清除篩選條件"
 }

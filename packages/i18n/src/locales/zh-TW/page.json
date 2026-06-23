@@ -1,4 +1,13 @@
 {
+  "page_detail": {
+    "empty_state": {
+      "not_found": {
+        "title": "找不到頁面",
+        "description": "您嘗試存取的頁面不存在，或您沒有權限檢視。",
+        "primary_button": "查看其他頁面"
+      }
+    }
+  },
   "page_navigation_pane": {
     "tabs": {
       "outline": {
@@ -110,6 +119,94 @@
       "label": "從集合中移除",
       "success_message": "頁面已從集合中移除。",
       "error_message": "無法將頁面從集合中移除。請再試一次。"
+    },
+    "menu": {
+      "lock": "鎖定",
+      "unlock": "解鎖",
+      "make_private": "設為私人",
+      "make_public": "設為公開",
+      "move": "移動"
+    }
+  },
+  "page_list": {
+    "search_placeholder": "搜尋頁面"
+  },
+  "page_editor": {
+    "offline": {
+      "tooltip_heading": "您已離線。",
+      "tooltip_content": "您可以繼續修改。重新連線後，這些變更會自動同步。",
+      "label": "離線"
+    },
+    "title": {
+      "placeholder": "未命名"
+    },
+    "content_limit": {
+      "message": "已達到內容限制，已關閉即時同步。請建立新頁面或使用巢狀頁面繼續同步。",
+      "dismiss_label": "關閉內容限制警告"
+    },
+    "toolbar": {
+      "color": "色彩",
+      "text_colors": "文字顏色",
+      "background_colors": "背景顏色",
+      "full_width": "全寬",
+      "sticky_toolbar": "固定工具列",
+      "copy_markdown": "複製 Markdown",
+      "toasts": {
+        "markdown_copied": "Markdown 已複製到剪貼簿。"
+      }
+    }
+  },
+  "page_export": {
+    "title": "匯出頁面",
+    "fields": {
+      "export_format": "匯出格式",
+      "include_content": "包含內容",
+      "page_format": "頁面格式"
+    },
+    "content": {
+      "everything": "全部內容",
+      "no_images": "不包含圖片"
+    },
+    "page_formats": {
+      "letter": "信紙",
+      "legal": "法律紙",
+      "tabloid": "小報"
+    },
+    "exporting": "正在匯出",
+    "toasts": {
+      "success": "頁面匯出成功。",
+      "error": "無法匯出頁面。請稍後再試。"
+    }
+  },
+  "page_version": {
+    "toasts": {
+      "restored": "頁面版本已還原。",
+      "restore_failed": "頁面版本還原失敗。"
+    },
+    "errors": {
+      "load_failed": "無法載入此版本，請重試。"
+    },
+    "try_again": "重試",
+    "loading_details": "正在載入版本詳細資料",
+    "view_only": "僅查看",
+    "restoring": "正在還原"
+  },
+  "page_create_modal": {
+    "title": "建立頁面",
+    "errors": {
+      "name_max_length": "名稱長度必須少於 255 個字元"
+    },
+    "submit": "建立頁面",
+    "toasts": {
+      "error": "無法建立頁面。請重試。"
+    }
+  },
+  "page_delete_modal": {
+    "title": "刪除頁面",
+    "content": "確定要刪除頁面「{name}」嗎？此頁面將永久刪除。此操作無法復原。",
+    "toasts": {
+      "success": "頁面已刪除。",
+      "error": "無法刪除頁面。請重試。"
     }
   }
 }

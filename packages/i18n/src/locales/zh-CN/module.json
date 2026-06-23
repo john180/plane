@@ -2,6 +2,94 @@
   "module": {
     "label": "{count, plural, one {模块} other {模块}}",
     "no_module": "无模块",
-    "select": "添加模块"
+    "select": "添加模块",
+    "links": {
+      "modal": {
+        "add_title": "添加链接",
+        "update_title": "更新链接",
+        "adding": "正在添加链接",
+        "updating": "正在更新链接"
+      },
+      "toasts": {
+        "created": "模块链接创建成功。",
+        "updated": "模块链接更新成功。",
+        "deleted": "模块链接删除成功。"
+      },
+      "added_time": "添加于 {time}",
+      "added_by": "由 {name} 添加"
+    },
+    "quick_actions": {
+      "toasts": {
+        "link_copied": "模块链接已复制到剪贴板。",
+        "restore_success": {
+          "title": "恢复成功",
+          "message": "您可以在项目模块中找到该模块。"
+        },
+        "restore_error": "无法恢复模块。请重试。"
+      }
+    },
+    "no_lead": "无负责人",
+    "work_items_count": "{count, plural, one {# 个工作项} other {# 个工作项}}",
+    "completed_work_items_count": "{completed}/{total} 个工作项",
+    "favorite": {
+      "add": {
+        "loading": "正在将模块添加到收藏……",
+        "success": "模块已添加到收藏。",
+        "error": "无法将模块添加到收藏。请重试。"
+      },
+      "remove": {
+        "loading": "正在从收藏中移除模块……",
+        "success": "模块已从收藏中移除。",
+        "error": "无法从收藏中移除模块。请重试。"
+      }
+    },
+    "estimate_points_count": "{count, plural, one {# 个点数} other {# 个点数}}",
+    "completed_estimate_points_count": "{completed}/{total} 个点数"
+  },
+  "module_detail": {
+    "empty_state": {
+      "not_found": {
+        "title": "模块不存在",
+        "description": "您要查找的模块不存在或已被删除。",
+        "primary_button": "查看其他模块"
+      }
+    },
+    "work_items_count_tooltip": "{count, plural, one {此模块中有 # 个工作项} other {此模块中有 # 个工作项}}"
+  },
+  "archived_modules": {
+    "empty_state": {
+      "no_matching": {
+        "title": "没有匹配的模块",
+        "description_filters": "移除筛选条件以查看所有模块",
+        "description_search": "移除搜索条件以查看所有模块"
+      }
+    }
+  },
+  "module_create_update": {
+    "toasts": {
+      "created": "模块创建成功。",
+      "create_error": "无法创建模块。请重试。",
+      "updated": "模块更新成功。",
+      "update_error": "无法更新模块。请重试。"
+    }
+  },
+  "module_delete_modal": {
+    "title": "删除模块",
+    "content": "确定要删除模块 \"{name}\" 吗？与该模块相关的所有数据都将被永久移除。此操作无法撤销。",
+    "toasts": {
+      "success": "模块删除成功。"
+    }
+  },
+  "module_archive_modal": {
+    "title": "归档模块 {name}",
+    "content": "确定要归档此模块吗？所有归档内容都可以稍后恢复。",
+    "archiving": "正在归档",
+    "toasts": {
+      "success": {
+        "title": "归档成功",
+        "message": "您可以在项目归档中找到归档内容。"
+      },
+      "error": "无法归档模块。请重试。"
+    }
   }
 }

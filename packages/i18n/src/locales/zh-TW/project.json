@@ -166,6 +166,10 @@
           "text": "清除所有篩選器"
         }
       },
+      "project_view": {
+        "title": "視圖中的工作事項會顯示在這裡",
+        "description": "工作事項可協助您追蹤具體工作內容。透過工作事項，您可以掌握目前進展、負責人以及完成情況。"
+      },
       "public": {
         "title": "尚無公開頁面",
         "description": "在此檢視與專案中所有人共享的頁面。",
@@ -185,6 +189,18 @@
     "delete_view": {
       "title": "您確定要刪除此視圖嗎？",
       "content": "如果您確認，您為此視圖選擇的所有排序、篩選和顯示選項 + 布局將被永久刪除，無法恢復。"
+    },
+    "detail": {
+      "empty_state": {
+        "not_found": {
+          "title": "視圖不存在",
+          "description": "您要尋找的視圖不存在，或您沒有權限檢視。",
+          "primary_button": "查看其他視圖"
+        }
+      }
+    },
+    "actions": {
+      "add_view": "新增檢視"
     }
   },
   "project_issues": {
@@ -413,6 +429,13 @@
           "message": "發生錯誤。"
         }
       }
+    }
+  },
+  "project_archives": {
+    "work_items_count_tooltip": "專案封存中有 {count} 個工作事項",
+    "archived_issue_banner": {
+      "title": "此工作事項已封存。前往封存區即可還原。",
+      "action": "前往封存"
     }
   }
 }

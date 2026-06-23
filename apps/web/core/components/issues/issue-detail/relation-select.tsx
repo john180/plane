@@ -8,6 +8,7 @@ import React from "react";
 import { observer } from "mobx-react";
 import Link from "next/link";
 
+import { useTranslation } from "@plane/i18n";
 import { EditIcon, CloseIcon } from "@plane/propel/icons";
 // Plane
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
@@ -48,6 +49,7 @@ export const IssueRelationSelect = observer(function IssueRelationSelect(props: 
   } = useIssueDetail();
   const { issueMap } = useIssues();
   const { isMobile } = usePlatformOS();
+  const { t } = useTranslation();
   const relationIssueIds = getRelationByIssueIdRelationType(issueId, relationKey);
   const ISSUE_RELATION_OPTIONS = useTimeLineRelationOptions();
 
@@ -55,8 +57,8 @@ export const IssueRelationSelect = observer(function IssueRelationSelect(props: 
     if (data.length === 0) {
       setToast({
         type: TOAST_TYPE.ERROR,
-        title: "Error!",
-        message: "Please select at least one work item.",
+        title: t("common.error.label"),
+        message: t("issue.select.error"),
       });
       return;
     }

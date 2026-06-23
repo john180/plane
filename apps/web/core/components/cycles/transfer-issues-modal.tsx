@@ -8,6 +8,7 @@ import { useState } from "react";
 import { observer } from "mobx-react";
 import { useParams } from "next/navigation";
 import { AlertCircle } from "lucide-react";
+import { useTranslation } from "@plane/i18n";
 import { SearchIcon, CycleIcon, TransferIcon, CloseIcon } from "@plane/propel/icons";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
 import { EIssuesStoreType } from "@plane/types";
@@ -23,6 +24,7 @@ type Props = {
 
 export const TransferIssuesModal = observer(function TransferIssuesModal(props: Props) {
   const { isOpen, handleClose, cycleId } = props;
+  const { t } = useTranslation();
   // states
   const [query, setQuery] = useState("");
 
@@ -41,16 +43,16 @@ export const TransferIssuesModal = observer(function TransferIssuesModal(props: 
       .then(async () => {
         setToast({
           type: TOAST_TYPE.SUCCESS,
-          title: "Success!",
-          message: "Work items have been transferred successfully",
+          title: t("common.success"),
+          message: t("cycle_transfer.toasts.success"),
         });
         await getCycleDetails(payload.new_cycle_id);
       })
       .catch(() => {
         setToast({
           type: TOAST_TYPE.ERROR,
-          title: "Error!",
-          message: "Unable to transfer work items. Please try again.",
+          title: t("common.error.label"),
+          message: t("cycle_transfer.toasts.error"),
         });
       });
   };
@@ -64,8 +66,8 @@ export const TransferIssuesModal = observer(function TransferIssuesModal(props: 
     await Promise.all(cyclesFetch).catch((error) => {
       setToast({
         type: TOAST_TYPE.ERROR,
-        title: "Error",
-        message: error.error || "Unable to fetch cycle details",
+        title: t("error"),
+        message: error.error || t("cycle_transfer.toasts.fetch_error"),
       });
     });
   };
@@ -82,7 +84,7 @@ export const TransferIssuesModal = observer(function TransferIssuesModal(props: 
         <div className="flex items-center justify-between px-5">
           <div className="flex items-center gap-1">
             <TransferIcon className="w-5 fill-primary" />
-            <h4 className="text-18 font-medium text-primary">Transfer work items</h4>
+            <h4 className="text-18 font-medium text-primary">{t("cycle_transfer.title")}</h4>
           </div>
           <button onClick={handleClose}>
             <CloseIcon className="h-4 w-4" />
@@ -92,7 +94,7 @@ export const TransferIssuesModal = observer(function TransferIssuesModal(props: 
           <SearchIcon className="h-4 w-4 text-secondary" />
           <input
             className="text-13 outline-none"
-            placeholder="Search for a cycle..."
+            placeholder={t("cycle_transfer.search_placeholder")}
             onChange={(e) => setQuery(e.target.value)}
             value={query}
           />
@@ -132,12 +134,12 @@ export const TransferIssuesModal = observer(function TransferIssuesModal(props: 
               <div className="flex w-full items-center justify-center gap-4 p-5 text-13">
                 <AlertCircle className="h-3.5 w-3.5 text-secondary" />
                 <span className="text-center text-secondary">
-                  You don’t have any current cycle. Please create one to transfer the work items.
+                  {t("cycle_transfer.empty_state.no_current_cycle")}
                 </span>
               </div>
             )
           ) : (
-            <p className="text-center text-secondary">Loading...</p>
+            <p className="text-center text-secondary">{t("loading")}</p>
           )}
         </div>
       </div>

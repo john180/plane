@@ -50,6 +50,103 @@
       }
     }
   },
+  "onboarding": {
+    "common": {
+      "skip": "跳过"
+    },
+    "profile": {
+      "title": "创建您的个人资料。",
+      "description": "这是您在 Plane 中展示给他人的样子。",
+      "upload_image": "上传头像",
+      "change_image": "更换头像",
+      "name": {
+        "label": "姓名",
+        "placeholder": "输入您的全名",
+        "errors": {
+          "required": "请输入姓名",
+          "max_length": "姓名必须在 50 个字符以内。"
+        }
+      },
+      "passwords_match": "✓ 密码一致",
+      "marketing_consent": "我同意接收 Plane 营销通讯",
+      "toast": {
+        "success": {
+          "message": "个人资料设置已完成！"
+        },
+        "error": {
+          "message": "个人资料设置失败。请重试！"
+        }
+      }
+    },
+    "role": {
+      "title": "您的角色是什么？",
+      "description": "让 Plane 按您的工作方式进行设置。",
+      "select_one": "选择一项",
+      "options": {
+        "product_manager": "产品经理",
+        "engineering_manager": "工程经理",
+        "designer": "设计师",
+        "developer": "开发者",
+        "founder_executive": "创始人/高管",
+        "operations_manager": "运营经理",
+        "others": "其他"
+      }
+    },
+    "use_case": {
+      "title": "您为什么使用 Plane？",
+      "description": "告诉我们您的目标和团队规模。",
+      "select_one_or_more": "选择一项或多项",
+      "errors": {
+        "required": "请至少选择一个选项"
+      },
+      "options": {
+        "plan_product_roadmaps": "规划和跟踪产品路线图",
+        "manage_engineering_sprints": "管理工程冲刺",
+        "coordinate_cross_functional_projects": "协调跨职能项目",
+        "replace_current_tool": "替换当前工具",
+        "just_exploring": "只是探索一下"
+      }
+    },
+    "workspace": {
+      "description": "所有工作，统一管理。",
+      "name_placeholder": "输入工作区名称",
+      "organization_size": {
+        "just_myself": "只有我自己"
+      },
+      "join_existing": "加入现有工作区",
+      "create_new": "创建新工作区",
+      "creation_restricted": "您似乎没有任何工作区邀请，并且您的实例管理员已限制创建新工作区。请先让工作区所有者或管理员邀请您加入工作区，然后返回此页面加入。",
+      "join_invites": {
+        "title": "加入邀请或创建工作区",
+        "empty": "未找到邀请"
+      }
+    },
+    "team": {
+      "title": "邀请您的团队成员",
+      "description": "与团队一起使用 Plane 效果最佳。现在邀请他们，充分发挥 Plane 的潜力。",
+      "role": "角色",
+      "add_another": "再添加一个",
+      "invalid_email": "这看起来不像电子邮件地址。",
+      "do_it_later": "稍后再说",
+      "toast": {
+        "success": {
+          "message": "邀请已成功发送。"
+        }
+      }
+    }
+  },
+  "workspace_invitation": {
+    "not_found": "未找到邀请",
+    "invited_title": "您已受邀加入 {workspace}",
+    "already_member_title": "您已经是 {workspace} 的成员",
+    "inactive_title": "此邀请链接已不再有效。",
+    "description": "您的工作区用于创建项目、协作处理工作项，并在 Plane 账户中组织不同的工作流。",
+    "accept": "接受",
+    "ignore": "忽略",
+    "continue_to_home": "继续前往首页",
+    "start_empty_project": "或从空项目开始",
+    "sign_in_to_continue": "登录以继续"
+  },
   "workspace_dashboard": {
     "empty_state": {
       "general": {
@@ -260,7 +357,17 @@
     "delete_view": {
       "title": "您确定要删除此视图吗？",
       "content": "如果您确认，您为此视图选择的所有排序、筛选和显示选项 + 布局将被永久删除，无法恢复。"
-    }
+    },
+    "detail": {
+      "empty_state": {
+        "not_found": {
+          "title": "视图不存在",
+          "description": "您要查找的视图不存在，或您没有权限查看。",
+          "primary_button": "前往所有工作项"
+        }
+      }
+    },
+    "page_label": "{workspace} - 所有视图"
   },
   "workspace_draft_issues": {
     "draft_an_issue": "起草工作项",

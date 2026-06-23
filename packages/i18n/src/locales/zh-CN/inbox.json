@@ -25,18 +25,22 @@
     "modals": {
       "decline": {
         "title": "拒绝工作项",
-        "content": "您确定要拒绝工作项 {value} 吗？"
+        "content": "您确定要拒绝工作项 {value} 吗？",
+        "content_full": "确定要拒绝工作项 {value} 吗？此操作无法撤销。"
       },
       "delete": {
         "title": "删除工作项",
         "content": "您确定要删除工作项 {value} 吗？",
-        "success": "工作项删除成功"
+        "success": "工作项删除成功",
+        "content_full": "确定要删除工作项 {value} 吗？该工作项只会从 Intake 中删除，且此操作无法撤销。"
       }
     },
     "errors": {
       "snooze_permission": "只有项目管理员可以暂停/取消暂停工作项",
       "accept_permission": "只有项目管理员可以接受工作项",
-      "decline_permission": "只有项目管理员可以拒绝工作项"
+      "decline_permission": "只有项目管理员可以拒绝工作项",
+      "permission_denied": "权限不足",
+      "duplicate_permission": "只有项目管理员可以将工作项标记为重复"
     },
     "actions": {
       "accept": "接受",
@@ -50,17 +54,26 @@
       "move": "将 {value} 移至项目工作项"
     },
     "source": {
-      "in-app": "应用内"
+      "in-app": "应用内",
+      "forms_user": "Intake 表单用户"
     },
     "order_by": {
       "created_at": "创建时间",
       "updated_at": "更新时间",
       "id": "ID"
     },
-    "label": "收集",
-    "page_label": "{workspace} - 收集",
+    "filters": {
+      "created_date": "创建日期",
+      "updated_date": "更新日期",
+      "last_updated_date": "最后更新日期",
+      "status_title": "工作项状态"
+    },
+    "label": "Intake",
+    "page_label": "{workspace} - Intake",
     "modal": {
-      "title": "创建收集工作项"
+      "title": "创建 Intake 工作项",
+      "duplicates_found": "{count, plural, one {发现 # 个重复工作项！} other {发现 # 个重复工作项！}}",
+      "editor_processing": "编辑器仍在处理更改。请稍候再继续。"
     },
     "tabs": {
       "open": "未处理",
@@ -77,11 +90,25 @@
       },
       "sidebar_filter": {
         "title": "没有匹配的工作项",
-        "description": "收集中没有符合筛选条件的工作项。创建新工作项。"
+        "description": "Intake 中没有符合筛选条件的工作项。创建新工作项。"
       },
       "detail": {
         "title": "选择一个工作项以查看其详细信息。"
       }
+    },
+    "duplicate_modal": {
+      "select_work_item": "选择工作项",
+      "search_placeholder": "搜索……"
+    },
+    "navigation": {
+      "previous_work_item": "上一个工作项",
+      "next_work_item": "下一个工作项"
+    },
+    "toasts": {
+      "created": "工作项创建成功。",
+      "delete_success": "工作项删除成功。",
+      "delete_failed": "工作项删除失败。",
+      "update_failed": "工作项更新失败。"
     }
   }
 }

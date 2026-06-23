@@ -66,6 +66,7 @@
   "summary": "Özet",
   "assigned": "Atanan",
   "created": "Oluşturulan",
+  "created_date": "Created date",
   "subscribed": "Abone olunan",
   "you_do_not_have_the_permission_to_access_this_page": "Bu sayfaya erişim izniniz yok.",
   "something_went_wrong_please_try_again": "Bir hata oluştu. Lütfen tekrar deneyin.",
@@ -421,6 +422,7 @@
     "drop_here_to_move": "Taşımak için buraya bırakın",
     "states": "Durumlar",
     "state": "Durum",
+    "status": "Status",
     "state_groups": "Durum grupları",
     "state_group": "Durum grubu",
     "priorities": "Öncelikler",
@@ -439,6 +441,7 @@
     "assignees": "Atananlar",
     "assignee": "Atanan",
     "created_by": "Oluşturan",
+    "custom": "Custom",
     "none": "Yok",
     "link": "Bağlantı",
     "estimates": "Tahminler",
@@ -595,6 +598,8 @@
       "placeholder": "Aramak için yazın",
       "no_matches_found": "Eşleşme bulunamadı",
       "no_matching_results": "Eşleşen sonuç yok",
+      "view_all": "View all",
+      "view_less": "View less",
       "min_chars": "Arama için en az {count} karakter yazın",
       "error": "Arama sonuçları alınırken hata oluştu",
       "no_results": {
@@ -861,5 +866,6 @@
       "description": "İş öğelerini JSON dosyasına aktarın.",
       "short_description": "JSON olarak aktar"
     }
-  }
+  },
+  "clear_filters": "Clear filters"
 }

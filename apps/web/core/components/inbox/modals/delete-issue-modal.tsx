@@ -37,6 +37,7 @@ export const DeleteInboxIssueModal = observer(function DeleteInboxIssueModal({
   const { t } = useTranslation();
   // derived values
   const projectDetails = data.project_id ? getProjectById(data?.project_id) : undefined;
+  const workItemIdentifier = `${projectDetails?.identifier}-${data?.sequence_id}`;
 
   const handleClose = () => {
     setIsDeleting(false);
@@ -74,16 +75,7 @@ export const DeleteInboxIssueModal = observer(function DeleteInboxIssueModal({
       isSubmitting={isDeleting}
       isOpen={isOpen}
       title={t("inbox_issue.modals.delete.title")}
-      // TODO: Need to translate the confirmation message
-      content={
-        <>
-          Are you sure you want to delete work item{" "}
-          <span className="font-medium break-words text-primary">
-            {projectDetails?.identifier}-{data?.sequence_id}
-          </span>
-          {""}? The work item will only be deleted from the intake and this action cannot be undone.
-        </>
-      }
+      content={t("inbox_issue.modals.delete.content_full", { value: workItemIdentifier })}
     />
   );
 });

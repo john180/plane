@@ -9,6 +9,7 @@ import { observer } from "mobx-react";
 import { MoreHorizontal } from "lucide-react";
 // plane imports
 import { EUserPermissions, EUserPermissionsLevel } from "@plane/constants";
+import { useTranslation } from "@plane/i18n";
 import { IconButton } from "@plane/propel/icon-button";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
 import type { TContextMenuItem } from "@plane/ui";
@@ -32,6 +33,7 @@ type Props = {
 
 export const ModuleQuickActions = observer(function ModuleQuickActions(props: Props) {
   const { parentRef, moduleId, projectId, workspaceSlug, customClassName } = props;
+  const { t } = useTranslation();
   // router
   const router = useAppRouter();
   // states
@@ -58,8 +60,8 @@ export const ModuleQuickActions = observer(function ModuleQuickActions(props: Pr
     copyUrlToClipboard(moduleLink).then(() => {
       setToast({
         type: TOAST_TYPE.SUCCESS,
-        title: "Link Copied!",
-        message: "Module link copied to clipboard.",
+        title: t("link_copied"),
+        message: t("module.quick_actions.toasts.link_copied"),
       });
     });
   const handleOpenInNewTab = () => window.open(`/${moduleLink}`, "_blank");
@@ -69,15 +71,15 @@ export const ModuleQuickActions = observer(function ModuleQuickActions(props: Pr
       await restoreModule(workspaceSlug, projectId, moduleId);
       setToast({
         type: TOAST_TYPE.SUCCESS,
-        title: "Restore success",
-        message: "Your module can be found in project modules.",
+        title: t("module.quick_actions.toasts.restore_success.title"),
+        message: t("module.quick_actions.toasts.restore_success.message"),
       });
       router.push(`/${workspaceSlug}/projects/${projectId}/archives/modules`);
     } catch (_error) {
       setToast({
         type: TOAST_TYPE.ERROR,
-        title: "Error!",
-        message: "Module could not be restored. Please try again.",
+        title: t("common.error.label"),
+        message: t("module.quick_actions.toasts.restore_error"),
       });
     }
   };

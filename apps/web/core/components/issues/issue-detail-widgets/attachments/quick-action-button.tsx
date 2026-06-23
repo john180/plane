@@ -8,6 +8,7 @@ import React, { useCallback, useState } from "react";
 import { observer } from "mobx-react";
 import type { FileRejection } from "react-dropzone";
 import { useDropzone } from "react-dropzone";
+import { useTranslation } from "@plane/i18n";
 import { PlusIcon } from "@plane/propel/icons";
 // plane imports
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
@@ -34,6 +35,7 @@ export const IssueAttachmentActionButton = observer(function IssueAttachmentActi
   const [isLoading, setIsLoading] = useState(false);
   // store hooks
   const { setLastWidgetAction, fetchActivities } = useIssueDetail(issueServiceType);
+  const { t } = useTranslation();
   // file size
   const { maxFileSize } = useFileSize();
   // operations
@@ -62,8 +64,8 @@ export const IssueAttachmentActionButton = observer(function IssueAttachmentActi
           .catch(() => {
             setToast({
               type: TOAST_TYPE.ERROR,
-              title: "Error!",
-              message: "File could not be attached. Try uploading again.",
+              title: t("common.error.label"),
+              message: t("issue.attachment.toasts.attach.error_message"),
             });
           })
           .finally(() => {
@@ -76,15 +78,15 @@ export const IssueAttachmentActionButton = observer(function IssueAttachmentActi
 
       setToast({
         type: TOAST_TYPE.ERROR,
-        title: "Error!",
+        title: t("common.error.label"),
         message:
           totalAttachedFiles > 1
-            ? "Only one file can be uploaded at a time."
-            : `File must be of ${maxFileSize / 1024 / 1024}MB or less in size.`,
+            ? t("issue.attachment.toasts.attach.single_file_only")
+            : t("issue.attachment.toasts.attach.size_limit", { size: maxFileSize / 1024 / 1024 }),
       });
       return;
     },
-    [attachmentOperations, maxFileSize, workspaceSlug, handleFetchPropertyActivities, setLastWidgetAction]
+    [attachmentOperations, maxFileSize, workspaceSlug, handleFetchPropertyActivities, setLastWidgetAction, t]
   );
 
   const { getRootProps, getInputProps } = useDropzone({

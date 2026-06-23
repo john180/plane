@@ -70,14 +70,14 @@ export const ModuleListItemAction = observer(function ModuleListItemAction(props
     );
 
     setPromiseToast(addToFavoritePromise, {
-      loading: "Adding module to favorites...",
+      loading: t("module.favorite.add.loading"),
       success: {
-        title: "Success!",
-        message: () => "Module added to favorites.",
+        title: t("common.success"),
+        message: () => t("module.favorite.add.success"),
       },
       error: {
-        title: "Error!",
-        message: () => "Couldn't add the module to favorites. Please try again.",
+        title: t("common.error.label"),
+        message: () => t("module.favorite.add.error"),
       },
     });
   };
@@ -94,14 +94,14 @@ export const ModuleListItemAction = observer(function ModuleListItemAction(props
     );
 
     setPromiseToast(removeFromFavoritePromise, {
-      loading: "Removing module from favorites...",
+      loading: t("module.favorite.remove.loading"),
       success: {
-        title: "Success!",
-        message: () => "Module removed from favorites.",
+        title: t("common.success"),
+        message: () => t("module.favorite.remove.success"),
       },
       error: {
-        title: "Error!",
-        message: () => "Couldn't remove the module from favorites. Please try again.",
+        title: t("common.error.label"),
+        message: () => t("module.favorite.remove.error"),
       },
     });
   };
@@ -113,15 +113,15 @@ export const ModuleListItemAction = observer(function ModuleListItemAction(props
       .then(() => {
         setToast({
           type: TOAST_TYPE.SUCCESS,
-          title: "Success!",
-          message: "Module updated successfully.",
+          title: t("common.success"),
+          message: t("module_create_update.toasts.updated"),
         });
       })
       .catch((err) => {
         setToast({
           type: TOAST_TYPE.ERROR,
-          title: "Error!",
-          message: err?.detail ?? "Module could not be updated. Please try again.",
+          title: t("common.error.label"),
+          message: err?.detail ?? t("module_create_update.toasts.update_error"),
         });
       });
   };
@@ -166,7 +166,7 @@ export const ModuleListItemAction = observer(function ModuleListItemAction(props
           <ButtonAvatars showTooltip={false} userIds={moduleLeadDetails?.id} />
         </span>
       ) : (
-        <Tooltip tooltipContent="No lead">
+        <Tooltip tooltipContent={t("module.no_lead")}>
           <SquareUser className="h-4 w-4 text-tertiary" />
         </Tooltip>
       )}

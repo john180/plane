@@ -5,6 +5,7 @@
  */
 
 import { observer } from "mobx-react";
+import { useTranslation } from "@plane/i18n";
 // hooks
 import { useAttachmentOperations } from "../issue-detail-widgets/attachments/helper";
 // components
@@ -23,10 +24,11 @@ export const IssueAttachmentRoot = observer(function IssueAttachmentRoot(props: 
   const { workspaceSlug, projectId, issueId, disabled = false } = props;
   // hooks
   const attachmentHelpers = useAttachmentOperations(workspaceSlug, projectId, issueId);
+  const { t } = useTranslation();
 
   return (
     <div className="relative space-y-3">
-      <h3 className="text-body-sm-medium">Attachments</h3>
+      <h3 className="text-body-sm-medium">{t("common.attachments")}</h3>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         <IssueAttachmentUpload
           workspaceSlug={workspaceSlug}

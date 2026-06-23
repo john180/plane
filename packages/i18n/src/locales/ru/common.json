@@ -66,6 +66,7 @@
   "summary": "Сводка",
   "assigned": "Назначено",
   "created": "Создано",
+  "created_date": "Created date",
   "subscribed": "Подписались",
   "you_do_not_have_the_permission_to_access_this_page": "У вас нет прав для доступа к этой странице.",
   "something_went_wrong_please_try_again": "Что-то пошло не так. Пожалуйста, попробуйте еще раз.",
@@ -421,6 +422,7 @@
     "drop_here_to_move": "Перетащите сюда для перемещения",
     "states": "Статусы",
     "state": "Статус",
+    "status": "Status",
     "state_groups": "Группы статусов",
     "state_group": "Группа статусов",
     "priorities": "Приоритеты",
@@ -439,6 +441,7 @@
     "assignees": "Назначенные",
     "assignee": "Назначенный",
     "created_by": "Создано",
+    "custom": "Custom",
     "none": "Нет",
     "link": "Ссылка",
     "estimates": "Оценки",
@@ -595,6 +598,8 @@
       "placeholder": "Введите для поиска",
       "no_matches_found": "Совпадений не найдено",
       "no_matching_results": "Нет подходящих результатов",
+      "view_all": "View all",
+      "view_less": "View less",
       "min_chars": "Введите минимум {count} символов для поиска",
       "error": "Ошибка получения результатов поиска",
       "no_results": {
@@ -861,5 +866,6 @@
       "description": "Экспорт рабочих элементов в JSON-файл.",
       "short_description": "Экспорт в json"
     }
-  }
+  },
+  "clear_filters": "Clear filters"
 }
