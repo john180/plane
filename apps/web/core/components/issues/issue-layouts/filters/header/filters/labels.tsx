@@ -70,7 +70,7 @@ export const FilterLabels = observer(function FilterLabels(props: Props) {
                 {sortedOptions.slice(0, itemsToRender).map((label) => (
                   <FilterOption
                     key={label?.id}
-                    isChecked={appliedFilters?.includes(label?.id) ? true : false}
+                    isChecked={!!appliedFilters?.includes(label?.id)}
                     onClick={() => handleUpdate(label?.id)}
                     icon={<LabelIcons color={label.color} />}
                     title={label.name}
@@ -82,7 +82,9 @@ export const FilterLabels = observer(function FilterLabels(props: Props) {
                     className="ml-8 text-11 font-medium text-accent-primary"
                     onClick={handleViewToggle}
                   >
-                    {itemsToRender === sortedOptions.length ? t("common.search.view_less") : t("common.search.view_all")}
+                    {itemsToRender === sortedOptions.length
+                      ? t("common.search.view_less")
+                      : t("common.search.view_all")}
                   </button>
                 )}
               </>

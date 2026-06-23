@@ -24,7 +24,7 @@ import { useProject } from "@/hooks/store/use-project";
 import { AnalyticsService } from "@/services/analytics.service";
 // plane web components
 import { exportCSV } from "../export";
-import { InsightTable } from "../insight-table";
+import { InsightTable } from "../insight-table/root";
 
 const analyticsService = new AnalyticsService();
 

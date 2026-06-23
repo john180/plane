@@ -32,7 +32,7 @@ import { useWorkspace } from "@/hooks/store/use-workspace";
 // services
 import { WorkspaceService } from "@/services/workspace.service";
 // components
-import { CommonOnboardingHeader } from "../common";
+import { CommonOnboardingHeader } from "../common/header";
 
 type Props = {
   handleStepChange: (step: EOnboardingSteps, skipInvites?: boolean) => void;
@@ -209,7 +209,7 @@ const InviteMemberInput = observer(function InviteMemberInput(props: InviteMembe
                     style={styles.popper}
                     {...attributes.popper}
                   >
-                    {Object.entries(ROLE_DETAILS).map(([key, value]) => (
+                    {Object.entries(ROLE_DETAILS).map(([key, roleDetail]) => (
                       <Listbox.Option
                         as="div"
                         key={key}
@@ -223,8 +223,8 @@ const InviteMemberInput = observer(function InviteMemberInput(props: InviteMembe
                         {({ selected }) => (
                           <div className="flex items-center gap-2 p-1 text-wrap">
                             <div className="flex flex-col">
-                              <div className="text-13 font-medium">{t(value.i18n_title)}</div>
-                              <div className="flex text-11 text-tertiary">{t(value.i18n_description)}</div>
+                              <div className="text-13 font-medium">{t(roleDetail.i18n_title)}</div>
+                              <div className="flex text-11 text-tertiary">{t(roleDetail.i18n_description)}</div>
                             </div>
                             {selected && <CheckIcon className="h-4 w-4 shrink-0" />}
                           </div>
@@ -305,7 +305,7 @@ export const InviteTeamStep = observer(function InviteTeamStep(props: Props) {
           title: t("common.success"),
           message: t("onboarding.team.toast.success.message"),
         });
-        await nextStep();
+        return nextStep();
       })
       .catch((err) => {
         setToast({
@@ -313,6 +313,7 @@ export const InviteTeamStep = observer(function InviteTeamStep(props: Props) {
           title: t("common.error.label"),
           message: err?.error,
         });
+        return undefined;
       });
   };
 
@@ -343,10 +344,7 @@ export const InviteTeamStep = observer(function InviteTeamStep(props: Props) {
         if (e.code === "Enter") e.preventDefault();
       }}
     >
-      <CommonOnboardingHeader
-        title={t("onboarding.team.title")}
-        description={t("onboarding.team.description")}
-      />
+      <CommonOnboardingHeader title={t("onboarding.team.title")} description={t("onboarding.team.description")} />
       <div className="w-full py-4 text-13">
         <div className="group relative mx-8 grid grid-cols-10 gap-4 py-2">
           <div className="col-span-6 px-1 text-13 font-medium text-secondary">{t("email")}</div>

@@ -123,12 +123,9 @@ export function PageForm(props: Props) {
               className="w-full resize-none text-14"
               tabIndex={getIndex("name")}
               required
-              autoFocus
             />
             {isTitleLengthMoreThan255Character && (
-              <span className="text-11 text-danger-primary">
-                {t("page_create_modal.errors.name_max_length")}
-              </span>
+              <span className="text-11 text-danger-primary">{t("page_create_modal.errors.name_max_length")}</span>
             )}
           </div>
         </div>

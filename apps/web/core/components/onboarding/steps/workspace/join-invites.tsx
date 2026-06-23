@@ -20,7 +20,7 @@ import { useUserSettings } from "@/hooks/store/user";
 // services
 import { WorkspaceService } from "@/services/workspace.service";
 // local components
-import { CommonOnboardingHeader } from "../common";
+import { CommonOnboardingHeader } from "../common/header";
 
 type Props = {
   invitations: IWorkspaceMemberInvitation[];
@@ -51,7 +51,7 @@ export function WorkspaceJoinInvitesStep(props: Props) {
 
   // submit invitations
   const submitInvitations = async () => {
-    const invitation = invitations?.find((invitation) => invitation.id === invitationsRespond[0]);
+    const invitation = invitations?.find((workspaceInvitation) => workspaceInvitation.id === invitationsRespond[0]);
 
     if (invitationsRespond.length <= 0 && !invitation?.role) return;
 
@@ -81,9 +81,10 @@ export function WorkspaceJoinInvitesStep(props: Props) {
             const isSelected = invitationsRespond.includes(invitation.id);
             const invitedWorkspace = invitation.workspace;
             return (
-              <div
+              <button
+                type="button"
                 key={invitation.id}
-                className={`flex cursor-pointer items-center gap-2 rounded-lg border border-subtle px-3 py-2 hover:bg-surface-2`}
+                className={`flex cursor-pointer items-center gap-2 rounded-lg border border-subtle px-3 py-2 text-left hover:bg-surface-2`}
                 onClick={() => handleInvitation(invitation, isSelected ? "withdraw" : "accepted")}
               >
                 <div className="flex-shrink-0">
@@ -104,7 +105,7 @@ export function WorkspaceJoinInvitesStep(props: Props) {
                 <span className={`flex-shrink-0`}>
                   <Checkbox checked={isSelected} />
                 </span>
-              </div>
+              </button>
             );
           })}
       </div>

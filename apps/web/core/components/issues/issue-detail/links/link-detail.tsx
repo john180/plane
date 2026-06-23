@@ -49,18 +49,19 @@ export function IssueLinkDetail(props: TIssueLinkDetail) {
   return (
     <div key={linkId}>
       <div className="relative flex flex-col rounded-md bg-surface-2 p-2.5">
-        <div
-          className="flex w-full cursor-pointer items-start justify-between gap-2"
-          onClick={() => {
-            copyTextToClipboard(linkDetail.url);
-            setToast({
-              type: TOAST_TYPE.SUCCESS,
-              title: t("common.link_copied"),
-              message: t("common.link_copied_to_clipboard"),
-            });
-          }}
-        >
-          <div className="flex items-start gap-2 truncate">
+        <div className="flex w-full items-start justify-between gap-2">
+          <button
+            type="button"
+            className="flex cursor-pointer items-start gap-2 truncate text-left"
+            onClick={() => {
+              copyTextToClipboard(linkDetail.url);
+              setToast({
+                type: TOAST_TYPE.SUCCESS,
+                title: t("common.link_copied"),
+                message: t("common.link_copied_to_clipboard"),
+              });
+            }}
+          >
             <span className="py-1">
               <Icon className="size-3 flex-shrink-0 stroke-2 text-tertiary group-hover:text-primary" />
             </span>
@@ -72,7 +73,7 @@ export function IssueLinkDetail(props: TIssueLinkDetail) {
                 {linkDetail.title && linkDetail.title !== "" ? linkDetail.title : linkDetail.url}
               </span>
             </Tooltip>
-          </div>
+          </button>
 
           {!isNotAllowed && (
             <div className="z-[1] flex flex-shrink-0 items-center gap-2">

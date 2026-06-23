@@ -76,7 +76,7 @@ export const FilterCreatedBy = observer(function FilterCreatedBy(props: Props) {
                   return (
                     <FilterOption
                       key={`created-by-${member.id}`}
-                      isChecked={appliedFilters?.includes(member.id) ? true : false}
+                      isChecked={!!appliedFilters?.includes(member.id)}
                       onClick={() => handleUpdate(member.id)}
                       icon={<Avatar name={member.display_name} src={getFileURL(member.avatar_url)} size="md" />}
                       title={currentUser?.id === member.id ? "You" : member?.display_name}
@@ -89,7 +89,9 @@ export const FilterCreatedBy = observer(function FilterCreatedBy(props: Props) {
                     className="ml-8 text-11 font-medium text-accent-primary"
                     onClick={handleViewToggle}
                   >
-                    {itemsToRender === sortedOptions.length ? t("common.search.view_less") : t("common.search.view_all")}
+                    {itemsToRender === sortedOptions.length
+                      ? t("common.search.view_less")
+                      : t("common.search.view_all")}
                   </button>
                 )}
               </>

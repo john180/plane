@@ -93,8 +93,7 @@ export const IssueRelationSelect = observer(function IssueRelationSelect(props: 
         workspaceLevelToggle
       />
 
-      <button
-        type="button"
+      <div
         className={cn(
           "group flex items-center gap-2 rounded-sm px-2 py-0.5 outline-none",
           {
@@ -104,8 +103,6 @@ export const IssueRelationSelect = observer(function IssueRelationSelect(props: 
           },
           className
         )}
-        onClick={() => toggleRelationModal(issueId, relationKey)}
-        disabled={disabled}
       >
         <div className="flex w-full items-start justify-between">
           {relationIssueIds.length > 0 ? (
@@ -140,7 +137,8 @@ export const IssueRelationSelect = observer(function IssueRelationSelect(props: 
                     </Tooltip>
                     {!disabled && (
                       <Tooltip tooltipContent="Remove" position="bottom" isMobile={isMobile}>
-                        <span
+                        <button
+                          type="button"
                           onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
@@ -148,27 +146,38 @@ export const IssueRelationSelect = observer(function IssueRelationSelect(props: 
                           }}
                         >
                           <CloseIcon className="h-2.5 w-2.5 text-tertiary hover:text-danger-primary" />
-                        </span>
+                        </button>
                       </Tooltip>
                     )}
                   </div>
                 );
               })}
             </div>
+          ) : !disabled ? (
+            <button
+              type="button"
+              className="text-body-xs-regular text-placeholder"
+              onClick={() => toggleRelationModal(issueId, relationKey)}
+            >
+              {currRelationOption?.placeholder}
+            </button>
           ) : (
             <span className="text-body-xs-regular text-placeholder">{currRelationOption?.placeholder}</span>
           )}
           {!disabled && (
-            <span
+            <button
+              type="button"
               className={cn("flex-shrink-0 p-1 opacity-0 group-hover:opacity-100", {
                 "text-placeholder": relationIssueIds.length === 0,
               })}
+              onClick={() => toggleRelationModal(issueId, relationKey)}
+              aria-label={t("common.actions.edit")}
             >
               <EditIcon className="h-2.5 w-2.5 flex-shrink-0" />
-            </span>
+            </button>
           )}
         </div>
-      </button>
+      </div>
     </>
   );
 });

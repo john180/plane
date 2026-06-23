@@ -63,6 +63,7 @@ export const ModuleQuickActions = observer(function ModuleQuickActions(props: Pr
         title: t("link_copied"),
         message: t("module.quick_actions.toasts.link_copied"),
       });
+      return undefined;
     });
   const handleOpenInNewTab = () => window.open(`/${moduleLink}`, "_blank");
 

@@ -46,7 +46,7 @@ export const TransferIssuesModal = observer(function TransferIssuesModal(props: 
           title: t("common.success"),
           message: t("cycle_transfer.toasts.success"),
         });
-        await getCycleDetails(payload.new_cycle_id);
+        return getCycleDetails(payload.new_cycle_id);
       })
       .catch(() => {
         setToast({
@@ -54,6 +54,7 @@ export const TransferIssuesModal = observer(function TransferIssuesModal(props: 
           title: t("common.error.label"),
           message: t("cycle_transfer.toasts.error"),
         });
+        return undefined;
       });
   };
 
@@ -133,9 +134,7 @@ export const TransferIssuesModal = observer(function TransferIssuesModal(props: 
             ) : (
               <div className="flex w-full items-center justify-center gap-4 p-5 text-13">
                 <AlertCircle className="h-3.5 w-3.5 text-secondary" />
-                <span className="text-center text-secondary">
-                  {t("cycle_transfer.empty_state.no_current_cycle")}
-                </span>
+                <span className="text-center text-secondary">{t("cycle_transfer.empty_state.no_current_cycle")}</span>
               </div>
             )
           ) : (

@@ -67,6 +67,7 @@ export const CreateUpdateModuleModal = observer(function CreateUpdateModuleModal
           title: t("common.success"),
           message: t("module_create_update.toasts.created"),
         });
+        return undefined;
       })
       .catch((err) => {
         setToast({
@@ -74,6 +75,7 @@ export const CreateUpdateModuleModal = observer(function CreateUpdateModuleModal
           title: t("common.error.label"),
           message: err?.detail ?? err?.error ?? t("module_create_update.toasts.create_error"),
         });
+        return undefined;
       });
   };
 
@@ -90,6 +92,7 @@ export const CreateUpdateModuleModal = observer(function CreateUpdateModuleModal
           title: t("common.success"),
           message: t("module_create_update.toasts.updated"),
         });
+        return undefined;
       })
       .catch((err) => {
         setToast({
@@ -97,6 +100,7 @@ export const CreateUpdateModuleModal = observer(function CreateUpdateModuleModal
           title: t("common.error.label"),
           message: err?.detail ?? err?.error ?? t("module_create_update.toasts.update_error"),
         });
+        return undefined;
       });
   };
 
@@ -140,7 +144,7 @@ export const CreateUpdateModuleModal = observer(function CreateUpdateModuleModal
       <ModuleForm
         handleFormSubmit={handleFormSubmit}
         handleClose={handleClose}
-        status={data ? true : false}
+        status={!!data}
         projectId={activeProject ?? ""}
         setActiveProject={setActiveProject}
         data={data}

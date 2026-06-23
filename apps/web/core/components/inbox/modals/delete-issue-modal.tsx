@@ -53,6 +53,7 @@ export const DeleteInboxIssueModal = observer(function DeleteInboxIssueModal({
           title: `${t("success")}`,
           message: `${t("inbox_issue.modals.delete.success")}`,
         });
+        return undefined;
       })
       .catch((errors) => {
         const isPermissionError = errors?.error === "Only admin or creator can delete the work item";
@@ -64,6 +65,7 @@ export const DeleteInboxIssueModal = observer(function DeleteInboxIssueModal({
           type: TOAST_TYPE.ERROR,
           message: currentError.i18n_message && t(currentError.i18n_message),
         });
+        return undefined;
       })
       .finally(() => handleClose());
   };

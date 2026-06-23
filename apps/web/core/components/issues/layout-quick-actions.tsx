@@ -34,6 +34,7 @@ export const LayoutQuickActions = observer(function LayoutQuickActions(props: Pr
         title: t("common.link_copied"),
         message: t("issue.layout.link_copied_to_clipboard", { entity: entityName }),
       });
+      return undefined;
     });
 
   const handleOpenInNewTab = () => window.open(`/${layoutLink}`, "_blank");

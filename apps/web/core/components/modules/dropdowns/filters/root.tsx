@@ -14,8 +14,6 @@ import type { TModuleDisplayFilters, TModuleFilters } from "@plane/types";
 // components
 import { FilterOption } from "@/components/issues/issue-layouts/filters";
 import { FilterLead, FilterMembers, FilterStartDate, FilterStatus, FilterTargetDate } from "@/components/modules";
-// hooks
-import { usePlatformOS } from "@/hooks/use-platform-os";
 
 type Props = {
   displayFilters: TModuleDisplayFilters;
@@ -38,9 +36,6 @@ export const ModuleFiltersSelection = observer(function ModuleFiltersSelection(p
   const { t } = useTranslation();
   // states
   const [filtersSearchQuery, setFiltersSearchQuery] = useState("");
-  // store
-  const { isMobile } = usePlatformOS();
-
   return (
     <div className="flex h-full w-full flex-col overflow-hidden">
       <div className="bg-surface-1 p-2.5 pb-0">
@@ -52,7 +47,6 @@ export const ModuleFiltersSelection = observer(function ModuleFiltersSelection(p
             placeholder={t("common.search.label")}
             value={filtersSearchQuery}
             onChange={(e) => setFiltersSearchQuery(e.target.value)}
-            autoFocus={!isMobile}
           />
           {filtersSearchQuery !== "" && (
             <button type="button" className="grid place-items-center" onClick={() => setFiltersSearchQuery("")}>

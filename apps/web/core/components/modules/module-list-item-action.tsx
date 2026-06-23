@@ -66,6 +66,7 @@ export const ModuleListItemAction = observer(function ModuleListItemAction(props
       () => {
         // open favorites menu if closed
         if (!storedValue) toggleFavoriteMenu(true);
+        return undefined;
       }
     );
 
@@ -116,6 +117,7 @@ export const ModuleListItemAction = observer(function ModuleListItemAction(props
           title: t("common.success"),
           message: t("module_create_update.toasts.updated"),
         });
+        return undefined;
       })
       .catch((err) => {
         setToast({
@@ -123,6 +125,7 @@ export const ModuleListItemAction = observer(function ModuleListItemAction(props
           title: t("common.error.label"),
           message: err?.detail ?? t("module_create_update.toasts.update_error"),
         });
+        return undefined;
       });
   };
 

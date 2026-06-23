@@ -179,6 +179,7 @@ export const InboxIssueCreateRoot = observer(function InboxIssueCreateRoot(props
           title: t("common.success"),
           message: t("inbox_issue.toasts.created"),
         });
+        return undefined;
       })
       .catch((error) => {
         console.error(error);
@@ -187,6 +188,7 @@ export const InboxIssueCreateRoot = observer(function InboxIssueCreateRoot(props
           title: t("common.error.label"),
           message: t("common.error.message"),
         });
+        return undefined;
       });
     setFormSubmitting(false);
   };
@@ -233,15 +235,14 @@ export const InboxIssueCreateRoot = observer(function InboxIssueCreateRoot(props
             </div>
           </div>
           <div className="flex items-center justify-between gap-2 rounded-b-lg border-t-[0.5px] border-subtle bg-surface-1 px-5 py-4">
-            <div
+            <button
+              type="button"
               className="inline-flex cursor-pointer items-center gap-1.5"
               onClick={() => setCreateMore((prevData) => !prevData)}
-              role="button"
-              tabIndex={getIndex("create_more")}
             >
               <ToggleSwitch value={createMore} onChange={() => {}} size="sm" />
               <span className="text-11">{t("create_more")}</span>
-            </div>
+            </button>
             <div className="flex items-center gap-3">
               <Button
                 variant="secondary"

@@ -52,6 +52,7 @@ export const CycleDeleteModal = observer(function CycleDeleteModal(props: ICycle
             title: t("common.success"),
             message: t("cycle_delete_modal.toasts.success"),
           });
+          return undefined;
         })
         .catch((errors) => {
           const isPermissionError = errors?.error === "You don't have the required permissions.";
@@ -63,6 +64,7 @@ export const CycleDeleteModal = observer(function CycleDeleteModal(props: ICycle
             type: TOAST_TYPE.ERROR,
             message: currentError.i18n_message && t(currentError.i18n_message),
           });
+          return undefined;
         })
         .finally(() => handleClose());
     } catch {

@@ -18,7 +18,7 @@ import { cn } from "@plane/utils";
 // hooks
 import { useUserProfile } from "@/hooks/store/user";
 // local imports
-import { CommonOnboardingHeader } from "../common";
+import { CommonOnboardingHeader } from "../common/header";
 import type { TProfileSetupFormValues } from "../profile/root";
 
 type Props = {
@@ -61,10 +61,7 @@ export const UseCaseSetupStep = observer(function UseCaseSetupStep({ handleStepC
       use_case: formData.use_case && formData.use_case.length > 0 ? formData.use_case.join(". ") : undefined,
     };
     try {
-      await Promise.all([
-        updateUserProfile(profileUpdatePayload),
-        // totalSteps > 2 && stepChange({ profile_complete: true }),
-      ]);
+      await updateUserProfile(profileUpdatePayload);
       setToast({
         type: TOAST_TYPE.SUCCESS,
         title: t("common.success"),
@@ -92,12 +89,15 @@ export const UseCaseSetupStep = observer(function UseCaseSetupStep({ handleStepC
   };
 
   // derived values
-  const isButtonDisabled = !isSubmitting && isValid ? false : true;
+  const isButtonDisabled = isSubmitting || !isValid;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-10">
       {/* Header */}
-      <CommonOnboardingHeader title={t("onboarding.use_case.title")} description={t("onboarding.use_case.description")} />
+      <CommonOnboardingHeader
+        title={t("onboarding.use_case.title")}
+        description={t("onboarding.use_case.description")}
+      />
 
       {/* Use Case Selection */}
       <div className="flex flex-col gap-3">

@@ -70,7 +70,7 @@ export const FilterModule = observer(function FilterModule(props: Props) {
                 {sortedOptions.slice(0, itemsToRender).map((cycle) => (
                   <FilterOption
                     key={cycle.id}
-                    isChecked={appliedFilters?.includes(cycle.id) ? true : false}
+                    isChecked={!!appliedFilters?.includes(cycle.id)}
                     onClick={() => handleUpdate(cycle.id)}
                     icon={<ModuleIcon className="h-3 w-3 flex-shrink-0" />}
                     title={cycle.name}
@@ -82,7 +82,9 @@ export const FilterModule = observer(function FilterModule(props: Props) {
                     className="ml-8 text-11 font-medium text-accent-primary"
                     onClick={handleViewToggle}
                   >
-                    {itemsToRender === sortedOptions.length ? t("common.search.view_less") : t("common.search.view_all")}
+                    {itemsToRender === sortedOptions.length
+                      ? t("common.search.view_less")
+                      : t("common.search.view_all")}
                   </button>
                 )}
               </>

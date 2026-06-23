@@ -66,7 +66,6 @@ export const PageEditorTitle = observer(function PageEditorTitle(props: Props) {
             maxLength={255}
             onFocus={() => setIsLengthVisible(true)}
             onBlur={() => setIsLengthVisible(false)}
-            autoFocus
           />
           <div
             className={cn(

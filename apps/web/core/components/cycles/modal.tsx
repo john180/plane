@@ -68,6 +68,7 @@ export function CycleCreateUpdateModal(props: CycleModalProps) {
           title: t("common.success"),
           message: t("cycle_create_update.toasts.created"),
         });
+        return undefined;
       })
       .catch((err) => {
         setToast({
@@ -75,6 +76,7 @@ export function CycleCreateUpdateModal(props: CycleModalProps) {
           title: t("common.error.label"),
           message: err?.detail ?? t("cycle_create_update.toasts.create_error"),
         });
+        return undefined;
       });
   };
 
@@ -89,6 +91,7 @@ export function CycleCreateUpdateModal(props: CycleModalProps) {
           title: t("common.success"),
           message: t("cycle_create_update.toasts.updated"),
         });
+        return undefined;
       })
       .catch((err) => {
         setToast({
@@ -96,17 +99,13 @@ export function CycleCreateUpdateModal(props: CycleModalProps) {
           title: t("common.error.label"),
           message: err?.detail ?? t("cycle_create_update.toasts.update_error"),
         });
+        return undefined;
       });
   };
 
-  const dateChecker = async (projectId: string, payload: CycleDateCheckData) => {
-    let status = false;
-
-    await cycleService.cycleDateCheck(workspaceSlug, projectId, payload).then((res) => {
-      status = res.status;
-    });
-
-    return status;
+  const dateChecker = async (targetProjectId: string, payload: CycleDateCheckData) => {
+    const res = await cycleService.cycleDateCheck(workspaceSlug, targetProjectId, payload);
+    return res.status;
   };
 
   const handleFormSubmit = async (formData: Partial<ICycle>) => {
@@ -148,6 +147,7 @@ export function CycleCreateUpdateModal(props: CycleModalProps) {
       else {
         await handleCreateCycle(payload).then(() => {
           setCycleTab("all");
+          return undefined;
         });
       }
       handleClose();

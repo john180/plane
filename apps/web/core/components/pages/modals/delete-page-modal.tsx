@@ -61,6 +61,7 @@ export const DeletePageModal = observer(function DeletePageModal(props: TConfirm
         if (routePageId) {
           router.back();
         }
+        return undefined;
       })
       .catch(() => {
         setToast({
@@ -68,6 +69,7 @@ export const DeletePageModal = observer(function DeletePageModal(props: TConfirm
           title: t("common.error.label"),
           message: t("page_delete_modal.toasts.error"),
         });
+        return undefined;
       });
 
     setIsDeleting(false);

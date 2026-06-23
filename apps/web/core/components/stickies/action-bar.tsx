@@ -23,7 +23,7 @@ import { useSticky } from "@/hooks/use-stickies";
 // components
 import { STICKY_COLORS_LIST } from "../editor/sticky-editor/color-palette";
 import { AllStickiesModal } from "./modal";
-import { StickyNote } from "./sticky";
+import { StickyNote } from "./sticky/root";
 
 export const StickyActionBar = observer(function StickyActionBar() {
   // plane hooks

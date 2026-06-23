@@ -17,7 +17,7 @@ import { EOnboardingSteps } from "@plane/types";
 // hooks
 import { useUserProfile } from "@/hooks/store/user";
 // local components
-import { CommonOnboardingHeader } from "../common";
+import { CommonOnboardingHeader } from "../common/header";
 import type { TProfileSetupFormValues } from "../profile/root";
 
 type Props = {
@@ -62,10 +62,7 @@ export const RoleSetupStep = observer(function RoleSetupStep({ handleStepChange 
       role: formData.role,
     };
     try {
-      await Promise.all([
-        updateUserProfile(profileUpdatePayload),
-        // totalSteps > 2 && stepChange({ profile_complete: true }),
-      ]);
+      await updateUserProfile(profileUpdatePayload);
       setToast({
         type: TOAST_TYPE.SUCCESS,
         title: t("common.success"),
@@ -90,7 +87,7 @@ export const RoleSetupStep = observer(function RoleSetupStep({ handleStepChange 
     handleStepChange(EOnboardingSteps.ROLE_SETUP);
   };
 
-  const isButtonDisabled = !isSubmitting && isValid ? false : true;
+  const isButtonDisabled = isSubmitting || !isValid;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-10">

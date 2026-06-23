@@ -215,11 +215,7 @@ export const IssueBlock = observer(function IssueBlock(props: IssueBlockProps) {
               {/* select checkbox */}
               {projectId && canSelectIssues && !isEpic && (
                 <Tooltip
-                  tooltipContent={
-                    <>
-                      {t("issue.select.current_project_only")}
-                    </>
-                  }
+                  tooltipContent={<>{t("issue.select.current_project_only")}</>}
                   disabled={issue.project_id === projectId}
                 >
                   <div className="absolute left-1 grid w-3.5 flex-shrink-0 place-items-center">
@@ -325,10 +321,12 @@ export const IssueBlock = observer(function IssueBlock(props: IssueBlockProps) {
                   "md:flex": isSidebarCollapsed,
                   "lg:flex": !isSidebarCollapsed,
                 })}
+                role="presentation"
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
                 }}
+                onKeyDown={(e) => e.stopPropagation()}
               >
                 {quickActions({
                   issue,

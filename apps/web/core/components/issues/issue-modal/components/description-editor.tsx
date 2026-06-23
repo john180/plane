@@ -132,6 +132,7 @@ export const IssueDescriptionEditor = observer(function IssueDescriptionEditor(p
             message: t("issue.description.generate.empty_title"),
           });
         else handleAiAssistance(res.response_html);
+        return undefined;
       })
       .catch((err) => {
         const error = err?.data?.error;
@@ -148,6 +149,7 @@ export const IssueDescriptionEditor = observer(function IssueDescriptionEditor(p
             title: t("common.error.label"),
             message: error || t("common.error.message"),
           });
+        return undefined;
       })
       .finally(() => setIAmFeelingLucky(false));
   };
@@ -221,7 +223,7 @@ export const IssueDescriptionEditor = observer(function IssueDescriptionEditor(p
                     return asset_id;
                   } catch (error) {
                     console.log("Error in uploading issue asset:", error);
-                    throw new Error(t("issue.comments.upload.error"));
+                    throw new Error(t("issue.comments.upload.error"), { cause: error });
                   }
                 }}
                 duplicateFile={async (assetId: string) => {

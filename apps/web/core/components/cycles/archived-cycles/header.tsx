@@ -17,12 +17,12 @@ import { SearchIcon, CloseIcon } from "@plane/propel/icons";
 import type { TCycleFilters } from "@plane/types";
 import { cn, calculateTotalFilters } from "@plane/utils";
 // components
-import { ArchiveTabsList } from "@/components/archives";
-import { FiltersDropdown } from "@/components/issues/issue-layouts/filters";
+import { ArchiveTabsList } from "@/components/archives/archive-tabs-list";
+import { FiltersDropdown } from "@/components/issues/issue-layouts/filters/header/helpers/dropdown";
 // hooks
 import { useCycleFilter } from "@/hooks/store/use-cycle-filter";
 // local imports
-import { CycleFiltersSelection } from "../dropdowns";
+import { CycleFiltersSelection } from "../dropdowns/filters/root";
 
 export const ArchivedCyclesHeader = observer(function ArchivedCyclesHeader() {
   // router
@@ -34,7 +34,7 @@ export const ArchivedCyclesHeader = observer(function ArchivedCyclesHeader() {
   const { currentProjectArchivedFilters, archivedCyclesSearchQuery, updateFilters, updateArchivedCyclesSearchQuery } =
     useCycleFilter();
   // states
-  const [isSearchOpen, setIsSearchOpen] = useState(archivedCyclesSearchQuery !== "" ? true : false);
+  const [isSearchOpen, setIsSearchOpen] = useState(archivedCyclesSearchQuery !== "");
   // outside click detector hook
   useOutsideClickDetector(inputRef, () => {
     if (isSearchOpen && archivedCyclesSearchQuery.trim() === "") setIsSearchOpen(false);

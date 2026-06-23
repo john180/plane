@@ -23,7 +23,7 @@ import { useUserProfile, useUserSettings } from "@/hooks/store/user";
 // services
 import { WorkspaceService } from "@/services/workspace.service";
 // local components
-import { CommonOnboardingHeader } from "../common";
+import { CommonOnboardingHeader } from "../common/header";
 
 type Props = {
   user: IUser | undefined;
@@ -117,9 +117,7 @@ export const WorkspaceCreateStep = observer(function WorkspaceCreateStep({
   if (isWorkspaceCreationDisabled) {
     return (
       <div className="flex flex-col gap-10">
-        <span className="text-center text-14 text-tertiary">
-          {t("onboarding.workspace.creation_restricted")}
-        </span>
+        <span className="text-center text-14 text-tertiary">{t("onboarding.workspace.creation_restricted")}</span>
       </div>
     );
   }

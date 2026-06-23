@@ -97,16 +97,15 @@ export const IssueAttachmentActionButton = observer(function IssueAttachmentActi
   });
 
   return (
-    <div
-      onClick={(e) => {
-        // TODO: Remove extra div and move event propagation to button
-        e.stopPropagation();
-      }}
+    <button
+      {...getRootProps({
+        onClick: (e) => e.stopPropagation(),
+      })}
+      type="button"
+      disabled={disabled}
     >
-      <button {...getRootProps()} type="button" disabled={disabled}>
-        <input {...getInputProps()} />
-        {customButton ? customButton : <PlusIcon className="h-4 w-4" />}
-      </button>
-    </div>
+      <input {...getInputProps()} />
+      {customButton ? customButton : <PlusIcon className="h-4 w-4" />}
+    </button>
   );
 });

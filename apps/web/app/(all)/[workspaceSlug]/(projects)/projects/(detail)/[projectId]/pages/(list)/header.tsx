@@ -49,6 +49,7 @@ export const PagesListHeader = observer(function PagesListHeader() {
       .then((res) => {
         const pageId = `/${workspaceSlug}/projects/${currentProjectDetails?.id}/pages/${res?.id}`;
         router.push(pageId);
+        return undefined;
       })
       .catch((err) => {
         setToast({
@@ -56,6 +57,7 @@ export const PagesListHeader = observer(function PagesListHeader() {
           title: t("common.error.label"),
           message: err?.data?.error || t("page_create_modal.toasts.error"),
         });
+        return undefined;
       })
       .finally(() => setIsCreatingPage(false));
   };
