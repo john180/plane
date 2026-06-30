@@ -6,6 +6,7 @@
 
 import { initPromise, i18nInstance } from "./instance";
 import { LANGUAGE_STORAGE_KEY } from "../constants/language";
+import { getBrowserPreferredLanguage } from "./language-detector";
 import type { TLanguage } from "../types";
 
 export async function setLanguage(lng: TLanguage): Promise<void> {
@@ -13,6 +14,17 @@ export async function setLanguage(lng: TLanguage): Promise<void> {
   await i18nInstance.changeLanguage(lng);
   if (typeof window !== "undefined") {
     localStorage.setItem(LANGUAGE_STORAGE_KEY, lng);
+    document.documentElement.lang = lng;
+  }
+}
+
+export async function resetLanguagePreference(): Promise<void> {
+  const lng = getBrowserPreferredLanguage();
+
+  await initPromise;
+  await i18nInstance.changeLanguage(lng);
+  if (typeof window !== "undefined") {
+    localStorage.removeItem(LANGUAGE_STORAGE_KEY);
     document.documentElement.lang = lng;
   }
 }
