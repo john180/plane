@@ -40,7 +40,13 @@ export function useTranslation(): TTranslationStore {
   // No namespace arg — fallbackNS in the i18next config ensures all namespaces
   // are searched for any key. Passing NAMESPACES here would trigger concurrent
   // async loads per component, causing a re-render cascade.
-  const { t, i18n } = useI18nextTranslation();
+  const { t: i18nextT, i18n } = useI18nextTranslation();
+
+  const translate = useCallback(
+    (key: string, params?: Record<string, unknown>) =>
+      coerceToString(key, params === undefined ? i18nextT(key) : i18nextT(key, params)),
+    [i18nextT]
+  );
 
   const changeLanguage = useCallback(
     (lng: TLanguage) => {
@@ -59,8 +65,7 @@ export function useTranslation(): TTranslationStore {
   );
 
   return {
-    t: (key: string, params?: Record<string, unknown>) =>
-      coerceToString(key, params === undefined ? t(key) : t(key, params)),
+    t: translate,
     currentLocale: i18n.language as TLanguage,
     changeLanguage,
     languages: SUPPORTED_LANGUAGES,

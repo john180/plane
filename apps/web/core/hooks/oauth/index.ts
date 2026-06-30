@@ -7,12 +7,16 @@
 // plane imports
 import type { TOAuthConfigs } from "@plane/types";
 // local imports
-import { useCoreOAuthConfig } from "./core";
+import { useCoreOAuthConfig, type TOAuthButtonTextResolver } from "./core";
 import { useExtendedOAuthConfig } from "./extended";
 
-export const useOAuthConfig = (oauthActionText: string = "Continue"): TOAuthConfigs => {
-  const coreOAuthConfig = useCoreOAuthConfig(oauthActionText);
-  const extendedOAuthConfig = useExtendedOAuthConfig(oauthActionText);
+const defaultOAuthButtonTextResolver: TOAuthButtonTextResolver = (provider) => `Continue with ${provider}`;
+
+export const useOAuthConfig = (
+  getOAuthButtonText: TOAuthButtonTextResolver = defaultOAuthButtonTextResolver
+): TOAuthConfigs => {
+  const coreOAuthConfig = useCoreOAuthConfig(getOAuthButtonText);
+  const extendedOAuthConfig = useExtendedOAuthConfig(getOAuthButtonText);
   return {
     isOAuthEnabled: coreOAuthConfig.isOAuthEnabled || extendedOAuthConfig.isOAuthEnabled,
     oAuthOptions: [...coreOAuthConfig.oAuthOptions, ...extendedOAuthConfig.oAuthOptions],

@@ -6,8 +6,10 @@
 
 // plane imports
 import type { TOAuthConfigs } from "@plane/types";
+// local imports
+import type { TOAuthButtonTextResolver } from "./core";
 
-export const useExtendedOAuthConfig = (_oauthActionText: string): TOAuthConfigs => {
+export const useExtendedOAuthConfig = (_getOAuthButtonText: TOAuthButtonTextResolver): TOAuthConfigs => {
   return {
     isOAuthEnabled: false,
     oAuthOptions: [],

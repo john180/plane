@@ -61,7 +61,7 @@ export const ResetPasswordForm = observer(function ResetPasswordForm() {
   const [isRetryPasswordInputFocused, setIsRetryPasswordInputFocused] = useState(false);
   const [errorInfo, setErrorInfo] = useState<TAuthErrorInfo | undefined>(undefined);
   // plane hooks
-  const { t } = useTranslation();
+  const { t, currentLocale } = useTranslation();
 
   const handleShowPassword = (key: keyof typeof showPassword) =>
     setShowPassword((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -76,22 +76,22 @@ export const ResetPasswordForm = observer(function ResetPasswordForm() {
 
   const isButtonDisabled = useMemo(
     () =>
-      !!resetFormData.password &&
-      getPasswordStrength(resetFormData.password) === E_PASSWORD_STRENGTH.STRENGTH_VALID &&
-      resetFormData.password === resetFormData.confirm_password
-        ? false
-        : true,
+      !(
+        !!resetFormData.password &&
+        getPasswordStrength(resetFormData.password) === E_PASSWORD_STRENGTH.STRENGTH_VALID &&
+        resetFormData.password === resetFormData.confirm_password
+      ),
     [resetFormData]
   );
 
   useEffect(() => {
     if (error_code) {
-      const errorhandler = authErrorHandler(error_code?.toString() as EAuthenticationErrorCodes);
+      const errorhandler = authErrorHandler(error_code?.toString() as EAuthenticationErrorCodes, undefined, t);
       if (errorhandler) {
         setErrorInfo(errorhandler);
       }
     }
-  }, [error_code]);
+  }, [error_code, currentLocale, t]);
 
   const password = resetFormData?.password ?? "";
   const confirmPassword = resetFormData?.confirm_password ?? "";
@@ -99,7 +99,7 @@ export const ResetPasswordForm = observer(function ResetPasswordForm() {
 
   return (
     <FormContainer>
-      <AuthFormHeader title="Reset password" description="Create a new password." />
+      <AuthFormHeader title={t("auth.reset_password.title")} description={t("auth.reset_password.description")} />
 
       {errorInfo && errorInfo?.type === EErrorAlertType.BANNER_ALERT && (
         <AuthBanner message={errorInfo.message} handleBannerData={(value) => setErrorInfo(value)} />
@@ -145,6 +145,7 @@ export const ResetPasswordForm = observer(function ResetPasswordForm() {
               onFocus={() => setIsPasswordInputFocused(true)}
               onBlur={() => setIsPasswordInputFocused(false)}
               autoComplete="new-password"
+              // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus
             />
             {showPassword.password ? (

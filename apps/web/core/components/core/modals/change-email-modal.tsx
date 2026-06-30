@@ -118,7 +118,7 @@ export const ChangeEmailModal = observer(function ChangeEmailModal(props: Props)
       const errorCode = err?.error_code?.toString();
 
       // Use authErrorHandler to get user-friendly error message
-      const errorInfo = errorCode ? authErrorHandler(errorCode as EAuthenticationErrorCodes) : undefined;
+      const errorInfo = errorCode ? authErrorHandler(errorCode as EAuthenticationErrorCodes, undefined, t) : undefined;
 
       // Get error message from handler or fallback
       const errorMessage = errorInfo
@@ -189,6 +189,7 @@ export const ChangeEmailModal = observer(function ChangeEmailModal(props: Props)
                   placeholder={changeEmailT("form.code.placeholder")}
                   className={cn({ "border-danger-strong": errors.code })}
                   autoComplete="off"
+                  // eslint-disable-next-line jsx-a11y/no-autofocus
                   autoFocus
                 />
               )}
