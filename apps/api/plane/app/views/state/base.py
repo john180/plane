@@ -17,7 +17,7 @@ from rest_framework import status
 from .. import BaseViewSet, BaseAPIView
 from plane.app.serializers import StateSerializer
 from plane.app.permissions import ROLE, allow_permission
-from plane.db.models import State, Issue
+from plane.db.models import State, Issue, Project, StateGroup
 from plane.utils.cache import invalidate_cache
 
 
@@ -134,13 +134,44 @@ class StateViewSet(BaseViewSet):
 
 
 class IntakeStateEndpoint(BaseAPIView):
+    def _triage_state_name(self, project_id):
+        existing_state_names = set(
+            State.all_state_objects.filter(project_id=project_id, deleted_at__isnull=True).values_list(
+                "name", flat=True
+            )
+        )
+
+        if "Triage" not in existing_state_names:
+            return "Triage"
+
+        suffix = str(project_id)[:5]
+        state_name = f"Triage-{suffix}"
+        counter = 1
+
+        while state_name in existing_state_names:
+            state_name = f"Triage-{suffix}-{counter}"
+            counter += 1
+
+        return state_name
+
     @allow_permission([ROLE.ADMIN, ROLE.MEMBER, ROLE.GUEST])
     def get(self, request, slug, project_id):
         state = State.triage_objects.filter(workspace__slug=slug, project_id=project_id).first()
         if not state:
-            return Response(
-                {"error": "Triage state not found"},
-                status=status.HTTP_404_NOT_FOUND,
-            )
+            project = Project.objects.get(pk=project_id, workspace__slug=slug)
+            try:
+                state = State.objects.create(
+                    name=self._triage_state_name(project_id=project_id),
+                    group=StateGroup.TRIAGE.value,
+                    project_id=project_id,
+                    workspace_id=project.workspace_id,
+                    color="#4E5355",
+                    sequence=65000,
+                    default=False,
+                )
+            except IntegrityError:
+                state = State.triage_objects.filter(workspace__slug=slug, project_id=project_id).first()
+                if not state:
+                    raise
 
         return Response(StateSerializer(state).data, status=status.HTTP_200_OK)
