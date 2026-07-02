@@ -8,6 +8,7 @@ import { useState } from "react";
 import { observer } from "mobx-react";
 import useSWR from "swr";
 // plane imports
+import { WEBSITE_URL } from "@plane/constants";
 import { useTranslation } from "@plane/i18n";
 // components
 import { SettingsBoxedControlItem } from "@/components/settings/boxed-control-item";
@@ -109,15 +110,21 @@ export const EstimateRoot = observer(function EstimateRoot(props: TEstimateRoot)
                 description={
                   <>
                     Estimates have gone through a change, these are the estimates you had in your older versions which
-                    were not in use. Read more about them&nbsp;
-                    <a
-                      href={"https://docs.plane.so/core-concepts/projects/run-project#estimate"}
-                      target="_blank"
-                      className="text-accent-primary/80 hover:text-accent-primary"
-                      rel="noreferrer"
-                    >
-                      here.
-                    </a>
+                    were not in use.
+                    {WEBSITE_URL && (
+                      <>
+                        {" "}
+                        Read more about them&nbsp;
+                        <a
+                          href={WEBSITE_URL}
+                          target="_blank"
+                          className="text-accent-primary/80 hover:text-accent-primary"
+                          rel="noreferrer"
+                        >
+                          here.
+                        </a>
+                      </>
+                    )}
                   </>
                 }
                 variant="h6"
@@ -138,14 +145,14 @@ export const EstimateRoot = observer(function EstimateRoot(props: TEstimateRoot)
         workspaceSlug={workspaceSlug}
         projectId={projectId}
         estimateId={estimateToUpdate ? estimateToUpdate : undefined}
-        isOpen={estimateToUpdate ? true : false}
+        isOpen={!!estimateToUpdate}
         handleClose={() => setEstimateToUpdate(undefined)}
       />
       <DeleteEstimateModal
         workspaceSlug={workspaceSlug}
         projectId={projectId}
         estimateId={estimateToDelete ? estimateToDelete : undefined}
-        isOpen={estimateToDelete ? true : false}
+        isOpen={!!estimateToDelete}
         handleClose={() => setEstimateToDelete(undefined)}
       />
     </>

@@ -5,6 +5,7 @@
  */
 
 import { FileText, Rocket } from "lucide-react";
+import { WEBSITE_URL } from "@plane/constants";
 // components
 import type { TPowerKCommandConfig } from "@/components/power-k/core/types";
 // hooks
@@ -17,7 +18,7 @@ export const usePowerKHelpCommands = (): TPowerKCommandConfig[] => {
   // store
   const { toggleShortcutsListModal } = usePowerK();
 
-  return [
+  const commands: TPowerKCommandConfig[] = [
     {
       id: "open_keyboard_shortcuts",
       type: "action",
@@ -30,18 +31,23 @@ export const usePowerKHelpCommands = (): TPowerKCommandConfig[] => {
       isVisible: () => true,
       closeOnSelect: true,
     },
-    {
+  ];
+
+  if (WEBSITE_URL) {
+    commands.push({
       id: "open_plane_documentation",
       type: "action",
       group: "help",
       i18n_title: "power_k.help_actions.open_plane_documentation",
       icon: FileText,
       action: () => {
-        window.open("https://docs.plane.so/", "_blank", "noopener,noreferrer");
+        window.open(WEBSITE_URL, "_blank", "noopener,noreferrer");
       },
       isEnabled: () => true,
       isVisible: () => true,
       closeOnSelect: true,
-    },
-  ];
+    });
+  }
+
+  return commands;
 };
