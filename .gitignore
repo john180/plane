@@ -120,3 +120,8 @@ packages/i18n/src/types/keys.generated.ts
 
 # Local planning notes (not for version control)
 /docs/plan/
+
+# Local all-in-one Docker deployment state
+/deployments/local-aio/.env
+/deployments/local-aio/data/
+/deployments/local-aio/logs/
