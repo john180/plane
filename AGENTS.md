@@ -1,5 +1,15 @@
 # Agent Development Guide
 
+## Project Goal
+
+This fork tracks upstream Plane while preserving a privacy-first, self-hostable build: no telemetry, no session recording, no default data reporting, and no required outbound calls for core product use.
+
+- Keep telemetry disabled by default and at rest: `Instance.is_telemetry_enabled` defaults to `false`, legacy event/metrics Celery tasks stay no-op, and existing instances remain opted out through migrations.
+- Do not reintroduce PostHog/event capture, session recorder scripts, default Sentry/OTLP collectors, product-update iframes, marketing/upsell flows, or hard-coded Plane cloud links that can disclose instance or user activity.
+- Keep local deployment safe by default: `deployments/local-aio`, Dockerfiles, and env examples should route to local services or empty same-origin defaults unless an operator explicitly configures an integration.
+- When syncing upstream, audit new env vars, dependencies, background jobs, frontend scripts, and external links for telemetry or privacy-reporting behavior, then remove or gate them behind explicit opt-in settings.
+- Operator-configured integrations such as SMTP, S3-compatible storage, LLM providers, Unsplash, webhooks, or update checks must stay opt-in and make any outbound data flow obvious in configuration.
+
 ## Commands
 
 - `pnpm dev` - Start all dev servers (web:3000, admin:3001)
