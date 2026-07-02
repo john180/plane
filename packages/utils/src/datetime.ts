@@ -4,21 +4,56 @@
  * See the LICENSE file for details.
  */
 
-import { differenceInDays, format, formatDistanceToNow, isAfter, isEqual, isValid, parseISO } from "date-fns";
+import { differenceInDays, format, isAfter, isEqual, isValid, parseISO } from "date-fns";
 import { isNumber } from "lodash-es";
+
+const getDateTimeLocale = (locale?: string): string => {
+  const activeLocale = locale || (typeof document !== "undefined" ? document.documentElement.lang : undefined) || "en";
+  return activeLocale === "zh-CN" ? "zh-CN" : "en-US";
+};
+
+const RELATIVE_TIME_THRESHOLDS: {
+  limit: number;
+  divisor: number;
+  unit: Intl.RelativeTimeFormatUnit;
+}[] = [
+  { limit: 60, divisor: 1, unit: "second" },
+  { limit: 60 * 60, divisor: 60, unit: "minute" },
+  { limit: 24 * 60 * 60, divisor: 60 * 60, unit: "hour" },
+  { limit: 30 * 24 * 60 * 60, divisor: 24 * 60 * 60, unit: "day" },
+  { limit: 365 * 24 * 60 * 60, divisor: 30 * 24 * 60 * 60, unit: "month" },
+  { limit: Infinity, divisor: 365 * 24 * 60 * 60, unit: "year" },
+];
+
+const getRelativeTimeParts = (time: string | number | Date | null) => {
+  if (!time) return;
+
+  const parsedTime = typeof time === "string" ? parseISO(time) : new Date(time);
+  if (!isValid(parsedTime)) return;
+
+  const diffInSeconds = (parsedTime.getTime() - Date.now()) / 1000;
+  const threshold = RELATIVE_TIME_THRESHOLDS.find(({ limit }) => Math.abs(diffInSeconds) < limit);
+
+  if (!threshold) return;
+
+  return {
+    value: Math.trunc(diffInSeconds / threshold.divisor),
+    unit: threshold.unit,
+  };
+};
 
 // Format Date Helpers
 /**
- * @returns {string | null} formatted date in the desired format or platform default format (MMM dd, yyyy)
+ * @returns {string | null} formatted date in the desired format or localized default format
  * @description Returns date in the formatted format
  * @param {Date | string} date
- * @param {string} formatToken (optional) // default MMM dd, yyyy
+ * @param {string} formatToken (optional) date-fns token; omit for localized default
  * @example renderFormattedDate("2024-01-01", "MM-DD-YYYY") // Jan 01, 2024
  * @example renderFormattedDate("2024-01-01") // Jan 01, 2024
  */
 export const renderFormattedDate = (
   date: string | Date | undefined | null,
-  formatToken: string = "MMM dd, yyyy"
+  formatToken?: string
 ): string | undefined => {
   // Parse the date to check if it is valid
   const parsedDate = getDate(date);
@@ -28,17 +63,26 @@ export const renderFormattedDate = (
   if (!isValid(parsedDate)) return; // Return null for invalid dates
   let formattedDate;
   try {
-    // Format the date in the format provided or default format (MMM dd, yyyy)
-    formattedDate = format(parsedDate, formatToken);
+    formattedDate = formatToken
+      ? format(parsedDate, formatToken)
+      : new Intl.DateTimeFormat(getDateTimeLocale(), {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        }).format(parsedDate);
   } catch (_e) {
-    // Format the date in format (MMM dd, yyyy) in case of any error
-    formattedDate = format(parsedDate, "MMM dd, yyyy");
+    // Format the date in English in case of any error
+    formattedDate = new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    }).format(parsedDate);
   }
   return formattedDate;
 };
 
 /**
- * @returns {string} formatted date in the format of MMM dd
+ * @returns {string} localized date without year
  * @description Returns date in the formatted format
  * @param {string | Date} date
  * @example renderShortDateFormat("2024-01-01") // Jan 01
@@ -50,8 +94,11 @@ export const renderFormattedDateWithoutYear = (date: string | Date): string => {
   if (!parsedDate) return "";
   // Check if the parsed date is valid before formatting
   if (!isValid(parsedDate)) return ""; // Return empty string for invalid dates
-  // Format the date in short format (MMM dd)
-  const formattedDate = format(parsedDate, "MMM dd");
+  // Format the date in short localized format
+  const formattedDate = new Intl.DateTimeFormat(getDateTimeLocale(), {
+    month: "short",
+    day: "numeric",
+  }).format(parsedDate);
   return formattedDate;
 };
 
@@ -89,14 +136,11 @@ export const renderFormattedTime = (date: string | Date, timeFormat: "12-hour" |
   if (!parsedDate) return "";
   // Check if the parsed date is valid
   if (!isValid(parsedDate)) return ""; // Return empty string for invalid dates
-  // Format the date in 12 hour format if in12HourFormat is true
-  if (timeFormat === "12-hour") {
-    const formattedTime = format(parsedDate, "hh:mm a");
-    return formattedTime;
-  }
-  // Format the date in 24 hour format
-  const formattedTime = format(parsedDate, "HH:mm");
-  return formattedTime;
+  return new Intl.DateTimeFormat(getDateTimeLocale(), {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: timeFormat === "12-hour",
+  }).format(parsedDate);
 };
 
 // Date Difference Helpers
@@ -168,52 +212,24 @@ export const findHowManyDaysLeft = (
  * @param {string | Date} time
  * @example calculateTimeAgo("2023-01-01") // 1 year ago
  */
-export const calculateTimeAgo = (time: string | number | Date | null): string => {
-  if (!time) return "";
-  // Parse the time to check if it is valid
-  const parsedTime = typeof time === "string" || typeof time === "number" ? parseISO(String(time)) : time;
-  // return if undefined
-  if (!parsedTime) return ""; // Return empty string for invalid dates
-  // Format the time in the form of amount of time passed since the event happened
-  const distance = formatDistanceToNow(parsedTime, { addSuffix: true });
-  return distance;
+export const calculateTimeAgo = (time: string | number | Date | null, locale?: string): string => {
+  const relativeTime = getRelativeTimeParts(time);
+  if (!relativeTime) return "";
+
+  return new Intl.RelativeTimeFormat(getDateTimeLocale(locale), { numeric: "always" }).format(
+    relativeTime.value,
+    relativeTime.unit
+  );
 };
 
-export function calculateTimeAgoShort(date: string | number | Date | null): string {
-  if (!date) {
-    return "";
-  }
+export function calculateTimeAgoShort(date: string | number | Date | null, locale?: string): string {
+  const relativeTime = getRelativeTimeParts(date);
+  if (!relativeTime) return "";
 
-  const parsedDate = typeof date === "string" ? parseISO(date) : new Date(date);
-  const now = new Date();
-  const diffInSeconds = (now.getTime() - parsedDate.getTime()) / 1000;
-
-  if (diffInSeconds < 60) {
-    return `${Math.floor(diffInSeconds)}s`;
-  }
-
-  const diffInMinutes = diffInSeconds / 60;
-  if (diffInMinutes < 60) {
-    return `${Math.floor(diffInMinutes)}m`;
-  }
-
-  const diffInHours = diffInMinutes / 60;
-  if (diffInHours < 24) {
-    return `${Math.floor(diffInHours)}h`;
-  }
-
-  const diffInDays = diffInHours / 24;
-  if (diffInDays < 30) {
-    return `${Math.floor(diffInDays)}d`;
-  }
-
-  const diffInMonths = diffInDays / 30;
-  if (diffInMonths < 12) {
-    return `${Math.floor(diffInMonths)}mo`;
-  }
-
-  const diffInYears = diffInMonths / 12;
-  return `${Math.floor(diffInYears)}y`;
+  return new Intl.RelativeTimeFormat(getDateTimeLocale(locale), { numeric: "always", style: "narrow" }).format(
+    relativeTime.value,
+    relativeTime.unit
+  );
 }
 
 // Date Validation Helpers
@@ -284,7 +300,7 @@ export const getDate = (date: string | Date | undefined | null): Date | undefine
   try {
     if (!date || date === "") return;
 
-    if (typeof date !== "string" && !(date instanceof String)) return date;
+    if (typeof date !== "string") return date;
 
     const [yearString, monthString, dayString] = date.substring(0, 10).split("-");
     const year = parseInt(yearString);
@@ -399,14 +415,15 @@ export const generateDateArray = (startDate: string | Date, endDate: string | Da
   // Create an empty array to store the dates
   const dateArray = [];
 
-  // Use a while loop to generate dates between the range
-  while (start <= end) {
+  for (
+    let current = start;
+    current <= end;
+    current = new Date(current.getFullYear(), current.getMonth(), current.getDate() + 1)
+  ) {
     // Push the current date (converted to ISO string for consistency)
     dateArray.push({
-      date: new Date(start).toISOString().split("T")[0],
+      date: new Date(current).toISOString().split("T")[0],
     });
-    // Increment the date by 1 day (86400000 milliseconds)
-    start.setDate(start.getDate() + 1);
   }
 
   return dateArray;
@@ -483,7 +500,7 @@ export const checkDateCriteria = (dateToCheck: Date | null, filterDate: Date, ty
 };
 
 /**
- * Formats merged date range display with smart formatting
+ * Formats merged date range display with localized smart formatting
  * - Single date: "Jan 24, 2025"
  * - Same year, same month: "Jan 24 - 28, 2025"
  * - Same year, different month: "Jan 24 - Feb 6, 2025"
@@ -500,39 +517,25 @@ export const formatDateRange = (
 
   // If only start date is provided
   if (parsedStartDate && !parsedEndDate) {
-    return format(parsedStartDate, "MMM dd, yyyy");
+    return renderFormattedDate(parsedStartDate) ?? "";
   }
 
   // If only end date is provided
   if (!parsedStartDate && parsedEndDate) {
-    return format(parsedEndDate, "MMM dd, yyyy");
+    return renderFormattedDate(parsedEndDate) ?? "";
   }
 
   // If both dates are provided
   if (parsedStartDate && parsedEndDate) {
-    const startYear = parsedStartDate.getFullYear();
-    const startMonth = parsedStartDate.getMonth();
-    const endYear = parsedEndDate.getFullYear();
-    const endMonth = parsedEndDate.getMonth();
-
-    // Same year, same month
-    if (startYear === endYear && startMonth === endMonth) {
-      const startDay = format(parsedStartDate, "dd");
-      const endDay = format(parsedEndDate, "dd");
-      return `${format(parsedStartDate, "MMM")} ${startDay} - ${endDay}, ${startYear}`;
-    }
-
-    // Same year, different month
-    if (startYear === endYear) {
-      const startFormatted = format(parsedStartDate, "MMM dd");
-      const endFormatted = format(parsedEndDate, "MMM dd");
-      return `${startFormatted} - ${endFormatted}, ${startYear}`;
-    }
-
-    // Different year
-    const startFormatted = format(parsedStartDate, "MMM dd, yyyy");
-    const endFormatted = format(parsedEndDate, "MMM dd, yyyy");
-    return `${startFormatted} - ${endFormatted}`;
+    const formatter = new Intl.DateTimeFormat(getDateTimeLocale(), {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+    return (
+      formatter.formatRange?.(parsedStartDate, parsedEndDate) ??
+      `${formatter.format(parsedStartDate)} - ${formatter.format(parsedEndDate)}`
+    );
   }
 
   return "";

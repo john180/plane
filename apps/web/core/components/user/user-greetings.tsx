@@ -20,27 +20,24 @@ export function UserGreetingsView(props: IUserGreetingsView) {
   // current time hook
   const { currentTime } = useCurrentTime();
   // store hooks
-  const { t } = useTranslation();
+  const { currentLocale, t } = useTranslation();
+  const locale = currentLocale === "zh-CN" ? "zh-CN" : "en-US";
+  const timeZone = user?.user_timezone || undefined;
 
   const hour = new Intl.DateTimeFormat("en-US", {
     hour12: false,
     hour: "numeric",
+    timeZone,
   }).format(currentTime);
 
-  const date = new Intl.DateTimeFormat("en-US", {
+  const dateTimeString = new Intl.DateTimeFormat(locale, {
+    weekday: "long",
     month: "short",
     day: "numeric",
-  }).format(currentTime);
-
-  const weekDay = new Intl.DateTimeFormat("en-US", {
-    weekday: "long",
-  }).format(currentTime);
-
-  const timeString = new Intl.DateTimeFormat("en-US", {
-    timeZone: user?.user_timezone,
     hour12: false, // Use 24-hour format
     hour: "2-digit",
     minute: "2-digit",
+    timeZone,
   }).format(currentTime);
 
   const greeting = parseInt(hour, 10) < 12 ? "morning" : parseInt(hour, 10) < 18 ? "afternoon" : "evening";
@@ -52,9 +49,7 @@ export function UserGreetingsView(props: IUserGreetingsView) {
       <h2 className="text-center text-20 font-semibold">{t(greetingKey, { name: userName })}</h2>
       <h5 className="flex items-center gap-2 font-medium text-placeholder">
         <div>{greeting === "morning" ? "🌤️" : greeting === "afternoon" ? "🌥️" : "🌙️"}</div>
-        <div>
-          {weekDay}, {date} {timeString}
-        </div>
+        <div>{dateTimeString}</div>
       </h5>
     </div>
   );
