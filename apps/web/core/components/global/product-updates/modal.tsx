@@ -8,8 +8,8 @@ import { observer } from "mobx-react";
 // ui
 import { EModalPosition, EModalWidth, ModalCore } from "@plane/ui";
 // plane web components
-import { ProductUpdatesChangelog } from "@/plane-web/components/global/product-updates/changelog";
-import { ProductUpdatesHeader } from "@/plane-web/components/global/product-updates/header";
+import { ProductUpdatesChangelog } from "@/components/global/product-updates/changelog";
+import { ProductUpdatesHeader } from "@/components/global/product-updates/header";
 
 export type ProductUpdatesModalProps = {
   isOpen: boolean;
